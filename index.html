@@ -18,8 +18,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap">
 <style>
-  /* Layout concept: warm cream canvas, a TIGHT two-accent palette — forest green + sun yellow
-     on near-black ink — hand-drawn line pictos, real photography, bold outlined cards. */
+  /* Layout concept: compact one-pager — hero, then three tabbed sections (Projet / Prestations / Médias)
+     reachable from dropdown sub-menus, then contact. Tight palette: forest green + sun yellow on ink & cream. */
   :root{
     --cream:#FFF3DB; --paper:#FFFDF7; --paper2:#FFF6E4; --band:#FCE9BE;
     --ink:#1E1A2E; --muted:#6A6380; --line:#E8D7B2;
@@ -51,198 +51,226 @@
 
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--cream);color:var(--ink);font-family:var(--font-body);font-weight:600;
-    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.04;text-wrap:balance;margin:0}
-  p{margin:0} a{color:inherit} img{display:block}
+  body{background:var(--cream);color:var(--ink);font-family:var(--font-body);font-weight:600;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;text-wrap:balance;margin:0}
+  p{margin:0} a{color:inherit} img{display:block} button{font:inherit}
+  .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
 
-  .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;
-    padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
-
-  #prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:5px;width:0%;
-    background:linear-gradient(90deg,var(--green),var(--sun));z-index:60;transition:width .08s linear}
+  #prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:5px;width:0%;background:linear-gradient(90deg,var(--green),var(--sun));z-index:60;transition:width .08s linear}
   body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--cream);z-index:55}
 
-  header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--cream) 88%,transparent);
-    backdrop-filter:blur(10px);border-bottom:2px solid var(--ink)}
-  .nav{display:flex;align-items:center;gap:16px;min-height:64px}
-  .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.22rem;
-    text-decoration:none;margin-right:auto;letter-spacing:.2px}
+  /* ---------- HEADER + DROPDOWNS ---------- */
+  header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--cream) 90%,transparent);backdrop-filter:blur(10px);border-bottom:2px solid var(--ink)}
+  .nav{display:flex;align-items:center;gap:14px;min-height:64px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.2rem;text-decoration:none;margin-right:auto}
   .brand .mark{width:54px;height:37px;flex:0 0 auto}
-  .mark .k{stroke:var(--ink)} .mark .b{fill:var(--paper)} .mark .s{fill:var(--sun)}
-  .hero-logo{margin-top:18px}
-  .hero-logo img{width:clamp(170px,24vw,240px);height:auto;display:block;filter:drop-shadow(4px 5px 0 rgba(30,26,46,.16))}
-  .hero-logo + h1{margin-top:6px}
+  .mark .k{stroke:var(--ink)} .mark .b{fill:var(--paper)}
   .brand b{color:var(--green)}
-  .navlinks{display:flex;gap:2px}
-  .navlinks a{text-decoration:none;color:var(--muted);font-weight:800;font-size:.92rem;padding:8px 12px;border-radius:999px;transition:.15s;white-space:nowrap}
-  .navlinks a:hover{color:var(--ink);background:var(--paper2)}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:600;text-decoration:none;
-    border-radius:999px;padding:11px 20px;font-size:1rem;border:2px solid var(--ink);cursor:pointer;background:var(--paper);color:var(--ink);
-    transition:transform .12s,box-shadow .18s,background .2s}
+  .menu{display:flex;gap:2px;align-items:center}
+  .dd{position:relative}
+  .dd-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--muted);font-weight:800;font-size:.93rem;padding:9px 12px;border-radius:999px;transition:.15s}
+  .dd-btn:hover,.dd.open .dd-btn,.dd:focus-within .dd-btn{color:var(--ink);background:var(--paper2)}
+  .dd-btn svg{width:12px;height:12px;transition:transform .2s}
+  .dd.open .dd-btn svg{transform:rotate(180deg)}
+  .sub{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);min-width:230px;background:var(--paper);border:2px solid var(--ink);border-radius:18px;box-shadow:5px 5px 0 var(--ink);padding:8px;display:none;z-index:70}
+  .sub::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+  .dd.open .sub{display:grid;gap:2px}
+  @media (hover:hover){.dd:hover .sub{display:grid;gap:2px}.dd:hover .dd-btn svg{transform:rotate(180deg)}}
+  .sub a{display:flex;flex-direction:column;text-decoration:none;padding:9px 12px;border-radius:12px;font-weight:800;font-size:.94rem;line-height:1.25}
+  .sub a small{color:var(--muted);font-weight:700;font-size:.78rem}
+  .sub a:hover,.sub a:focus-visible{background:var(--paper2)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-display);font-weight:600;text-decoration:none;border-radius:999px;padding:11px 20px;font-size:1rem;border:2px solid var(--ink);cursor:pointer;background:var(--paper);color:var(--ink);transition:transform .12s,box-shadow .18s,background .2s}
   .btn-primary{background:var(--green);color:var(--green-ink);box-shadow:4px 4px 0 var(--ink)}
   .btn-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
   .btn-primary:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
   .btn-ghost:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
   .nav .btn{padding:9px 16px;font-size:.92rem}
-  .burger{display:none;background:none;border:0;cursor:pointer;color:var(--ink);padding:8px}
+  .burger{display:none;background:none;border:0;cursor:pointer;color:var(--ink);padding:8px;margin-left:auto}
   .burger svg{width:28px;height:28px}
+  .mobile-menu{display:none;padding:6px 0 18px;max-height:calc(100vh - 80px);overflow-y:auto}
+  .mobile-menu.open{display:block}
+  .mm-group{border-top:2px solid var(--line);padding:10px 0}
+  .mm-group:first-child{border-top:0}
+  .mm-title{font-family:var(--font-display);font-weight:600;font-size:1.05rem;padding:4px 8px}
+  .mm-links{display:flex;flex-wrap:wrap;gap:8px;padding:6px 8px 2px}
+  .mm-links a{text-decoration:none;font-weight:800;font-size:.9rem;border:2px solid var(--ink);border-radius:999px;padding:6px 12px;background:var(--paper)}
+  .mobile-menu .btn{width:100%;margin-top:10px}
 
-  section{scroll-margin-top:86px}
-  .band-pad{padding-block:clamp(52px,8vw,90px)}
-  .eyebrow{display:inline-block;font-family:var(--font-display);font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-    font-size:.8rem;color:var(--sun-ink);background:var(--sun);padding:4px 12px;border-radius:999px;border:2px solid var(--ink)}
-  h2.big{font-size:clamp(1.95rem,5vw,3rem);margin:14px 0 12px;letter-spacing:-.5px}
-  .lead{color:var(--muted);font-size:1.08rem;max-width:62ch}
+  section{scroll-margin-top:84px}
+  .sec{padding-block:clamp(48px,7vw,80px)}
+  .eyebrow{display:inline-block;font-family:var(--font-display);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;color:var(--sun-ink);background:var(--sun);padding:4px 12px;border-radius:999px;border:2px solid var(--ink)}
+  .sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 30px}
+  .sec-head h2{font-size:clamp(1.9rem,4.6vw,2.8rem);margin-top:12px;letter-spacing:-.5px}
+  .sec-head .lead{color:var(--muted);font-size:1.04rem;max-width:46ch}
 
-  /* HERO */
-  .hero{position:relative;overflow:hidden;padding-top:clamp(26px,5vw,52px);padding-bottom:clamp(36px,5vw,64px)}
-  .blob{position:absolute;border-radius:50%;filter:blur(50px);opacity:.42;z-index:0;animation:drift 18s ease-in-out infinite}
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding-block:clamp(26px,5vw,50px) clamp(34px,5vw,56px)}
+  .blob{position:absolute;border-radius:50%;filter:blur(50px);opacity:.4;z-index:0;animation:drift 18s ease-in-out infinite}
   .blob.b1{width:340px;height:340px;background:var(--green);top:-100px;left:-70px}
   .blob.b2{width:300px;height:300px;background:var(--sun);bottom:-120px;right:-50px;animation-delay:-6s}
   @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(26px,-22px)}}
   .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(22px,4vw,46px);align-items:center}
-  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--paper);border:2px solid var(--ink);border-radius:999px;
-    padding:6px 14px;font-weight:800;font-size:.82rem;box-shadow:3px 3px 0 var(--ink)}
-  .hero-tag b{color:var(--green)}
-  .hero h1{font-size:clamp(2.9rem,8.5vw,5.2rem);margin:18px 0 10px;letter-spacing:-1px;line-height:.92}
+  .hero-logo img{width:clamp(170px,24vw,236px);height:auto;filter:drop-shadow(4px 5px 0 rgba(30,26,46,.16))}
+  .hero h1{font-size:clamp(2.7rem,7.6vw,4.7rem);margin:6px 0 10px;letter-spacing:-1px;line-height:.92}
   .hero h1 .c1{color:var(--green)}
-  .slogan{font-family:var(--font-display);font-weight:500;font-size:clamp(1.2rem,2.7vw,1.6rem);max-width:20ch}
-  .hero .sub{margin-top:14px;color:var(--muted);font-size:1.05rem;max-width:46ch}
-  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .slogan{font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,2.5vw,1.5rem);max-width:22ch}
+  .hero .sub-txt{margin-top:12px;color:var(--muted);font-size:1.04rem;max-width:46ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+  .facts{list-style:none;padding:0;margin:24px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+  .facts li{background:var(--paper);border:2px solid var(--ink);border-radius:14px;padding:8px 13px;display:flex;flex-direction:column;line-height:1.15;min-width:0}
+  .facts b{font-family:var(--font-display);font-weight:600;font-size:1.3rem;color:var(--green);font-variant-numeric:tabular-nums}
+  .facts span{font-size:.78rem;color:var(--muted);font-weight:800}
   .hero-photo{position:relative}
   .hero-photo .frame{border:3px solid var(--ink);border-radius:26px;overflow:hidden;box-shadow:var(--shadow-hard);background:var(--ink);transform:rotate(-1.4deg)}
-  .hero-photo img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover}
-  .sticker{position:absolute;right:-10px;top:-18px;background:var(--sun);color:var(--sun-ink);border:2px solid var(--ink);
-    border-radius:999px;padding:10px 14px;font-family:var(--font-display);font-weight:600;font-size:.92rem;transform:rotate(7deg);
-    box-shadow:3px 3px 0 var(--ink);text-align:center;line-height:1.05}
+  .hero-photo img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+  .sticker{position:absolute;right:-10px;top:-18px;background:var(--sun);color:var(--sun-ink);border:2px solid var(--ink);border-radius:999px;padding:10px 14px;font-family:var(--font-display);font-weight:600;font-size:.92rem;transform:rotate(7deg);box-shadow:3px 3px 0 var(--ink);text-align:center;line-height:1.05}
 
-  /* MARQUEE */
-  .marquee{background:var(--ink);color:var(--cream);border-block:2px solid var(--ink);overflow:hidden;padding-block:12px;white-space:nowrap}
-  .marquee .track{display:inline-flex;gap:26px;align-items:center;will-change:transform;animation:scrollx 28s linear infinite}
-  .marquee .track span{font-family:var(--font-display);font-weight:600;font-size:1.12rem}
-  .marquee .track b{color:var(--sun)}
+  .marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding-block:11px;white-space:nowrap}
+  .marquee .track{display:inline-flex;gap:26px;will-change:transform;animation:scrollx 28s linear infinite}
+  .marquee span{font-family:var(--font-display);font-weight:600;font-size:1.08rem}
+  .marquee b{color:var(--sun)}
   @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  .anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-  .anim .reveal.in{opacity:1;transform:none}
-  .anim .reveal.d1{transition-delay:.08s}.anim .reveal.d2{transition-delay:.16s}.anim .reveal.d3{transition-delay:.24s}.anim .reveal.d4{transition-delay:.32s}
+  /* ---------- TABS ---------- */
+  .tabs{display:flex;gap:8px;margin:24px 0 26px;overflow-x:auto;padding:2px 6px 8px 2px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;font-family:var(--font-display);font-weight:600;font-size:1rem;border:2px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:999px;padding:9px 18px;cursor:pointer;transition:background .15s,box-shadow .15s,transform .12s}
+  .tab:hover{background:var(--paper2)}
+  .tab[aria-selected="true"]{background:var(--green);color:var(--green-ink);box-shadow:3px 3px 0 var(--ink)}
+  [role="tabpanel"]{animation:panel .45s cubic-bezier(.2,.7,.2,1)}
+  @keyframes panel{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
   .grid{display:grid;gap:18px}
-  .g4{grid-template-columns:repeat(4,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
-  .card{background:var(--paper);border:2px solid var(--ink);border-radius:22px;padding:24px;box-shadow:5px 5px 0 var(--ink);
-    min-width:0;transition:transform .14s,box-shadow .18s}
-  .card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
-  .card .ic{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;margin-bottom:14px;border:2px solid var(--ink);background:var(--paper2)}
-  .card .ic.fill-g{background:var(--green)}.card .ic.fill-s{background:var(--sun)}
-  .card .ic svg{width:32px;height:32px;color:var(--ink)}
-  .card h3{font-size:1.2rem;margin-bottom:7px}
-  .card p{color:var(--muted);font-size:.98rem}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--paper);border:2px solid var(--ink);border-radius:22px;padding:22px;box-shadow:5px 5px 0 var(--ink);min-width:0}
+  .card .ic{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;margin-bottom:12px;border:2px solid var(--ink)}
+  .ic.fill-g{background:var(--green)} .ic.fill-s{background:var(--sun)}
+  .card .ic svg{width:30px;height:30px;color:#1E1A2E}
+  .card h3{font-size:1.18rem;margin-bottom:6px}
+  .card p{color:var(--muted);font-size:.97rem}
 
-  /* PHOTO BAND */
-  .photoband{position:relative;border-block:2px solid var(--ink);min-height:clamp(340px,54vw,540px);display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
-  .photoband img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
-  .photoband .scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,8,18,.85),rgba(10,8,18,.1) 55%,rgba(10,8,18,.3))}
-  .photoband .pcontent{position:relative;z-index:2;color:#fff;padding-block:clamp(26px,5vw,52px)}
-  .photoband h2{color:#fff;font-size:clamp(1.8rem,4.6vw,2.9rem);margin:14px 0 8px;max-width:18ch}
-  .photoband p{color:rgba(255,255,255,.9);max-width:54ch;font-size:1.05rem}
+  .eco{background:var(--green);color:var(--green-ink);border:2px solid var(--ink);border-radius:24px;padding:clamp(22px,4vw,36px);box-shadow:var(--shadow-hard)}
+  .eco h3{font-size:clamp(1.4rem,3vw,1.9rem)}
+  .eco p{font-weight:700;max-width:60ch;margin-top:8px}
+  .ticks{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 26px}
+  .ticks li{display:flex;gap:10px;align-items:flex-start;font-weight:800;min-width:0}
+  .ticks svg{width:22px;height:22px;flex:0 0 auto;margin-top:2px}
 
-  /* VIDEO */
-  .video-sec{background:var(--band);border-block:2px solid var(--ink)}
-  .video-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(22px,4vw,44px);align-items:center}
-  .phone{justify-self:center;width:100%;max-width:300px;border:5px solid var(--ink);border-radius:34px;overflow:hidden;background:#000;box-shadow:var(--shadow-hard)}
-  .phone video{width:100%;height:auto;display:block;aspect-ratio:9/16;object-fit:cover;background:#000}
-  .eq{display:inline-flex;align-items:flex-end;gap:4px;height:24px;margin-left:10px;vertical-align:-5px}
-  .eq i{width:5px;background:var(--green);border-radius:3px;animation:eq 1s ease-in-out infinite}
-  .eq i:nth-child(1){height:40%;animation-delay:-.2s}.eq i:nth-child(2){height:85%;animation-delay:-.5s;background:var(--sun)}
-  .eq i:nth-child(3){height:55%;animation-delay:-.1s}.eq i:nth-child(4){height:95%;animation-delay:-.7s;background:var(--sun)}
-  .eq i:nth-child(5){height:65%;animation-delay:-.35s}
-  @keyframes eq{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:7px 13px;font-weight:800;font-size:.86rem}
+  .specs{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+  .spec{background:var(--paper);border:2px solid var(--ink);border-radius:16px;padding:13px 16px;min-width:0}
+  .spec small{display:block;color:var(--muted);font-weight:800;font-size:.74rem;text-transform:uppercase;letter-spacing:.07em}
+  .spec b{display:block;font-family:var(--font-display);font-weight:500;font-size:1.04rem;line-height:1.3;margin-top:3px}
+  .spec b em{font-style:normal;color:var(--green);font-weight:600}
+  .note{margin-top:14px;color:var(--muted);font-size:.92rem}
 
-  /* STATS */
-  .stats{background:var(--ink);border:2px solid var(--ink);border-radius:28px;padding:clamp(24px,4vw,40px);color:var(--cream)}
-  .stat{text-align:center;padding:8px}
-  .stat .num{font-family:var(--font-display);font-weight:600;font-size:clamp(2rem,5.5vw,3rem);line-height:1;font-variant-numeric:tabular-nums}
-  .stat:nth-child(odd) .num{color:var(--sun)} .stat:nth-child(even) .num{color:var(--green)}
-  .stat .lab{margin-top:8px;color:#CDC6DA;font-weight:800;font-size:.86rem}
+  /* prestations split */
+  .split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(20px,4vw,42px);align-items:center}
+  .split .ph{position:relative;border:3px solid var(--ink);border-radius:22px;overflow:hidden;box-shadow:var(--shadow-hard);aspect-ratio:4/3;background:var(--paper2)}
+  .split .ph img{width:100%;height:100%;object-fit:cover}
+  .split h3{font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:10px}
+  .split p{color:var(--muted);font-size:1.03rem;max-width:52ch}
+  .split .ticks{grid-template-columns:1fr;gap:8px;margin-top:16px}
+  .split .ticks svg{color:var(--green)}
+  .split .btn{margin-top:20px}
 
-  /* ECO strip */
-  .eco{background:var(--green);color:var(--green-ink);border:2px solid var(--ink);border-radius:28px;padding:clamp(24px,4vw,42px);box-shadow:var(--shadow-hard)}
-  .eco h2{color:var(--green-ink)}
-  .eco .list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 26px;margin-top:18px}
-  .eco .li{display:flex;gap:10px;align-items:flex-start;font-weight:800}
-  .eco .li svg{width:22px;height:22px;flex:0 0 auto;margin-top:2px}
-
-  /* SPEC strip */
-  .spec{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-  .spec .s{background:var(--paper);border:2px solid var(--ink);border-radius:14px;padding:10px 14px;font-weight:800;font-size:.9rem;min-width:0}
-  .spec .s b{color:var(--green)}
-
-  /* GALLERY */
-  .gal{display:grid;gap:14px;grid-template-columns:repeat(6,1fr);grid-auto-rows:170px}
-  .shot{position:relative;border-radius:20px;overflow:hidden;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);min-width:0;background:var(--paper2)}
+  /* gallery */
+  .gal{display:grid;gap:14px;grid-template-columns:repeat(6,1fr);grid-auto-rows:160px}
+  .shot{position:relative;margin:0;border-radius:20px;overflow:hidden;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);min-width:0;background:var(--paper2)}
   .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-  .shot:hover img{transform:scale(1.06)}
-  .shot figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;color:#fff;font-weight:800;font-size:.86rem;padding:22px 14px 12px;background:linear-gradient(0deg,rgba(8,6,16,.85),transparent)}
+  .shot figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;color:#fff;font-weight:800;font-size:.86rem;padding:22px 14px 11px;background:linear-gradient(0deg,rgba(8,6,16,.85),transparent)}
   .shot.s-wide{grid-column:span 4;grid-row:span 2}.shot.s-tall{grid-column:span 2;grid-row:span 2}.shot.s-sm{grid-column:span 2}
 
-  /* GG */
-  .gg{background:radial-gradient(120% 140% at 0% 0%,color-mix(in srgb,var(--green) 20%,transparent),transparent 55%),
-      radial-gradient(120% 140% at 100% 100%,color-mix(in srgb,var(--sun) 24%,transparent),transparent 55%),var(--paper);
-    border:2px solid var(--ink);border-radius:28px;padding:clamp(26px,4vw,46px);display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:center;box-shadow:var(--shadow-hard)}
-  .gg h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px}
+  /* zoomable affordance */
+  [data-zoom]{cursor:zoom-in}
+  [data-zoom]:hover img{transform:scale(1.05)}
+  [data-zoom]::after{content:"";position:absolute;top:10px;right:10px;z-index:3;width:36px;height:36px;border-radius:50%;border:2px solid #1E1A2E;
+    background:#FFFDF7 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E1A2E' stroke-width='2.6' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6'/%3E%3Cpath d='M15 15l5 5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/19px no-repeat;
+    opacity:0;transform:scale(.8);transition:opacity .2s,transform .2s}
+  [data-zoom]:hover::after,[data-zoom]:focus-visible::after{opacity:1;transform:none}
+  @media (hover:none){[data-zoom]::after{opacity:.95;transform:none}}
+  .split .ph img{transition:transform .4s ease}
+
+  /* video */
+  .video-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(22px,4vw,44px);align-items:center}
+  .phone{justify-self:center;width:100%;max-width:280px;border:5px solid var(--ink);border-radius:34px;overflow:hidden;background:#000;box-shadow:var(--shadow-hard)}
+  .phone video{width:100%;height:auto;display:block;aspect-ratio:9/16;object-fit:cover;background:#000}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:6px 12px;font-weight:800;font-size:.86rem}
+  .video-grid h3,.gg h3{font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:10px}
+  .video-grid p,.gg p{color:var(--muted);font-size:1.03rem;max-width:52ch}
+
+  /* green guinguette */
+  .gg{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(22px,4vw,44px);align-items:center}
   .gg .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
   .gg .tags a{text-decoration:none;font-weight:800;font-size:.86rem;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:7px 13px;transition:transform .14s,background .2s}
   .gg .tags a:hover{transform:translateY(-2px);background:var(--sun);color:var(--sun-ink)}
-  .gg-art{margin:0;justify-self:center;width:100%;max-width:330px}
-  .gg-art img{width:100%;height:auto;display:block;border:3px solid var(--ink);border-radius:18px;box-shadow:var(--shadow-hard);transform:rotate(2deg);background:#fff}
-  .gg-art figcaption{margin-top:14px;text-align:center;color:var(--muted);font-weight:800;font-size:.85rem}
+  .gg-art{position:relative;margin:0;justify-self:center;width:100%;max-width:300px;border:3px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-hard);transform:rotate(2deg);background:#fff}
+  .gg-art img{width:100%;height:auto;transition:transform .4s ease}
 
-  /* CONTACT */
-  .contact{background:var(--paper);border:2px solid var(--ink);border-radius:28px;padding:clamp(26px,4vw,46px);box-shadow:var(--shadow-hard)}
-  .rows{display:grid;gap:12px;margin-top:22px}
-  .crow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--paper2);border:2px solid var(--ink);border-radius:16px;padding:14px 16px;min-width:0}
-  .crow .ic{width:42px;height:42px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;border:2px solid var(--ink);background:var(--paper)}
-  .crow .ic svg{width:22px;height:22px;color:var(--ink)}
-  .crow .meta{min-width:0}
-  .crow small{color:var(--muted);font-weight:800;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em}
-  .crow .val{font-family:var(--font-display);font-weight:500;font-size:1.1rem;word-break:break-word}
+  /* contact */
+  .contact{background:var(--paper);border:2px solid var(--ink);border-radius:28px;padding:clamp(24px,4vw,44px);box-shadow:var(--shadow-hard)}
+  .contact h2{font-size:clamp(1.9rem,4.6vw,2.8rem);margin:12px 0 8px}
+  .contact .lead{color:var(--muted);font-size:1.04rem;max-width:58ch}
+  .rows{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+  .crow{display:flex;align-items:center;gap:12px;background:var(--paper2);border:2px solid var(--ink);border-radius:16px;padding:12px 14px;min-width:0}
+  .crow .ic{width:40px;height:40px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;border:2px solid var(--ink);background:var(--paper)}
+  .crow .ic svg{width:21px;height:21px}
+  .crow .meta{min-width:0;flex:1}
+  .crow small{color:var(--muted);font-weight:800;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em}
+  .crow .val{font-family:var(--font-display);font-weight:500;font-size:1.04rem;overflow-wrap:anywhere}
   .crow .val a{text-decoration:none}.crow .val a:hover{color:var(--green)}
-  .copy{margin-left:auto;background:var(--ink);color:var(--cream);border:2px solid var(--ink);border-radius:999px;padding:8px 15px;
-    font-family:var(--font-body);font-weight:800;font-size:.84rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;transition:transform .12s}
+  .copy{flex:0 0 auto;background:var(--ink);color:var(--cream);border:2px solid var(--ink);border-radius:999px;padding:7px 13px;font-family:var(--font-body);font-weight:800;font-size:.82rem;cursor:pointer;text-decoration:none;transition:transform .12s}
   .copy:hover{transform:translateY(-2px)}
+  .support{margin-top:16px;color:var(--muted);font-size:.9rem}
 
-  footer{border-top:2px solid var(--ink);padding-block:28px;margin-top:4px}
+  footer{border-top:2px solid var(--ink);padding-block:24px}
   .foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;font-weight:800}
   .foot a{text-decoration:none}.foot a:hover{color:var(--ink)}
   .foot .sp{margin-left:auto}
 
+  /* ---------- LIGHTBOX (single dark look on purpose) ---------- */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(14,12,22,.95);color:#FFF3DB;animation:lbin .25s ease}
+  @keyframes lbin{from{opacity:0}to{opacity:1}}
+  .lb-stage{position:absolute;top:calc(64px + env(safe-area-inset-top,0px));bottom:calc(84px + env(safe-area-inset-bottom,0px));left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .lb-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px;cursor:zoom-in;box-shadow:0 20px 60px rgba(0,0,0,.5);user-select:none;-webkit-user-drag:none}
+  .lb-stage.zoomed{display:block;overflow:auto;cursor:zoom-out;-webkit-overflow-scrolling:touch}
+  .lb-stage.zoomed .lb-img{max-width:none;max-height:none;border-radius:0;cursor:zoom-out}
+  .lb-btn{position:absolute;z-index:2;width:50px;height:50px;border-radius:50%;border:2px solid #1E1A2E;background:#FFFDF7;color:#1E1A2E;display:grid;place-items:center;cursor:pointer;box-shadow:3px 3px 0 #000;transition:transform .12s}
+  .lb-btn:hover{transform:scale(1.06)}
+  .lb-btn svg{width:24px;height:24px}
+  .lb-close{top:calc(10px + env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px))}
+  .lb-prev{left:max(14px,env(safe-area-inset-left,0px));top:50%;margin-top:-25px}
+  .lb-next{right:max(14px,env(safe-area-inset-right,0px));top:50%;margin-top:-25px}
+  .lb-count{position:absolute;top:calc(22px + env(safe-area-inset-top,0px));left:max(18px,env(safe-area-inset-left,0px));font-family:var(--font-display);font-weight:600;font-size:1rem;color:#FFC21E;font-variant-numeric:tabular-nums}
+  .lb-cap{position:absolute;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));text-align:center;padding-inline:16px}
+  .lb-cap b{display:block;font-family:var(--font-display);font-weight:600;font-size:1.1rem}
+  .lb-cap span{font-size:.82rem;color:#CDC6DA;font-weight:700}
+  .lb :focus-visible{outline:3px solid #FFC21E;outline-offset:3px}
+
+  .anim .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .anim .reveal.in{opacity:1;transform:none}
+  .anim .reveal.d1{transition-delay:.08s}.anim .reveal.d2{transition-delay:.16s}.anim .reveal.d3{transition-delay:.24s}
+
   :focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
 
   @media (max-width:900px){
+    .menu,.nav>.btn{display:none}.burger{display:block}
     .hero .wrap{grid-template-columns:1fr;text-align:center}
-    .slogan,.hero .sub{max-width:100%;margin-inline:auto}.hero-cta{justify-content:center}.hero-photo{order:-1}
-    .hero-logo img{margin-inline:auto}
-    .navlinks,.nav .btn{display:none}.burger{display:block;margin-left:auto}
-    .video-grid{grid-template-columns:1fr}
-    .gg{grid-template-columns:1fr;text-align:center}.gg .tags{justify-content:center}
-    .g4{grid-template-columns:repeat(2,1fr)}
+    .slogan,.hero .sub-txt{max-width:100%;margin-inline:auto}
+    .cta-row,.facts{justify-content:center}.hero-photo{order:-1}.hero-logo img{margin-inline:auto}
+    .split,.video-grid,.gg{grid-template-columns:1fr}
     .gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:150px}
-    .shot.s-wide{grid-column:span 4;grid-row:span 2}.shot.s-tall{grid-column:span 2;grid-row:span 2}.shot.s-sm{grid-column:span 2}
+    .shot.s-wide{grid-column:span 4}.shot.s-tall,.shot.s-sm{grid-column:span 2}
+    .rows{grid-template-columns:1fr}
   }
-  @media (max-width:540px){
-    .g4,.g3,.g2{grid-template-columns:1fr}.stats .grid{grid-template-columns:repeat(2,1fr)}.eco .list{grid-template-columns:1fr}
+  @media (max-width:560px){
+    .g3,.ticks{grid-template-columns:1fr}
     .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px}
     .shot.s-wide{grid-column:span 2;grid-row:span 2}.shot.s-tall,.shot.s-sm{grid-column:span 1;grid-row:span 1}
+    .lb-prev,.lb-next{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));margin-top:0}
+    .lb-cap{padding-inline:76px}
   }
-  .mobile-menu{display:none}
-  .mobile-menu.open{display:flex;flex-direction:column;gap:4px;padding:10px 0 16px}
-  .mobile-menu a{text-decoration:none;font-weight:800;padding:11px 10px;border-radius:12px}
-  .mobile-menu a:hover{background:var(--paper2)}.mobile-menu .btn{justify-content:center;margin-top:8px}
-
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.blob,.marquee .track,.eq i{animation:none!important}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.blob,.marquee .track{animation:none!important}[role="tabpanel"],.lb{animation:none}}
 </style>
 </head>
 <body>
@@ -263,220 +291,286 @@
       </svg>
       <span>La <b>Sono</b>Cyclette</span>
     </a>
-    <nav class="navlinks" aria-label="Navigation principale">
-      <a href="#concept">Le concept</a><a href="#teaser">Le teaser</a><a href="#prestations">Prestations</a>
-      <a href="#images">En images</a><a href="#guinguette">Green Guinguette</a>
+    <nav class="menu" aria-label="Navigation principale">
+      <div class="dd">
+        <button class="dd-btn" aria-expanded="false" aria-haspopup="true">Le projet <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></button>
+        <div class="sub">
+          <a href="#concept" data-go="concept">Le concept<small>Vélo-cargo, son, DJ</small></a>
+          <a href="#durable" data-go="durable">La fête durable<small>Solaire, local, décarboné</small></a>
+          <a href="#materiel" data-go="materiel">Le matériel<small>Fiche technique</small></a>
+        </div>
+      </div>
+      <div class="dd">
+        <button class="dd-btn" aria-expanded="false" aria-haspopup="true">Prestations <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></button>
+        <div class="sub">
+          <a href="#openair" data-go="openair">Open air &amp; guinguettes</a>
+          <a href="#evenements" data-go="evenements">Événements &amp; festivals</a>
+          <a href="#causes" data-go="causes">Causes &amp; collectifs</a>
+          <a href="#surmesure" data-go="surmesure">Sur-mesure &amp; karaoké</a>
+        </div>
+      </div>
+      <div class="dd">
+        <button class="dd-btn" aria-expanded="false" aria-haspopup="true">Médias <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></button>
+        <div class="sub">
+          <a href="#photos" data-go="photos">Photos<small>La saison en images</small></a>
+          <a href="#teaser" data-go="teaser">Le teaser<small>Saison 2025 / 2026</small></a>
+          <a href="#guinguette" data-go="guinguette">Green Guinguette<small>Événement signature</small></a>
+        </div>
+      </div>
     </nav>
     <a class="btn btn-primary" href="#contact">Réserver une date</a>
-    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
   <div class="wrap mobile-menu" id="mobileMenu">
-    <a href="#concept">Le concept</a><a href="#teaser">Le teaser</a><a href="#prestations">Prestations</a>
-    <a href="#images">En images</a><a href="#guinguette">Green Guinguette</a>
+    <div class="mm-group"><div class="mm-title">Le projet</div><div class="mm-links">
+      <a href="#concept" data-go="concept">Le concept</a><a href="#durable" data-go="durable">Fête durable</a><a href="#materiel" data-go="materiel">Matériel</a></div></div>
+    <div class="mm-group"><div class="mm-title">Prestations</div><div class="mm-links">
+      <a href="#openair" data-go="openair">Open air</a><a href="#evenements" data-go="evenements">Événements</a><a href="#causes" data-go="causes">Causes</a><a href="#surmesure" data-go="surmesure">Sur-mesure</a></div></div>
+    <div class="mm-group"><div class="mm-title">Médias</div><div class="mm-links">
+      <a href="#photos" data-go="photos">Photos</a><a href="#teaser" data-go="teaser">Teaser</a><a href="#guinguette" data-go="guinguette">Green Guinguette</a></div></div>
     <a class="btn btn-primary" href="#contact">Réserver une date</a>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero band-pad">
+  <!-- ================= HERO ================= -->
+  <section class="hero">
     <span class="blob b1"></span><span class="blob b2"></span>
     <div class="wrap">
       <div>
-        <span class="hero-tag reveal">🚲 Strasbourg · <b>depuis&nbsp;2021</b></span>
-        <div class="hero-logo reveal d1">
-          <img src="assets/logo-sonocyclette.svg" width="754" height="522" alt="Logo de la SonoCyclette : le tricycle à habitacle avec « La Sono Cyclette » écrit sur la cabine">
-        </div>
+        <div class="hero-logo reveal"><img src="assets/logo-sonocyclette.svg" width="754" height="522" alt="Logo de la SonoCyclette : le tricycle à habitacle avec « La Sono Cyclette » écrit sur la cabine"></div>
         <h1 class="reveal d1">La <span class="c1">SonoCyclette</span></h1>
         <p class="slogan reveal d2">Livraison de fête à vélo, sur place ou à emporter.</p>
-        <p class="sub reveal d3">Un système son mobile, autonome et rechargeable au solaire. La fête se déplace, le carbone reste au placard.</p>
-        <div class="hero-cta reveal d4">
+        <p class="sub-txt reveal d2">Un système son mobile, autonome et rechargeable au solaire, avec Lord Cumbia aux platines. La fête se déplace, le carbone reste au placard.</p>
+        <div class="cta-row reveal d3">
           <a class="btn btn-primary" href="#contact">Réserver une date</a>
-          <a class="btn btn-ghost" href="#teaser">▶ Voir le teaser</a>
+          <a class="btn btn-ghost" href="#teaser" data-go="teaser">▶ Voir le teaser</a>
         </div>
+        <ul class="facts reveal d3" aria-label="En bref">
+          <li><b>2021</b><span>en roue libre depuis</span></li>
+          <li><b>100&nbsp;%</b><span>solaire</span></li>
+          <li><b>6–12&nbsp;h</b><span>d'autonomie</span></li>
+          <li><b>30–100</b><span>convives</span></li>
+        </ul>
       </div>
-      <div class="hero-photo reveal d2">
-        <div class="frame"><img src="assets/img-hero.jpg" alt="La SonoCyclette roule dans les rues de Strasbourg, suivie d'un cortège de cyclistes"></div>
+      <div class="hero-photo reveal d1">
+        <div class="frame"><img src="assets/img-hero.jpg" alt="La SonoCyclette roule dans la vieille ville de Strasbourg, suivie d'un cortège de cyclistes"></div>
         <span class="sticker">100&nbsp;%<br>solaire</span>
       </div>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee" aria-hidden="true">
-    <div class="track">
-      <span>OPEN AIR<b>·</b> SOLAIRE<b>·</b> DJ SETS<b>·</b> ZÉRO CARBONE<b>·</b> VÉLO<b>·</b> GUINGUETTE<b>·</b> STRASBOURG<b>·</b></span>
-      <span>OPEN AIR<b>·</b> SOLAIRE<b>·</b> DJ SETS<b>·</b> ZÉRO CARBONE<b>·</b> VÉLO<b>·</b> GUINGUETTE<b>·</b> STRASBOURG<b>·</b></span>
-    </div>
-  </div>
+  <div class="marquee" aria-hidden="true"><div class="track">
+    <span>OPEN AIR <b>·</b> SOLAIRE <b>·</b> DJ SETS <b>·</b> ZÉRO CARBONE <b>·</b> VÉLO <b>·</b> GUINGUETTE <b>·</b> STRASBOURG <b>·</b></span>
+    <span>OPEN AIR <b>·</b> SOLAIRE <b>·</b> DJ SETS <b>·</b> ZÉRO CARBONE <b>·</b> VÉLO <b>·</b> GUINGUETTE <b>·</b> STRASBOURG <b>·</b></span>
+  </div></div>
 
-  <!-- CONCEPT / C'EST QUOI -->
-  <section id="concept" class="band-pad">
+  <!-- ================= LE PROJET ================= -->
+  <section id="projet" class="sec" data-tabs>
     <div class="wrap">
-      <span class="eyebrow reveal">C'est quoi&nbsp;?</span>
-      <h2 class="big reveal d1">Une fête à vélo, décarbonée</h2>
-      <p class="lead reveal d2">Un vélo-cargo qui transporte le son, l'énergie et l'ambiance jusqu'à vous. Pas de camion, pas de groupe électrogène — juste du soleil et de la musique.</p>
-      <div class="grid g3" style="margin-top:34px">
-        <div class="card reveal d1">
-          <div class="ic fill-g"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="34" r="7"/><circle cx="36" cy="34" r="7"/><path d="M12 34 20 16h7m-4 18L24 16M24 16l-3-4h-4"/><path d="M27 16l6 18"/></svg></div>
-          <h3>Un vélo-cargo costaud</h3><p>Capable de transporter jusqu'à <b>180&nbsp;kg</b> de matériel son et lumière, en déambulation ou en point fixe.</p>
-        </div>
-        <div class="card reveal d2">
-          <div class="ic fill-s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="6" width="22" height="36" rx="4"/><circle cx="24" cy="18" r="4"/><circle cx="24" cy="31" r="5"/></svg></div>
-          <h3>Un son autonome</h3><p>Sonorisation mobile et rechargeable au solaire — enceintes <b>LD Maui</b> &amp; <b>Bose S1 Pro</b>. Fiable, pratique, versatile.</p>
-        </div>
-        <div class="card reveal d3">
-          <div class="ic fill-g"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="30" r="6"/><circle cx="33" cy="30" r="6"/><path d="M21 30V14l18-3v19"/></svg></div>
-          <h3>Un DJ &amp; régisseur</h3><p><b>Lord Cumbia</b> aux platines&nbsp;: accueil technique et ambiance musicale, 10&nbsp;ans d'expérience culturelle et associative.</p>
-        </div>
+      <div class="sec-head reveal">
+        <div><span class="eyebrow">Le projet</span><h2>Une fête à vélo, décarbonée</h2></div>
+        <p class="lead">Un vélo-cargo qui transporte le son, l'énergie et l'ambiance jusqu'à vous. Pas de camion, pas de groupe électrogène.</p>
       </div>
-    </div>
-  </section>
+      <div class="tabs" role="tablist" aria-label="Le projet">
+        <button class="tab" role="tab" id="t-concept" aria-controls="concept" data-tab="concept" aria-selected="true">Le concept</button>
+        <button class="tab" role="tab" id="t-durable" aria-controls="durable" data-tab="durable" aria-selected="false" tabindex="-1">La fête durable</button>
+        <button class="tab" role="tab" id="t-materiel" aria-controls="materiel" data-tab="materiel" aria-selected="false" tabindex="-1">Le matériel</button>
+      </div>
 
-  <!-- PHOTO BAND -->
-  <section class="photoband reveal" aria-label="La SonoCyclette en déambulation à Strasbourg">
-    <img src="assets/img-band.jpg" alt="Grande déambulation à vélo derrière la SonoCyclette dans une rue à arcades de Strasbourg">
-    <div class="scrim"></div>
-    <div class="wrap pcontent">
-      <span class="eyebrow">Vivez la fête où vous voulez</span>
-      <h2>La piste de danse arrive à vélo</h2>
-      <p>Prestation technique et musicale en éco-mobilité, 100&nbsp;% autonome. Déambulation dans la ville ou installation en point fixe&nbsp;: la SonoCyclette s'adapte à votre moment.</p>
-    </div>
-  </section>
-
-  <!-- TEASER -->
-  <section id="teaser" class="video-sec band-pad">
-    <div class="wrap">
-      <div class="video-grid">
-        <div class="phone reveal">
-          <video controls playsinline muted loop preload="metadata" poster="assets/poster.jpg">
-            <source src="assets/teaser.mp4" type="video/mp4">
-            Votre navigateur ne lit pas la vidéo. <a href="assets/teaser.mp4">Ouvrir le teaser</a>.
-          </video>
-        </div>
-        <div class="reveal d1">
-          <span class="eyebrow">Le teaser</span>
-          <h2 class="big" style="display:flex;align-items:center;flex-wrap:wrap">Saison 2025&nbsp;/&nbsp;2026
-            <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></h2>
-          <p class="lead">Une minute d'ambiance&nbsp;: déambulations, DJ sets, foules qui dansent et guinguettes aux quatre coins de Strasbourg. Le meilleur moyen de comprendre la SonoCyclette, c'est de la voir rouler.</p>
-          <div class="chips">
-            <span class="chip">🎧 DJ sets</span><span class="chip">🚲 Déambulation</span><span class="chip">☀️ Solaire</span><span class="chip">🎤 Karaoké</span>
+      <div role="tabpanel" id="concept" data-panel="concept" aria-labelledby="t-concept">
+        <div class="grid g3">
+          <div class="card">
+            <div class="ic fill-g"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="34" r="7"/><circle cx="36" cy="34" r="7"/><path d="M12 34 20 16h7m-4 18L24 16M24 16l-3-4h-4"/><path d="M27 16l6 18"/></svg></div>
+            <h3>Un vélo-cargo costaud</h3><p>Il transporte jusqu'à <b>180&nbsp;kg</b> de matériel son et lumière, en déambulation ou en point fixe.</p>
           </div>
-          <div class="hero-cta" style="margin-top:22px">
-            <a class="btn btn-primary" href="#contact">Réserver une date</a>
-            <a class="btn btn-ghost" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Suivre sur Instagram</a>
+          <div class="card">
+            <div class="ic fill-s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="6" width="22" height="36" rx="4"/><circle cx="24" cy="18" r="4"/><circle cx="24" cy="31" r="5"/></svg></div>
+            <h3>Un son autonome</h3><p>Une sonorisation mobile rechargeable au solaire, avec des enceintes <b>LD Maui</b> et <b>Bose S1 Pro</b>.</p>
+          </div>
+          <div class="card">
+            <div class="ic fill-g"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="30" r="6"/><circle cx="33" cy="30" r="6"/><path d="M21 30V14l18-3v19"/></svg></div>
+            <h3>Un DJ &amp; régisseur</h3><p><b>Lord Cumbia</b> assure l'accueil technique et l'ambiance musicale, fort de plus de 10&nbsp;ans dans le culturel et l'associatif.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- STATS -->
-  <section class="band-pad" style="padding-block:clamp(40px,6vw,70px)">
-    <div class="wrap">
-      <div class="stats reveal">
-        <div class="grid g4">
-          <div class="stat"><div class="num">2021</div><div class="lab">En roue libre depuis</div></div>
-          <div class="stat"><div class="num" data-count="100" data-suffix="&nbsp;%">0</div><div class="lab">Énergie solaire</div></div>
-          <div class="stat"><div class="num">6–12<span style="font-size:.5em">h</span></div><div class="lab">D'autonomie</div></div>
-          <div class="stat"><div class="num">30–100</div><div class="lab">Convives par événement</div></div>
+      <div role="tabpanel" id="durable" data-panel="durable" aria-labelledby="t-durable" hidden>
+        <div class="eco">
+          <h3>Décarbonée, locale, indépendante</h3>
+          <p>Un circuit court pour une plus grande liberté&nbsp;: la SonoCyclette se déplace à la force du mollet et se recharge au soleil.</p>
+          <ul class="ticks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Livraison dans un rayon de 5 à 10&nbsp;km autour de Strasbourg</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>6 à 12&nbsp;h d'autonomie selon l'utilisation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Aucun groupe électrogène, aucun camion</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Local et indépendant, au plus près des habitant·es</li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- PRESTATIONS -->
-  <section id="prestations" class="band-pad" style="padding-top:0">
-    <div class="wrap">
-      <span class="eyebrow reveal">Prestations</span>
-      <h2 class="big reveal d1">Là où ça bouge, elle vient</h2>
-      <p class="lead reveal d2">Pour tout événement de 30 à 100 personnes. DJ, groupe jusqu'à 4 musiciens, soirée karaoké ou discours — on s'adapte.</p>
-      <div class="grid g2" style="margin-top:32px">
-        <div class="card reveal d1"><div class="ic fill-g"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6v20"/><circle cx="18" cy="32" r="6"/><path d="M24 6c6 2 10 4 10 10"/></svg></div>
-          <h3>Open air &amp; guinguettes</h3><p>DJ sets en extérieur sur les places, les parcs, les cours et les berges. Fresh drinks, soleil et platines.</p></div>
-        <div class="card reveal d2"><div class="ic fill-s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 42V10a4 4 0 0 1 4-4h14l-2 8h10l-4 12H14"/></svg></div>
-          <h3>Événements &amp; festivals</h3><p>Marchés, inaugurations, fêtes de quartier, Fête de la Musique, spectacle vivant, théâtre, concerts.</p></div>
-        <div class="card reveal d3"><div class="ic fill-g"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22 42 12v24"/><path d="M23 33a6 6 0 1 1-11-3"/></svg></div>
-          <h3>Causes &amp; collectifs</h3><p>Manifestations, marches, courses solidaires&nbsp;: du son au service des mobilisations locales.</p></div>
-        <div class="card reveal d4"><div class="ic fill-s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="19" y="6" width="10" height="22" rx="5"/><path d="M14 22a10 10 0 0 0 20 0M24 32v8M18 40h12"/></svg></div>
-          <h3>Sur-mesure &amp; karaoké</h3><p>Mariages, anniversaires, fêtes de fin d'année, karaoké ou discours. On construit l'ambiance avec vous.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ECO -->
-  <section class="band-pad" style="padding-top:0">
-    <div class="wrap">
-      <div class="eco reveal">
-        <span class="eyebrow" style="background:var(--sun)">La fête durable</span>
-        <h2 class="big" style="margin-top:14px">Décarbonée, locale, indépendante</h2>
-        <p style="max-width:60ch;font-weight:700">Un circuit court pour une plus grande liberté&nbsp;: la SonoCyclette se déplace à la force du mollet et se recharge au soleil.</p>
-        <div class="list">
-          <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span>Livraison dans un rayon de 5 à 10&nbsp;km autour de Strasbourg</span></div>
-          <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span>Autonomie de 6 à 12&nbsp;h selon l'utilisation</span></div>
-          <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span>Prestations décarbonées, sans groupe électrogène</span></div>
-          <div class="li"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span>Local et indépendant, au plus près des habitant·es</span></div>
+      <div role="tabpanel" id="materiel" data-panel="materiel" aria-labelledby="t-materiel" hidden>
+        <div class="specs">
+          <div class="spec"><small>Enceintes</small><b><em>2×</em> LD Systems Maui 5 GO (100&nbsp;W) + <em>2×</em> Bose S1 Pro sur batterie</b></div>
+          <div class="spec"><small>Mixage</small><b>Behringer Xenyx 1002 — <em>5 pistes</em>, EQ 3 bandes</b></div>
+          <div class="spec"><small>Micros</small><b><em>2×</em> Shure SM58 + <em>3×</em> t.bone MB 60, pieds de micro</b></div>
+          <div class="spec"><small>Lumière</small><b>Éclairage <em>LED</em></b></div>
+          <div class="spec"><small>Capacité</small><b>Jusqu'à <em>180&nbsp;kg</em> de matériel</b></div>
+          <div class="spec"><small>Autonomie</small><b><em>6 à 12&nbsp;h</em>, recharge solaire</b></div>
+          <div class="spec"><small>Formats</small><b>DJ, groupe jusqu'à <em>4 musiciens</em>, karaoké, discours</b></div>
+          <div class="spec"><small>Zone</small><b><em>5 à 10&nbsp;km</em> autour de Strasbourg</b></div>
         </div>
-        <div class="spec">
-          <span class="s"><b>2×</b> LD Maui 5 GO</span>
-          <span class="s"><b>2×</b> Bose S1 Pro + batteries</span>
-          <span class="s">Mixage <b>5 pistes</b> Behringer</span>
-          <span class="s"><b>4</b> micros + pieds</span>
-          <span class="s">Éclairage <b>LED</b></span>
-        </div>
+        <p class="note">Fiche technique complète sur demande.</p>
       </div>
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section id="images" class="band-pad" style="padding-top:0">
+  <!-- ================= PRESTATIONS ================= -->
+  <section id="prestations" class="sec" style="padding-top:0" data-tabs>
     <div class="wrap">
-      <span class="eyebrow reveal">En images</span>
-      <h2 class="big reveal d1">La SonoCyclette en vrai</h2>
-      <p class="lead reveal d2">Déambulations, platines, guinguettes et nuits d'été&nbsp;: la saison en photos, dans les rues de Strasbourg.</p>
-      <div class="gal reveal d1" style="margin-top:28px">
-        <figure class="shot s-wide"><img src="assets/g-ride.jpg" alt="La SonoCyclette en tête d'une grande déambulation à vélo dans une rue à arcades" loading="lazy"><figcaption>La déambulation Bike N Sound</figcaption></figure>
-        <figure class="shot s-tall"><img src="assets/g-controls.jpg" alt="Lord Cumbia aux commandes de la SonoCyclette, serre-tête et collier de fleurs" loading="lazy"><figcaption>Aux commandes</figcaption></figure>
-        <figure class="shot s-sm"><img src="assets/g-decks.jpg" alt="Lord Cumbia aux platines devant une fresque colorée" loading="lazy"><figcaption>Lord Cumbia aux platines</figcaption></figure>
-        <figure class="shot s-sm"><img src="assets/g-medard.jpg" alt="La SonoCyclette décorée façon tropicale, place Saint-Médard" loading="lazy"><figcaption>Set tropical à Saint-Médard</figcaption></figure>
-        <figure class="shot s-sm"><img src="assets/g-cathedrale.jpg" alt="La SonoCyclette installée de nuit devant la cathédrale de Strasbourg" loading="lazy"><figcaption>Nuit à la cathédrale</figcaption></figure>
-        <figure class="shot s-sm"><img src="assets/g-oldtown.jpg" alt="La SonoCyclette roule dans la vieille ville de Strasbourg" loading="lazy"><figcaption>Dans la vieille ville</figcaption></figure>
+      <div class="sec-head reveal">
+        <div><span class="eyebrow">Prestations</span><h2>Là où ça bouge, elle vient</h2></div>
+        <p class="lead">Pour tout événement de 30 à 100 personnes. Choisissez votre format, on s'adapte.</p>
       </div>
-    </div>
-  </section>
+      <div class="tabs" role="tablist" aria-label="Prestations">
+        <button class="tab" role="tab" id="t-openair" aria-controls="openair" data-tab="openair" aria-selected="true">Open air</button>
+        <button class="tab" role="tab" id="t-evenements" aria-controls="evenements" data-tab="evenements" aria-selected="false" tabindex="-1">Événements</button>
+        <button class="tab" role="tab" id="t-causes" aria-controls="causes" data-tab="causes" aria-selected="false" tabindex="-1">Causes &amp; collectifs</button>
+        <button class="tab" role="tab" id="t-surmesure" aria-controls="surmesure" data-tab="surmesure" aria-selected="false" tabindex="-1">Sur-mesure</button>
+      </div>
 
-  <!-- GREEN GUINGUETTE -->
-  <section id="guinguette" class="band-pad" style="padding-top:0">
-    <div class="wrap">
-      <div class="gg reveal">
-        <div>
-          <span class="eyebrow">Événement signature</span>
-          <h2 style="margin-top:12px">La Green Guinguette</h2>
-          <p class="lead" style="color:var(--muted)">La SonoCyclette fait battre le cœur de la Green Guinguette&nbsp;: un open air écolo et itinérant à Strasbourg, alimenté au solaire. <b>Free open air · fresh drinks · DJ sets</b>, et une façon joyeuse d'apprendre à faire la fête autrement.</p>
-          <div class="tags">
-            <a href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">@lasonocyclette</a>
-            <a href="https://www.instagram.com/kaleidoscoop_/" target="_blank" rel="noopener">@kaleidoscoop_</a>
-            <a href="https://www.instagram.com/we.r.solar/" target="_blank" rel="noopener">@we.r.solar</a>
+      <div role="tabpanel" id="openair" data-panel="openair" aria-labelledby="t-openair">
+        <div class="split">
+          <div class="ph" data-zoom="presta"><img src="assets/g-medard.jpg" data-full="assets/g-medard-full.jpg" alt="La SonoCyclette en set tropical place Saint-Médard" data-caption="Set tropical à Saint-Médard"></div>
+          <div>
+            <h3>Open air &amp; guinguettes</h3>
+            <p>Des DJ sets en extérieur, là où on ne les attend pas. Places, parcs, cours et berges deviennent une piste de danse le temps d'un après-midi.</p>
+            <ul class="ticks">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Free open air et guinguettes itinérantes</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Installation rapide, sans branchement</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Demander un devis</a>
           </div>
         </div>
-        <figure class="gg-art">
-          <img src="assets/gg-poster.jpg" alt="Affiche de la Green Guinguette : free open air, fresh drinks, DJ sets — événement à vélo alimenté en solaire, quasi zéro carbone" loading="lazy">
-          <figcaption>Affiche de la saison 2026</figcaption>
-        </figure>
+      </div>
+
+      <div role="tabpanel" id="evenements" data-panel="evenements" aria-labelledby="t-evenements" hidden>
+        <div class="split">
+          <div class="ph" data-zoom="presta"><img src="assets/g-cathedrale.jpg" data-full="assets/g-cathedrale-full.jpg" alt="La SonoCyclette installée de nuit devant la cathédrale de Strasbourg" data-caption="Nuit à la cathédrale" loading="lazy"></div>
+          <div>
+            <h3>Événements &amp; festivals</h3>
+            <p>Un système son autonome pour les petites formes artistiques dans des lieux atypiques&nbsp;: la scène vient à vous.</p>
+            <ul class="ticks">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Marchés, inaugurations, fêtes de quartier</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Fête de la Musique, concerts, théâtre, spectacle vivant</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Demander un devis</a>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="causes" data-panel="causes" aria-labelledby="t-causes" hidden>
+        <div class="split">
+          <div class="ph" data-zoom="presta"><img src="assets/g-ride.jpg" data-full="assets/g-ride-full.jpg" alt="Grande déambulation à vélo derrière la SonoCyclette" data-caption="La déambulation Bike N Sound" loading="lazy"></div>
+          <div>
+            <h3>Causes &amp; collectifs</h3>
+            <p>La SonoCyclette suit le cortège&nbsp;: du son au service des mobilisations et des initiatives locales.</p>
+            <ul class="ticks">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Manifestations, marches, vélorutions</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Courses solidaires et événements associatifs</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Demander un devis</a>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="surmesure" data-panel="surmesure" aria-labelledby="t-surmesure" hidden>
+        <div class="split">
+          <div class="ph" data-zoom="presta"><img src="assets/g-decks.jpg" data-full="assets/g-decks-full.jpg" alt="Lord Cumbia aux platines devant une fresque colorée" data-caption="Lord Cumbia aux platines" loading="lazy"></div>
+          <div>
+            <h3>Sur-mesure &amp; karaoké</h3>
+            <p>Anniversaire, mariage, fête de fin d'année&nbsp;: on construit l'ambiance avec vous, de la playlist au micro.</p>
+            <ul class="ticks">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>DJ ou groupe jusqu'à 4 musiciens</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Soirée karaoké ou discours, 4 micros fournis</li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Demander un devis</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="band-pad" style="padding-top:0">
+  <!-- ================= MÉDIAS ================= -->
+  <section id="medias" class="sec" style="padding-top:0" data-tabs>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="eyebrow">Médias</span><h2>La SonoCyclette en vrai</h2></div>
+        <p class="lead">Photos de la saison, teaser vidéo et l'événement signature, la Green Guinguette.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Médias">
+        <button class="tab" role="tab" id="t-photos" aria-controls="photos" data-tab="photos" aria-selected="true">Photos</button>
+        <button class="tab" role="tab" id="t-teaser" aria-controls="teaser" data-tab="teaser" aria-selected="false" tabindex="-1">Le teaser</button>
+        <button class="tab" role="tab" id="t-guinguette" aria-controls="guinguette" data-tab="guinguette" aria-selected="false" tabindex="-1">Green Guinguette</button>
+      </div>
+
+      <div role="tabpanel" id="photos" data-panel="photos" aria-labelledby="t-photos">
+        <div class="gal">
+          <figure class="shot s-wide" data-zoom="galerie"><img src="assets/g-ride.jpg" data-full="assets/g-ride-full.jpg" alt="La SonoCyclette en tête d'une grande déambulation à vélo dans une rue à arcades" loading="lazy"><figcaption>La déambulation Bike N Sound</figcaption></figure>
+          <figure class="shot s-tall" data-zoom="galerie"><img src="assets/g-controls.jpg" data-full="assets/g-controls-full.jpg" alt="Lord Cumbia aux commandes de la SonoCyclette, serre-tête et collier de fleurs" loading="lazy"><figcaption>Aux commandes</figcaption></figure>
+          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-decks.jpg" data-full="assets/g-decks-full.jpg" alt="Lord Cumbia aux platines devant une fresque colorée" loading="lazy"><figcaption>Lord Cumbia aux platines</figcaption></figure>
+          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-medard.jpg" data-full="assets/g-medard-full.jpg" alt="La SonoCyclette décorée façon tropicale, place Saint-Médard" loading="lazy"><figcaption>Set tropical à Saint-Médard</figcaption></figure>
+          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-cathedrale.jpg" data-full="assets/g-cathedrale-full.jpg" alt="La SonoCyclette installée de nuit devant la cathédrale de Strasbourg" loading="lazy"><figcaption>Nuit à la cathédrale</figcaption></figure>
+          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-oldtown.jpg" data-full="assets/g-oldtown-full.jpg" alt="La SonoCyclette roule dans la vieille ville de Strasbourg" loading="lazy"><figcaption>Dans la vieille ville</figcaption></figure>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="teaser" data-panel="teaser" aria-labelledby="t-teaser" hidden>
+        <div class="video-grid">
+          <div class="phone">
+            <video controls playsinline muted loop preload="none" poster="assets/poster.jpg">
+              <source src="assets/teaser.mp4" type="video/mp4">
+              Votre navigateur ne lit pas la vidéo.
+            </video>
+          </div>
+          <div>
+            <h3>Saison 2025&nbsp;/&nbsp;2026</h3>
+            <p>Une minute d'ambiance&nbsp;: déambulations, DJ sets, foules qui dansent et guinguettes aux quatre coins de Strasbourg. Le meilleur moyen de comprendre la SonoCyclette, c'est de la voir rouler.</p>
+            <div class="chips"><span class="chip">🎧 DJ sets</span><span class="chip">🚲 Déambulation</span><span class="chip">☀️ Solaire</span><span class="chip">🎤 Karaoké</span></div>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#contact">Réserver une date</a>
+              <a class="btn btn-ghost" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Suivre sur Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="guinguette" data-panel="guinguette" aria-labelledby="t-guinguette" hidden>
+        <div class="gg">
+          <div>
+            <h3>La Green Guinguette</h3>
+            <p>La SonoCyclette fait battre le cœur de la Green Guinguette&nbsp;: un open air écolo et itinérant à Strasbourg, alimenté au solaire. <b>Free open air · fresh drinks · DJ sets</b>, et une façon joyeuse d'apprendre à faire la fête autrement.</p>
+            <div class="tags">
+              <a href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">@lasonocyclette</a>
+              <a href="https://www.instagram.com/kaleidoscoop_/" target="_blank" rel="noopener">@kaleidoscoop_</a>
+              <a href="https://www.instagram.com/we.r.solar/" target="_blank" rel="noopener">@we.r.solar</a>
+            </div>
+          </div>
+          <figure class="gg-art" data-zoom="gg"><img src="assets/gg-poster.jpg" alt="Affiche de la Green Guinguette : free open air, fresh drinks, DJ sets — événement à vélo alimenté en solaire, quasi zéro carbone" data-caption="Affiche de la Green Guinguette, saison 2026" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="sec" style="padding-top:0">
     <div class="wrap">
       <div class="contact reveal">
         <span class="eyebrow">Contact</span>
-        <h2 class="big">Réservez la SonoCyclette</h2>
-        <p class="lead" style="color:var(--muted)">Une date, un lieu, une envie&nbsp;? Écrivez-moi pour un devis. Basée à Strasbourg, disponible dans l'agglo et au-delà.</p>
+        <h2>Réservez la SonoCyclette</h2>
+        <p class="lead">Une date, un lieu, une envie&nbsp;? Écrivez-moi pour un devis. Basée à Strasbourg, disponible dans l'agglo et au-delà.</p>
         <div class="rows">
           <div class="crow">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
@@ -495,11 +589,11 @@
           </div>
           <div class="crow">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
-            <div class="meta"><small>Le projet</small><div class="val"><a href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">La SonoCyclette sur Artenréel</a></div></div>
+            <div class="meta"><small>Le projet</small><div class="val"><a href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Sur Artenréel</a></div></div>
             <a class="copy" href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Ouvrir</a>
           </div>
         </div>
-        <p style="margin-top:18px;color:var(--muted);font-size:.92rem">Ce projet est soutenu par la DRAC Grand Est et Artenréel&nbsp;#1.</p>
+        <p class="support">Ce projet est soutenu par la DRAC Grand Est et Artenréel&nbsp;#1.</p>
       </div>
     </div>
   </section>
@@ -513,37 +607,138 @@
   </div>
 </footer>
 
+<!-- ================= LIGHTBOX ================= -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo agrandie" hidden>
+  <span class="lb-count" id="lbCount"></span>
+  <div class="lb-stage" id="lbStage"><img class="lb-img" id="lbImg" alt=""></div>
+  <div class="lb-cap"><b id="lbCap"></b><span id="lbHint">Cliquez sur la photo pour zoomer · Échap pour fermer</span></div>
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+</div>
+
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var prog=document.getElementById('prog');
+  var $ = function(s,r){return (r||document).querySelector(s);}, $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+
+  /* progress bar */
+  var prog=$('#prog');
   function onScroll(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;prog.style.width=(max>0?(h.scrollTop||document.body.scrollTop)/max*100:0)+'%';}
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  var burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
-  if(burger){burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
-    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');});});}
-
-  document.querySelectorAll('.copy[data-copy]').forEach(function(btn){
-    btn.addEventListener('click',function(){var txt=btn.getAttribute('data-copy');
-      var done=function(){var o=btn.textContent;btn.textContent='Copié ✓';setTimeout(function(){btn.textContent=o;},1600);};
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(function(){sel(btn);});}else{sel(btn);}});
+  /* dropdowns */
+  var dds=$$('.dd');
+  function closeDDs(except){dds.forEach(function(d){if(d!==except){d.classList.remove('open');$('.dd-btn',d).setAttribute('aria-expanded','false');}});}
+  dds.forEach(function(d){
+    var b=$('.dd-btn',d);
+    b.addEventListener('click',function(e){e.stopPropagation();var o=!d.classList.contains('open');closeDDs(d);d.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');});
   });
-  function sel(btn){var row=btn.closest('.crow'),v=row&&row.querySelector('.val');if(v){var r=document.createRange();r.selectNodeContents(v);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}}
+  document.addEventListener('click',function(e){if(!e.target.closest('.dd'))closeDDs();});
 
-  function count(el){var target=parseFloat(el.getAttribute('data-count')),suffix=el.getAttribute('data-suffix')||'';
-    if(reduce){el.innerHTML=target+suffix;return;}var start=null,dur=1200;
-    function step(ts){if(!start)start=ts;var t=Math.min((ts-start)/dur,1),e=1-Math.pow(1-t,3);el.innerHTML=Math.round(target*e)+suffix;if(t<1)requestAnimationFrame(step);}
-    requestAnimationFrame(step);}
+  /* mobile menu */
+  var burger=$('#burger'),mm=$('#mobileMenu');
+  function closeMM(){mm.classList.remove('open');burger.setAttribute('aria-expanded','false');}
+  burger.addEventListener('click',function(){var o=mm.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false');});
+  $$('a',mm).forEach(function(a){a.addEventListener('click',closeMM);});
 
+  /* tabs */
+  function activate(token,focus){
+    var panel=$('[data-panel="'+token+'"]'); if(!panel) return null;
+    var set=panel.closest('[data-tabs]');
+    $$('[role="tab"]',set).forEach(function(t){var on=t.getAttribute('data-tab')===token;t.setAttribute('aria-selected',on?'true':'false');t.tabIndex=on?0:-1;if(on&&focus)t.focus();if(on&&t.scrollIntoView&&t.parentNode.scrollWidth>t.parentNode.clientWidth){t.parentNode.scrollLeft=t.offsetLeft-20;}});
+    $$('[role="tabpanel"]',set).forEach(function(p){p.hidden=p.getAttribute('data-panel')!==token;});
+    $$('video',set).forEach(function(v){if(v.closest('[role="tabpanel"]').hidden)v.pause();});
+    return set;
+  }
+  $$('[data-tabs]').forEach(function(set){
+    var tabs=$$('[role="tab"]',set);
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){activate(t.getAttribute('data-tab'));});
+      t.addEventListener('keydown',function(e){
+        var k=e.key,n=null;
+        if(k==='ArrowRight')n=tabs[(i+1)%tabs.length];else if(k==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];else if(k==='Home')n=tabs[0];else if(k==='End')n=tabs[tabs.length-1];
+        if(n){e.preventDefault();activate(n.getAttribute('data-tab'),true);}
+      });
+    });
+  });
+  function go(token){
+    var set=activate(token);
+    var target=set||document.getElementById(token);
+    if(target)target.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  }
+  $$('[data-go]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();closeDDs();closeMM();go(a.getAttribute('data-go'));});});
+  var h0=(location.hash||'').slice(1);
+  if(h0&&$('[data-panel="'+h0+'"]')){activate(h0);setTimeout(function(){go(h0);},80);}
+
+  /* copy buttons */
+  $$('.copy[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var txt=btn.getAttribute('data-copy');
+      var done=function(){var o=btn.textContent;btn.textContent='Copié ✓';setTimeout(function(){btn.textContent=o;},1600);};
+      var sel=function(){var v=$('.val',btn.closest('.crow'));if(v){var r=document.createRange();r.selectNodeContents(v);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(sel);}else{sel();}
+    });
+  });
+
+  /* lightbox */
+  var lb=$('#lb'),stage=$('#lbStage'),lbImg=$('#lbImg'),cap=$('#lbCap'),count=$('#lbCount'),bPrev=$('#lbPrev'),bNext=$('#lbNext'),bClose=$('#lbClose');
+  var group=[],idx=0,lastFocus=null;
+  function capOf(el){var img=$('img',el);var fc=$('figcaption',el);return (img&&img.getAttribute('data-caption'))||(fc&&fc.textContent)||(img&&img.alt)||'';}
+  function srcOf(el){var img=$('img',el);return img.getAttribute('data-full')||img.currentSrc||img.src;}
+  function unzoom(){stage.classList.remove('zoomed');lbImg.style.width='';stage.scrollLeft=0;stage.scrollTop=0;}
+  function show(i){
+    idx=(i+group.length)%group.length;var el=group[idx];
+    unzoom();lbImg.src=srcOf(el);lbImg.alt=$('img',el).alt;cap.textContent=capOf(el);
+    count.textContent=group.length>1?(idx+1)+' / '+group.length:'';
+    bPrev.hidden=bNext.hidden=group.length<2;
+    [idx+1,idx-1].forEach(function(j){if(group.length>1){var p=new Image();p.src=srcOf(group[(j+group.length)%group.length]);}});
+  }
+  function open(el){
+    group=$$('[data-zoom="'+el.getAttribute('data-zoom')+'"]');lastFocus=document.activeElement;
+    $('#lbHint').textContent=(window.matchMedia&&window.matchMedia('(hover: none)').matches)?'Touchez la photo pour zoomer · glissez pour changer':'Cliquez sur la photo pour zoomer · Échap pour fermer';
+    lb.hidden=false;document.documentElement.style.overflow='hidden';show(group.indexOf(el));bClose.focus();
+  }
+  function close(){lb.hidden=true;unzoom();lbImg.removeAttribute('src');document.documentElement.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+  $$('[data-zoom]').forEach(function(el){
+    el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Agrandir la photo : '+capOf(el));
+    el.addEventListener('click',function(){open(el);});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(el);}});
+  });
+  lbImg.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(stage.classList.contains('zoomed')){unzoom();return;}
+    var r=lbImg.getBoundingClientRect(),rx=(e.clientX-r.left)/r.width,ry=(e.clientY-r.top)/r.height;
+    var w=Math.max(lbImg.naturalWidth||0,stage.clientWidth*2);
+    stage.classList.add('zoomed');lbImg.style.width=w+'px';
+    requestAnimationFrame(function(){stage.scrollLeft=rx*lbImg.offsetWidth-stage.clientWidth/2;stage.scrollTop=ry*lbImg.offsetHeight-stage.clientHeight/2;});
+  });
+  stage.addEventListener('click',function(e){if(e.target===stage&&!stage.classList.contains('zoomed'))close();});
+  bClose.addEventListener('click',close);
+  bPrev.addEventListener('click',function(){show(idx-1);});
+  bNext.addEventListener('click',function(){show(idx+1);});
+  document.addEventListener('keydown',function(e){
+    if(lb.hidden){if(e.key==='Escape'){closeDDs();closeMM();}return;}
+    if(e.key==='Escape'){e.preventDefault();if(stage.classList.contains('zoomed'))unzoom();else close();}
+    else if(e.key==='ArrowRight'&&group.length>1)show(idx+1);
+    else if(e.key==='ArrowLeft'&&group.length>1)show(idx-1);
+    else if(e.key==='Tab'){var f=$$('.lb-btn',lb).filter(function(b){return !b.hidden;});var i=f.indexOf(document.activeElement);e.preventDefault();var n=e.shiftKey?(i<=0?f.length-1:i-1):(i>=f.length-1?0:i+1);f[n].focus();}
+  });
+  var tx=null,ty=null;
+  stage.addEventListener('touchstart',function(e){if(e.touches.length===1){tx=e.touches[0].clientX;ty=e.touches[0].clientY;}},{passive:true});
+  stage.addEventListener('touchend',function(e){
+    if(tx===null||stage.classList.contains('zoomed')||group.length<2){tx=null;return;}
+    var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;tx=null;
+    if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){show(idx+(dx<0?1:-1));}
+  });
+
+  /* reveal */
   if(!reduce&&'IntersectionObserver'in window){
     document.documentElement.classList.add('anim');
-    var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');
-      en.target.querySelectorAll&&en.target.querySelectorAll('[data-count]').forEach(count);if(en.target.hasAttribute('data-count'))count(en.target);io.unobserve(en.target);}});},
-      {threshold:0.16,rootMargin:'0px 0px -8% 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-    requestAnimationFrame(function(){document.querySelectorAll('.hero .reveal').forEach(function(el){el.classList.add('in');});});
-  } else {document.querySelectorAll('[data-count]').forEach(count);}
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.15,rootMargin:'0px 0px -6% 0px'});
+    $$('.reveal').forEach(function(el){io.observe(el);});
+    requestAnimationFrame(function(){$$('.hero .reveal').forEach(function(el){el.classList.add('in');});});
+  }
 })();
 </script>
 </body>
