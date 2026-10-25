@@ -207,6 +207,22 @@
   .gg-art{position:relative;margin:0;justify-self:center;width:100%;max-width:300px;border:3px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-hard);transform:rotate(2deg);background:#fff}
   .gg-art img{width:100%;height:auto;transition:transform .4s ease}
 
+  /* instagram */
+  .ig{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(20px,4vw,40px);align-items:start}
+  .ig-profile{background:var(--paper);border:2px solid var(--ink);border-radius:22px;padding:22px;box-shadow:5px 5px 0 var(--ink);display:grid;gap:12px;justify-items:start;min-width:0}
+  .ig-head{display:flex;align-items:center;gap:14px;min-width:0}
+  .ig-avatar{width:80px;height:80px;border-radius:50%;padding:3px;background:linear-gradient(45deg,var(--sun),var(--green));border:2px solid var(--ink);flex:0 0 auto}
+  .ig-head b{display:block;font-family:var(--font-display);font-weight:600;font-size:1.25rem}
+  .ig-head span{color:var(--muted);font-size:.86rem;font-weight:800}
+  .ig-profile p{color:var(--muted)}
+  .ig-profile .ig-small{font-size:.92rem}
+  .ig-feed{min-width:0;min-height:300px;border:2px dashed var(--ink);border-radius:22px;background:var(--paper2);display:grid}
+  .ig-feed.live{border:0;background:none;min-height:0;display:block}
+  .ig-empty{display:grid;place-items:center;align-content:center;text-align:center;gap:10px;padding:clamp(24px,5vw,44px)}
+  .ig-empty svg{width:52px;height:52px;color:var(--green)}
+  .ig-empty b{font-family:var(--font-display);font-weight:600;font-size:1.3rem}
+  .ig-empty p{color:var(--muted);max-width:40ch}
+
   /* contact */
   .contact{background:var(--paper);border:2px solid var(--ink);border-radius:28px;padding:clamp(24px,4vw,44px);box-shadow:var(--shadow-hard)}
   .contact h2{font-size:clamp(1.9rem,4.6vw,2.8rem);margin:12px 0 8px}
@@ -258,7 +274,7 @@
     .hero .wrap{grid-template-columns:1fr;text-align:center}
     .slogan,.hero .sub-txt{max-width:100%;margin-inline:auto}
     .cta-row,.facts{justify-content:center}.hero-photo{order:-1}.hero-logo img{margin-inline:auto}
-    .split,.video-grid,.gg{grid-template-columns:1fr}
+    .split,.video-grid,.gg,.ig{grid-template-columns:1fr}
     .gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:150px}
     .shot.s-wide{grid-column:span 4}.shot.s-tall,.shot.s-sm{grid-column:span 2}
     .rows{grid-template-columns:1fr}
@@ -310,9 +326,10 @@
         </div>
       </div>
       <div class="dd">
-        <button class="dd-btn" aria-expanded="false" aria-haspopup="true">Médias <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></button>
+        <button class="dd-btn" aria-expanded="false" aria-haspopup="true">Découvrir <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></button>
         <div class="sub">
           <a href="#photos" data-go="photos">Photos<small>La saison en images</small></a>
+          <a href="#instagram" data-go="instagram">Actus Instagram<small>Les dernières publications</small></a>
           <a href="#teaser" data-go="teaser">Le teaser<small>Saison 2025 / 2026</small></a>
           <a href="#guinguette" data-go="guinguette">Green Guinguette<small>Événement signature</small></a>
         </div>
@@ -328,8 +345,8 @@
       <a href="#concept" data-go="concept">Le concept</a><a href="#durable" data-go="durable">Fête durable</a><a href="#materiel" data-go="materiel">Matériel</a></div></div>
     <div class="mm-group"><div class="mm-title">Prestations</div><div class="mm-links">
       <a href="#openair" data-go="openair">Open air</a><a href="#evenements" data-go="evenements">Événements</a><a href="#causes" data-go="causes">Causes</a><a href="#surmesure" data-go="surmesure">Sur-mesure</a></div></div>
-    <div class="mm-group"><div class="mm-title">Médias</div><div class="mm-links">
-      <a href="#photos" data-go="photos">Photos</a><a href="#teaser" data-go="teaser">Teaser</a><a href="#guinguette" data-go="guinguette">Green Guinguette</a></div></div>
+    <div class="mm-group"><div class="mm-title">Découvrir</div><div class="mm-links">
+      <a href="#photos" data-go="photos">Photos</a><a href="#instagram" data-go="instagram">Actus Instagram</a><a href="#teaser" data-go="teaser">Teaser</a><a href="#guinguette" data-go="guinguette">Green Guinguette</a></div></div>
     <a class="btn btn-primary" href="#contact">Réserver une date</a>
   </div>
 </header>
@@ -503,15 +520,16 @@
     </div>
   </section>
 
-  <!-- ================= MÉDIAS ================= -->
-  <section id="medias" class="sec" style="padding-top:0" data-tabs>
+  <!-- ================= DÉCOUVRIR ================= -->
+  <section id="decouvrir" class="sec" style="padding-top:0" data-tabs>
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">Médias</span><h2>La SonoCyclette en vrai</h2></div>
-        <p class="lead">Photos de la saison, teaser vidéo et l'événement signature, la Green Guinguette.</p>
+        <div><span class="eyebrow">Découvrir</span><h2>La SonoCyclette en vrai</h2></div>
+        <p class="lead">Photos de la saison, actus Instagram, teaser vidéo et l'événement signature, la Green Guinguette.</p>
       </div>
-      <div class="tabs" role="tablist" aria-label="Médias">
+      <div class="tabs" role="tablist" aria-label="Découvrir">
         <button class="tab" role="tab" id="t-photos" aria-controls="photos" data-tab="photos" aria-selected="true">Photos</button>
+        <button class="tab" role="tab" id="t-instagram" aria-controls="instagram" data-tab="instagram" aria-selected="false" tabindex="-1">Actus Instagram</button>
         <button class="tab" role="tab" id="t-teaser" aria-controls="teaser" data-tab="teaser" aria-selected="false" tabindex="-1">Le teaser</button>
         <button class="tab" role="tab" id="t-guinguette" aria-controls="guinguette" data-tab="guinguette" aria-selected="false" tabindex="-1">Green Guinguette</button>
       </div>
@@ -524,6 +542,30 @@
           <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-medard.jpg" data-full="assets/g-medard-full.jpg" alt="La SonoCyclette décorée façon tropicale, place Saint-Médard" loading="lazy"><figcaption>Set tropical à Saint-Médard</figcaption></figure>
           <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-cathedrale.jpg" data-full="assets/g-cathedrale-full.jpg" alt="La SonoCyclette installée de nuit devant la cathédrale de Strasbourg" loading="lazy"><figcaption>Nuit à la cathédrale</figcaption></figure>
           <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-oldtown.jpg" data-full="assets/g-oldtown-full.jpg" alt="La SonoCyclette roule dans la vieille ville de Strasbourg" loading="lazy"><figcaption>Dans la vieille ville</figcaption></figure>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="instagram" data-panel="instagram" aria-labelledby="t-instagram" hidden>
+        <div class="ig">
+          <div class="ig-profile">
+            <div class="ig-head">
+              <img class="ig-avatar" src="assets/ig-avatar.png" width="80" height="80" alt="">
+              <div><b>lasonocyclette</b><span>La SonoCyclette · Ivan Vollet</span></div>
+            </div>
+            <p>Dispositif de diffusion culturelle mobile, autonome et festif.</p>
+            <p class="ig-small">Dates, sets, coulisses et événements de la Green Guinguette&nbsp;: toute l'actu est sur Instagram.</p>
+            <a class="btn btn-primary" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+              Suivre @lasonocyclette</a>
+          </div>
+          <div class="ig-feed" id="igFeed">
+            <div class="ig-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+              <b>Les dernières publications</b>
+              <p>Retrouvez les prochaines dates, les sets et les coulisses de la SonoCyclette directement sur le fil Instagram.</p>
+              <a class="btn btn-ghost" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Voir le fil Instagram</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -618,6 +660,12 @@
 </div>
 
 <script>
+/* === FIL INSTAGRAM ===
+   Pour afficher les dernières publications en direct : créer un fil gratuit sur behold.so
+   (connecter @lasonocyclette, créer un « Feed » de type « Widget »), puis coller son identifiant
+   entre les guillemets ci-dessous. Exemple : var INSTAGRAM_FEED_ID = "AbCdEf123456"; */
+var INSTAGRAM_FEED_ID = "";
+
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $ = function(s,r){return (r||document).querySelector(s);}, $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
@@ -649,6 +697,7 @@
     $$('[role="tab"]',set).forEach(function(t){var on=t.getAttribute('data-tab')===token;t.setAttribute('aria-selected',on?'true':'false');t.tabIndex=on?0:-1;if(on&&focus)t.focus();if(on&&t.scrollIntoView&&t.parentNode.scrollWidth>t.parentNode.clientWidth){t.parentNode.scrollLeft=t.offsetLeft-20;}});
     $$('[role="tabpanel"]',set).forEach(function(p){p.hidden=p.getAttribute('data-panel')!==token;});
     $$('video',set).forEach(function(v){if(v.closest('[role="tabpanel"]').hidden)v.pause();});
+    if(token==='instagram')loadIG();
     return set;
   }
   $$('[data-tabs]').forEach(function(set){
@@ -680,6 +729,18 @@
       if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(sel);}else{sel();}
     });
   });
+
+  /* instagram feed (Behold) — loaded only when the tab is opened, to save the monthly view quota */
+  var igLoaded=false;
+  function loadIG(){
+    if(igLoaded||!INSTAGRAM_FEED_ID)return; igLoaded=true;
+    var box=$('#igFeed'),w=document.createElement('behold-widget');
+    w.setAttribute('feed-id',INSTAGRAM_FEED_ID);
+    box.innerHTML='';box.classList.add('live');box.appendChild(w);
+    var s=document.createElement('script');s.type='module';s.src='https://w.behold.so/widget.js';
+    s.onerror=function(){box.classList.remove('live');box.innerHTML='<div class="ig-empty"><b>Le fil n’a pas pu se charger</b><p>Retrouvez toutes les publications directement sur Instagram.</p><a class="btn btn-ghost" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Voir le fil Instagram</a></div>';};
+    document.head.appendChild(s);
+  }
 
   /* lightbox */
   var lb=$('#lb'),stage=$('#lbStage'),lbImg=$('#lbImg'),cap=$('#lbCap'),count=$('#lbCount'),bPrev=$('#lbPrev'),bNext=$('#lbNext'),bClose=$('#lbClose');

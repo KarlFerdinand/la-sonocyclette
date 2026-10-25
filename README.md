@@ -17,6 +17,18 @@ En ligne : https://karlferdinand.github.io/la-sonocyclette/
 
 Pour changer une photo : déposer la nouvelle image dans `assets/` avec **le même nom de fichier** que l'ancienne (« Add file » → « Upload files »).
 
+## Afficher le fil Instagram en direct (onglet « Actus Instagram »)
+
+Le site peut afficher automatiquement les 6 dernières publications de @lasonocyclette grâce à [Behold](https://behold.so) (formule gratuite : 6 posts, mise à jour toutes les 24 h, 1 200 vues par mois — le fil ne se charge que quand un visiteur ouvre l'onglet).
+
+1. Créer un compte gratuit sur behold.so et connecter le compte Instagram @lasonocyclette.
+2. Créer un « Feed », choisir « Widget », puis copier son identifiant (le `feed-id`).
+3. Sur GitHub, ouvrir `index.html`, chercher `INSTAGRAM_FEED_ID` et coller l'identifiant entre les guillemets :
+   `var INSTAGRAM_FEED_ID = "votre-identifiant";`
+4. « Commit changes » : le fil apparaît sur le site en 1 à 2 minutes.
+
+Tant que l'identifiant est vide, l'onglet affiche la carte du profil et un lien vers Instagram.
+
 ## Contact
 
 Ivan Vollet — ivan.vollet@gmail.com — Instagram [@lasonocyclette](https://www.instagram.com/lasonocyclette/)
