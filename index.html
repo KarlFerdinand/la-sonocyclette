@@ -3,28 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="La SonoCyclette : livraison de fête à vélo, sur place ou à emporter. Système son mobile, autonome et rechargeable au solaire, avec un DJ professionnel aux platines. Strasbourg.">
+<title>DJ &amp; sono à vélo à Strasbourg | La SonoCyclette</title>
+<meta name="description" content="Animation musicale écoresponsable à Strasbourg : DJ professionnel et sono mobile à vélo, 100 % solaire, pour mariages, anniversaires, fêtes de quartier et festivals. Devis sur demande.">
+<link rel="canonical" href="https://karlferdinand.github.io/la-sonocyclette/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#15B24B">
+<meta name="geo.region" content="FR-67">
+<meta name="geo.placename" content="Strasbourg">
 <meta property="og:type" content="website">
-<meta property="og:title" content="La SonoCyclette">
-<meta property="og:description" content="La SonoCyclette : livraison de fête à vélo, sur place ou à emporter. Système son mobile, autonome et rechargeable au solaire, avec un DJ professionnel aux platines. Strasbourg.">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="La SonoCyclette">
+<meta property="og:title" content="DJ &amp; sono à vélo à Strasbourg | La SonoCyclette">
+<meta property="og:description" content="Animation musicale écoresponsable à Strasbourg : DJ professionnel et sono mobile à vélo, 100 % solaire, pour mariages, anniversaires, fêtes de quartier et festivals. Devis sur demande.">
 <meta property="og:url" content="https://karlferdinand.github.io/la-sonocyclette/">
 <meta property="og:image" content="https://karlferdinand.github.io/la-sonocyclette/assets/img-hero.jpg">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="1500">
+<meta property="og:image:alt" content="La SonoCyclette, tricycle sono à vélo, dans les rues de Strasbourg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="assets/img-hero.webp" type="image/webp">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>La SonoCyclette</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap">
 <style>
-  /* Layout concept: compact one-pager — hero, then three tabbed sections (Projet / Prestations / Médias)
-     reachable from dropdown sub-menus, then contact. Tight palette: forest green + sun yellow on ink & cream. */
+  /* Layout concept: compact conversion-led one-pager — hero (offer + zone + one CTA), partner marquee,
+     three tabbed sections, a dark "how it works" band, FAQ, then quote form + contact.
+     Tight palette: forest green + sun yellow on ink & cream. */
   :root{
     --cream:#FFF3DB; --paper:#FFFDF7; --paper2:#FFF6E4; --band:#FCE9BE;
     --ink:#1E1A2E; --muted:#6A6380; --line:#E8D7B2;
     --green:#15B24B; --green-ink:#082a12;
     --sun:#FFC21E; --sun-ink:#2a2200;
+    --err:#B42318;
+    --night:#1E1A2E; --night-txt:#FFF3DB; --night-muted:#CDC6DA;
     --shadow-hard:6px 6px 0 var(--ink);
     --font-display:'Fredoka','Trebuchet MS',system-ui,sans-serif;
     --font-body:'Nunito','Segoe UI',system-ui,sans-serif;
@@ -36,6 +50,8 @@
       --ink:#F6EFDE; --muted:#AEA6C2; --line:#352E4A;
       --green:#36D366; --green-ink:#07230f;
       --sun:#FFD24A; --sun-ink:#2a2200;
+      --err:#FF8A80;
+      --night:#0E0C17; --night-txt:#FFF3DB; --night-muted:#B9B2C8;
       --shadow-hard:6px 6px 0 #000;
       color-scheme:dark;
     }
@@ -45,6 +61,8 @@
     --ink:#F6EFDE; --muted:#AEA6C2; --line:#352E4A;
     --green:#36D366; --green-ink:#07230f;
     --sun:#FFD24A; --sun-ink:#2a2200;
+    --err:#FF8A80;
+    --night:#0E0C17; --night-txt:#FFF3DB; --night-muted:#B9B2C8;
     --shadow-hard:6px 6px 0 #000;
     color-scheme:dark;
   }
@@ -53,26 +71,27 @@
   html{scroll-behavior:smooth}
   body{background:var(--cream);color:var(--ink);font-family:var(--font-body);font-weight:600;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.05;text-wrap:balance;margin:0}
-  p{margin:0} a{color:inherit} img{display:block} button{font:inherit}
+  p{margin:0} a{color:inherit} img{display:block} button,input,select,textarea{font:inherit}
   .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
   #prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:5px;width:0%;background:linear-gradient(90deg,var(--green),var(--sun));z-index:60;transition:width .08s linear}
   body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--cream);z-index:55}
 
   /* ---------- HEADER + DROPDOWNS ---------- */
   header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--cream) 90%,transparent);backdrop-filter:blur(10px);border-bottom:2px solid var(--ink)}
-  .nav{display:flex;align-items:center;gap:14px;min-height:64px}
+  .nav{display:flex;align-items:center;gap:12px;min-height:64px}
   .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:600;font-size:1.2rem;text-decoration:none;margin-right:auto}
   .brand .mark{width:54px;height:37px;flex:0 0 auto}
   .mark .k{stroke:var(--ink)} .mark .b{fill:var(--paper)}
   .brand b{color:var(--green)}
   .menu{display:flex;gap:2px;align-items:center}
   .dd{position:relative}
-  .dd-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--muted);font-weight:800;font-size:.93rem;padding:9px 12px;border-radius:999px;transition:.15s}
-  .dd-btn:hover,.dd.open .dd-btn,.dd:focus-within .dd-btn{color:var(--ink);background:var(--paper2)}
+  .dd-btn,.nav-link{display:inline-flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:var(--muted);font-weight:800;font-size:.93rem;padding:9px 12px;border-radius:999px;transition:.15s;text-decoration:none}
+  .dd-btn:hover,.nav-link:hover,.dd.open .dd-btn,.dd:focus-within .dd-btn{color:var(--ink);background:var(--paper2)}
   .dd-btn svg{width:12px;height:12px;transition:transform .2s}
   .dd.open .dd-btn svg{transform:rotate(180deg)}
-  .sub{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);min-width:230px;background:var(--paper);border:2px solid var(--ink);border-radius:18px;box-shadow:5px 5px 0 var(--ink);padding:8px;display:none;z-index:70}
+  .sub{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);min-width:236px;background:var(--paper);border:2px solid var(--ink);border-radius:18px;box-shadow:5px 5px 0 var(--ink);padding:8px;display:none;z-index:70}
   .sub::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
   .dd.open .sub{display:grid;gap:2px}
   @media (hover:hover){.dd:hover .sub{display:grid;gap:2px}.dd:hover .dd-btn svg{transform:rotate(180deg)}}
@@ -104,32 +123,39 @@
   .sec-head .lead{color:var(--muted);font-size:1.04rem;max-width:46ch}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;overflow:hidden;padding-block:clamp(26px,5vw,50px) clamp(34px,5vw,56px)}
+  .hero{position:relative;overflow:hidden;padding-block:clamp(24px,4.5vw,46px) clamp(34px,5vw,54px)}
   .blob{position:absolute;border-radius:50%;filter:blur(50px);opacity:.4;z-index:0;animation:drift 18s ease-in-out infinite}
   .blob.b1{width:340px;height:340px;background:var(--green);top:-100px;left:-70px}
   .blob.b2{width:300px;height:300px;background:var(--sun);bottom:-120px;right:-50px;animation-delay:-6s}
   @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(26px,-22px)}}
   .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(22px,4vw,46px);align-items:center}
-  .hero-logo img{width:clamp(170px,24vw,236px);height:auto;filter:drop-shadow(4px 5px 0 rgba(30,26,46,.16))}
-  .hero h1{font-size:clamp(2.7rem,7.6vw,4.7rem);margin:6px 0 10px;letter-spacing:-1px;line-height:.92}
+  .hero-logo img{width:clamp(160px,22vw,222px);height:auto;filter:drop-shadow(4px 5px 0 rgba(30,26,46,.16))}
+  .hero h1{font-size:clamp(2.6rem,7.2vw,4.5rem);margin:6px 0 12px;letter-spacing:-1px;line-height:.92}
   .hero h1 .c1{color:var(--green)}
-  .slogan{font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,2.5vw,1.5rem);max-width:22ch}
-  .hero .sub-txt{margin-top:12px;color:var(--muted);font-size:1.04rem;max-width:46ch}
+  .hero h1 .kicker{display:block;margin-top:12px;font-size:clamp(1.05rem,2.2vw,1.32rem);letter-spacing:0;line-height:1.2;font-weight:600;color:var(--ink)}
+  .hero h1 .kicker em{font-style:normal;background:var(--sun);color:var(--sun-ink);padding:0 .3em;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .slogan{font-family:var(--font-display);font-weight:500;font-size:clamp(1.1rem,2.3vw,1.4rem);max-width:24ch}
+  .hero .sub-txt{margin-top:10px;color:var(--muted);font-size:1.03rem;max-width:46ch}
   .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-  .facts{list-style:none;padding:0;margin:24px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+  .facts{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:10px}
   .facts li{background:var(--paper);border:2px solid var(--ink);border-radius:14px;padding:8px 13px;display:flex;flex-direction:column;line-height:1.15;min-width:0}
-  .facts b{font-family:var(--font-display);font-weight:600;font-size:1.3rem;color:var(--green);font-variant-numeric:tabular-nums}
+  .facts b{font-family:var(--font-display);font-weight:600;font-size:1.28rem;color:var(--green);font-variant-numeric:tabular-nums}
   .facts span{font-size:.78rem;color:var(--muted);font-weight:800}
   .hero-photo{position:relative}
   .hero-photo .frame{border:3px solid var(--ink);border-radius:26px;overflow:hidden;box-shadow:var(--shadow-hard);background:var(--ink);transform:rotate(-1.4deg)}
   .hero-photo img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
   .sticker{position:absolute;right:-10px;top:-18px;background:var(--sun);color:var(--sun-ink);border:2px solid var(--ink);border-radius:999px;padding:10px 14px;font-family:var(--font-display);font-weight:600;font-size:.92rem;transform:rotate(7deg);box-shadow:3px 3px 0 var(--ink);text-align:center;line-height:1.05}
 
-  .marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding-block:11px;white-space:nowrap}
-  .marquee .track{display:inline-flex;gap:26px;will-change:transform;animation:scrollx 28s linear infinite}
-  .marquee span{font-family:var(--font-display);font-weight:600;font-size:1.08rem}
-  .marquee b{color:var(--sun)}
+  /* ---------- PARTNER MARQUEE ---------- */
+  .partners{background:var(--night);color:var(--night-txt);display:flex;align-items:center;overflow:hidden;border-block:2px solid var(--ink)}
+  .partners .lbl{flex:0 0 auto;font-family:var(--font-display);font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;background:var(--sun);color:var(--sun-ink);padding:14px max(16px,env(safe-area-inset-left,0px));position:relative;z-index:2;align-self:stretch;display:flex;align-items:center}
+  .partners .viewport{overflow:hidden;flex:1;min-width:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
+  .partners .track{display:inline-flex;white-space:nowrap;will-change:transform;animation:scrollx 34s linear infinite}
+  .partners ul{display:inline-flex;list-style:none;margin:0;padding:0}
+  .partners li{font-family:var(--font-display);font-weight:600;font-size:1.06rem;padding:12px 0 12px 28px;display:flex;align-items:center;gap:28px}
+  .partners li::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--sun)}
   @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .partners:hover .track{animation-play-state:paused}
 
   /* ---------- TABS ---------- */
   .tabs{display:flex;gap:8px;margin:24px 0 26px;overflow-x:auto;padding:2px 6px 8px 2px;scrollbar-width:none}
@@ -163,15 +189,28 @@
   .spec b em{font-style:normal;color:var(--green);font-weight:600}
   .note{margin-top:14px;color:var(--muted);font-size:.92rem}
 
-  /* prestations split */
   .split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(20px,4vw,42px);align-items:center}
   .split .ph{position:relative;border:3px solid var(--ink);border-radius:22px;overflow:hidden;box-shadow:var(--shadow-hard);aspect-ratio:4/3;background:var(--paper2)}
-  .split .ph img{width:100%;height:100%;object-fit:cover}
+  .split .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
   .split h3{font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:10px}
   .split p{color:var(--muted);font-size:1.03rem;max-width:52ch}
   .split .ticks{grid-template-columns:1fr;gap:8px;margin-top:16px}
   .split .ticks svg{color:var(--green)}
   .split .btn{margin-top:20px}
+
+  /* ---------- HOW IT WORKS (dark band) ---------- */
+  .how{background:var(--night);color:var(--night-txt);border-block:2px solid var(--ink)}
+  .how .sec-head .lead{color:var(--night-muted)}
+  .steps{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+  .steps li{position:relative;border:2px solid rgba(255,243,219,.22);border-radius:20px;padding:20px 18px 18px;min-width:0;background:rgba(255,255,255,.03)}
+  .steps .n{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--sun);color:#2a2200;font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-bottom:12px;border:2px solid #000}
+  .steps li:nth-child(even) .n{background:#36D366;color:#07230f}
+  .steps h3{font-size:1.14rem;margin-bottom:6px;color:var(--night-txt)}
+  .steps p{color:var(--night-muted);font-size:.95rem}
+  .how .cta-row{margin-top:28px}
+  .how .btn-ghost{background:transparent;color:var(--night-txt);border-color:var(--night-txt)}
+  .how .btn-ghost:hover{background:var(--night-txt);color:#1E1A2E}
+  .how .btn-primary{box-shadow:4px 4px 0 #000}
 
   /* gallery */
   .gal{display:grid;gap:14px;grid-template-columns:repeat(6,1fr);grid-auto-rows:160px}
@@ -180,7 +219,6 @@
   .shot figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;color:#fff;font-weight:800;font-size:.86rem;padding:22px 14px 11px;background:linear-gradient(0deg,rgba(8,6,16,.85),transparent)}
   .shot.s-wide{grid-column:span 4;grid-row:span 2}.shot.s-tall{grid-column:span 2;grid-row:span 2}.shot.s-sm{grid-column:span 2}
 
-  /* zoomable affordance */
   [data-zoom]{cursor:zoom-in}
   [data-zoom]:hover img{transform:scale(1.05)}
   [data-zoom]::after{content:"";position:absolute;top:10px;right:10px;z-index:3;width:36px;height:36px;border-radius:50%;border:2px solid #1E1A2E;
@@ -188,7 +226,6 @@
     opacity:0;transform:scale(.8);transition:opacity .2s,transform .2s}
   [data-zoom]:hover::after,[data-zoom]:focus-visible::after{opacity:1;transform:none}
   @media (hover:none){[data-zoom]::after{opacity:.95;transform:none}}
-  .split .ph img{transition:transform .4s ease}
 
   /* video */
   .video-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(22px,4vw,44px);align-items:center}
@@ -223,28 +260,69 @@
   .ig-empty b{font-family:var(--font-display);font-weight:600;font-size:1.3rem}
   .ig-empty p{color:var(--muted);max-width:40ch}
 
-  /* contact */
-  .contact{background:var(--paper);border:2px solid var(--ink);border-radius:28px;padding:clamp(24px,4vw,44px);box-shadow:var(--shadow-hard)}
-  .contact h2{font-size:clamp(1.9rem,4.6vw,2.8rem);margin:12px 0 8px}
-  .contact .lead{color:var(--muted);font-size:1.04rem;max-width:58ch}
-  .rows{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
-  .crow{display:flex;align-items:center;gap:12px;background:var(--paper2);border:2px solid var(--ink);border-radius:16px;padding:12px 14px;min-width:0}
-  .crow .ic{width:40px;height:40px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;border:2px solid var(--ink);background:var(--paper)}
+  /* ---------- FAQ ---------- */
+  .faq-list{margin-top:26px;display:grid;gap:10px;max-width:860px}
+  .faq-list details{background:var(--paper);border:2px solid var(--ink);border-radius:16px;transition:box-shadow .15s}
+  .faq-list details[open]{box-shadow:4px 4px 0 var(--ink)}
+  .faq-list summary{cursor:pointer;list-style:none;padding:15px 18px;font-family:var(--font-display);font-weight:600;font-size:1.06rem;display:flex;justify-content:space-between;align-items:center;gap:14px}
+  .faq-list summary::-webkit-details-marker{display:none}
+  .faq-list summary::after{content:"+";flex:0 0 auto;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--sun);color:var(--sun-ink);border:2px solid var(--ink);font-size:1.2rem;line-height:1;transition:transform .2s}
+  .faq-list details[open] summary::after{transform:rotate(45deg)}
+  .faq-list .ans{padding:0 18px 16px;color:var(--muted);max-width:70ch}
+
+  /* ---------- DEVIS + CONTACT ---------- */
+  .devis-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:clamp(18px,3vw,28px);margin-top:26px;align-items:start}
+  .form-card{background:var(--paper);border:2px solid var(--ink);border-radius:24px;padding:clamp(20px,3.4vw,32px);box-shadow:var(--shadow-hard);min-width:0}
+  .form-card h3{font-size:1.4rem;margin-bottom:4px}
+  .form-card .hint{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .field{display:grid;gap:6px;min-width:0;margin-bottom:14px}
+  .frow .field{margin-bottom:0}
+  .field>label,.field>legend,fieldset legend{font-weight:800;font-size:.88rem}
+  .field .opt{color:var(--muted);font-weight:700}
+  fieldset{border:0;padding:0;margin:0 0 14px;min-width:0}
+  fieldset legend{padding:0;margin-bottom:8px}
+  .inp{width:100%;min-width:0;font-weight:600;color:var(--ink);background:var(--paper2);border:2px solid var(--ink);border-radius:12px;padding:11px 12px;font-size:1rem}
+  textarea.inp{min-height:110px;resize:vertical}
+  .inp:focus{outline:3px solid var(--green);outline-offset:1px}
+  .inp[aria-invalid="true"]{border-color:var(--err)}
+  .err{color:var(--err);font-weight:800;font-size:.84rem;min-height:0}
+  .checks{display:flex;flex-wrap:wrap;gap:8px}
+  .check{position:relative}
+  .check input{position:absolute;opacity:0;width:1px;height:1px}
+  .check span{display:inline-block;border:2px solid var(--ink);border-radius:999px;padding:7px 13px;background:var(--paper2);cursor:pointer;font-weight:800;font-size:.88rem;transition:background .15s}
+  .check input:checked+span{background:var(--green);color:var(--green-ink)}
+  .check input:focus-visible+span{outline:3px solid var(--green);outline-offset:2px}
+  .form-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:6px}
+  .form-actions small{color:var(--muted);font-size:.84rem}
+  .result{margin-top:18px;border:2px solid var(--ink);border-radius:18px;background:var(--paper2);padding:18px}
+  .result b{font-family:var(--font-display);font-weight:600;font-size:1.15rem}
+  .result p{color:var(--muted);font-size:.93rem;margin:6px 0 12px}
+  .result pre{white-space:pre-wrap;word-break:break-word;font-family:var(--font-body);font-weight:600;font-size:.9rem;background:var(--paper);border:2px dashed var(--line);border-radius:12px;padding:12px;margin:0 0 12px;max-height:240px;overflow:auto}
+  .side{display:grid;gap:12px;min-width:0}
+  .crow{display:flex;align-items:center;gap:12px;background:var(--paper);border:2px solid var(--ink);border-radius:16px;padding:12px 14px;min-width:0}
+  .crow .ic{width:40px;height:40px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;border:2px solid var(--ink);background:var(--paper2)}
   .crow .ic svg{width:21px;height:21px}
   .crow .meta{min-width:0;flex:1}
   .crow small{color:var(--muted);font-weight:800;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em}
-  .crow .val{font-family:var(--font-display);font-weight:500;font-size:1.04rem;overflow-wrap:anywhere}
+  .crow .val{font-family:var(--font-display);font-weight:500;font-size:1.02rem;overflow-wrap:anywhere}
   .crow .val a{text-decoration:none}.crow .val a:hover{color:var(--green)}
   .copy{flex:0 0 auto;background:var(--ink);color:var(--cream);border:2px solid var(--ink);border-radius:999px;padding:7px 13px;font-family:var(--font-body);font-weight:800;font-size:.82rem;cursor:pointer;text-decoration:none;transition:transform .12s}
   .copy:hover{transform:translateY(-2px)}
-  .support{margin-top:16px;color:var(--muted);font-size:.9rem}
+  .zone{background:var(--sun);color:var(--sun-ink);border:2px solid var(--ink);border-radius:16px;padding:14px 16px;font-size:.92rem}
+  .zone b{display:block;font-family:var(--font-display);font-weight:600;font-size:1.02rem}
+  .support{color:var(--muted);font-size:.86rem}
 
-  footer{border-top:2px solid var(--ink);padding-block:24px}
-  .foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;font-weight:800}
+  footer{border-top:2px solid var(--ink);padding-block:26px}
+  .foot{display:flex;align-items:flex-start;gap:12px 28px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;font-weight:800}
+  .foot b{color:var(--ink);font-family:var(--font-display);font-weight:600}
   .foot a{text-decoration:none}.foot a:hover{color:var(--ink)}
   .foot .sp{margin-left:auto}
 
-  /* ---------- LIGHTBOX (single dark look on purpose) ---------- */
+  /* ---------- MOBILE ACTION BAR ---------- */
+  .mbar{display:none}
+
+  /* ---------- LIGHTBOX ---------- */
   .lb{position:fixed;inset:0;z-index:200;background:rgba(14,12,22,.95);color:#FFF3DB;animation:lbin .25s ease}
   @keyframes lbin{from{opacity:0}to{opacity:1}}
   .lb-stage{position:absolute;top:calc(64px + env(safe-area-inset-top,0px));bottom:calc(84px + env(safe-area-inset-bottom,0px));left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -269,24 +347,34 @@
 
   :focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
 
+  @media (max-width:980px){.steps{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:900px){
     .menu,.nav>.btn{display:none}.burger{display:block}
     .hero .wrap{grid-template-columns:1fr;text-align:center}
     .slogan,.hero .sub-txt{max-width:100%;margin-inline:auto}
-    .cta-row,.facts{justify-content:center}.hero-photo{order:-1}.hero-logo img{margin-inline:auto}
-    .split,.video-grid,.gg,.ig{grid-template-columns:1fr}
+    .cta-row,.facts{justify-content:center}.hero-logo img{margin-inline:auto;width:150px}
+    .hero-photo{max-width:520px;margin:6px auto 0;width:100%}
+    .split,.video-grid,.gg,.ig,.devis-grid{grid-template-columns:1fr}
     .gal{grid-template-columns:repeat(4,1fr);grid-auto-rows:150px}
     .shot.s-wide{grid-column:span 4}.shot.s-tall,.shot.s-sm{grid-column:span 2}
-    .rows{grid-template-columns:1fr}
+    .how .cta-row{justify-content:flex-start}
+    body{padding-bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+    .mbar{display:grid;grid-template-columns:auto 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:90;background:color-mix(in srgb,var(--cream) 94%,transparent);backdrop-filter:blur(10px);border-top:2px solid var(--ink);padding:10px max(14px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px))}
+    .mbar .btn{padding:11px 16px}
   }
   @media (max-width:560px){
-    .g3,.ticks{grid-template-columns:1fr}
+    .g3,.ticks,.steps,.frow{grid-template-columns:1fr}
+    .steps{gap:10px}
+    .steps li{display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:start;padding:14px 16px}
+    .steps .n{grid-row:span 2;margin-bottom:0;width:38px;height:38px;font-size:1.05rem}
+    .steps h3{margin-bottom:2px}
     .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px}
     .shot.s-wide{grid-column:span 2;grid-row:span 2}.shot.s-tall,.shot.s-sm{grid-column:span 1;grid-row:span 1}
     .lb-prev,.lb-next{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));margin-top:0}
     .lb-cap{padding-inline:76px}
+    .partners .lbl{font-size:.68rem;padding-inline:12px}
   }
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.blob,.marquee .track{animation:none!important}[role="tabpanel"],.lb{animation:none}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.blob,.partners .track{animation:none!important}[role="tabpanel"],.lb{animation:none}}
 </style>
 </head>
 <body>
@@ -322,7 +410,8 @@
           <a href="#openair" data-go="openair">Open air &amp; guinguettes</a>
           <a href="#evenements" data-go="evenements">Événements &amp; festivals</a>
           <a href="#causes" data-go="causes">Causes &amp; collectifs</a>
-          <a href="#surmesure" data-go="surmesure">Sur-mesure &amp; karaoké</a>
+          <a href="#surmesure" data-go="surmesure">Mariages, anniversaires &amp; karaoké</a>
+          <a href="#etapes">Comment ça marche<small>De la demande à la fête</small></a>
         </div>
       </div>
       <div class="dd">
@@ -334,8 +423,9 @@
           <a href="#guinguette" data-go="guinguette">Green Guinguette<small>Événement signature</small></a>
         </div>
       </div>
+      <a class="nav-link" href="#faq">FAQ</a>
     </nav>
-    <a class="btn btn-primary" href="#contact">Réserver une date</a>
+    <a class="btn btn-primary" href="#devis">Demander un devis</a>
     <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -344,26 +434,28 @@
     <div class="mm-group"><div class="mm-title">Le projet</div><div class="mm-links">
       <a href="#concept" data-go="concept">Le concept</a><a href="#durable" data-go="durable">Fête durable</a><a href="#materiel" data-go="materiel">Matériel</a></div></div>
     <div class="mm-group"><div class="mm-title">Prestations</div><div class="mm-links">
-      <a href="#openair" data-go="openair">Open air</a><a href="#evenements" data-go="evenements">Événements</a><a href="#causes" data-go="causes">Causes</a><a href="#surmesure" data-go="surmesure">Sur-mesure</a></div></div>
+      <a href="#openair" data-go="openair">Open air</a><a href="#evenements" data-go="evenements">Événements</a><a href="#causes" data-go="causes">Causes</a><a href="#surmesure" data-go="surmesure">Mariages &amp; anniversaires</a><a href="#etapes">Comment ça marche</a></div></div>
     <div class="mm-group"><div class="mm-title">Découvrir</div><div class="mm-links">
       <a href="#photos" data-go="photos">Photos</a><a href="#instagram" data-go="instagram">Actus Instagram</a><a href="#teaser" data-go="teaser">Teaser</a><a href="#guinguette" data-go="guinguette">Green Guinguette</a></div></div>
-    <a class="btn btn-primary" href="#contact">Réserver une date</a>
+    <div class="mm-group"><div class="mm-links"><a href="#faq">Questions fréquentes</a></div></div>
+    <a class="btn btn-primary" href="#devis">Demander un devis</a>
   </div>
 </header>
 
 <main id="top">
 
   <!-- ================= HERO ================= -->
-  <section class="hero">
+  <section class="hero" aria-labelledby="h1">
     <span class="blob b1"></span><span class="blob b2"></span>
     <div class="wrap">
       <div>
         <div class="hero-logo reveal"><img src="assets/logo-sonocyclette.svg" width="754" height="522" alt="Logo de la SonoCyclette : le tricycle à habitacle avec « La Sono Cyclette » écrit sur la cabine"></div>
-        <h1 class="reveal d1">La <span class="c1">SonoCyclette</span></h1>
+        <h1 id="h1" class="reveal d1">La <span class="c1">SonoCyclette</span>
+          <span class="kicker">DJ &amp; sono à vélo à <em>Strasbourg</em></span></h1>
         <p class="slogan reveal d2">Livraison de fête à vélo, sur place ou à emporter.</p>
-        <p class="sub-txt reveal d2">Un système son mobile, autonome et rechargeable au solaire, avec un DJ professionnel aux platines. La fête se déplace, le carbone reste au placard.</p>
+        <p class="sub-txt reveal d2">Animation musicale écoresponsable pour mariages, anniversaires, fêtes de quartier et festivals&nbsp;: un DJ professionnel et un système son autonome, rechargé au soleil.</p>
         <div class="cta-row reveal d3">
-          <a class="btn btn-primary" href="#contact">Réserver une date</a>
+          <a class="btn btn-primary" href="#devis">Demander un devis</a>
           <a class="btn btn-ghost" href="#teaser" data-go="teaser">▶ Voir le teaser</a>
         </div>
         <ul class="facts reveal d3" aria-label="En bref">
@@ -374,22 +466,26 @@
         </ul>
       </div>
       <div class="hero-photo reveal d1">
-        <div class="frame"><img src="assets/img-hero.jpg" alt="La SonoCyclette roule dans la vieille ville de Strasbourg, suivie d'un cortège de cyclistes"></div>
+        <div class="frame"><img src="assets/img-hero.webp" width="1200" height="900" fetchpriority="high" alt="La SonoCyclette, tricycle sono à vélo, roule dans la vieille ville de Strasbourg suivie d'un cortège de cyclistes"></div>
         <span class="sticker">100&nbsp;%<br>solaire</span>
       </div>
     </div>
   </section>
 
-  <div class="marquee" aria-hidden="true"><div class="track">
-    <span>OPEN AIR <b>·</b> SOLAIRE <b>·</b> DJ SETS <b>·</b> ZÉRO CARBONE <b>·</b> VÉLO <b>·</b> GUINGUETTE <b>·</b> STRASBOURG <b>·</b></span>
-    <span>OPEN AIR <b>·</b> SOLAIRE <b>·</b> DJ SETS <b>·</b> ZÉRO CARBONE <b>·</b> VÉLO <b>·</b> GUINGUETTE <b>·</b> STRASBOURG <b>·</b></span>
-  </div></div>
+  <!-- ================= PARTENAIRES ================= -->
+  <div class="partners" role="region" aria-label="Partenaires et événements">
+    <span class="lbl">Partenaires &amp; événements</span>
+    <div class="viewport"><div class="track">
+      <ul><li>Green Guinguette</li><li>Kaleidoscoop</li><li>Bike N Sound</li><li>We R Solar</li><li>Artenréel Spectacle</li><li>DRAC Grand Est</li></ul>
+      <ul aria-hidden="true"><li>Green Guinguette</li><li>Kaleidoscoop</li><li>Bike N Sound</li><li>We R Solar</li><li>Artenréel Spectacle</li><li>DRAC Grand Est</li></ul>
+    </div></div>
+  </div>
 
   <!-- ================= LE PROJET ================= -->
-  <section id="projet" class="sec" data-tabs>
+  <section id="projet" class="sec" data-tabs aria-labelledby="h-projet">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">Le projet</span><h2>Une fête à vélo, décarbonée</h2></div>
+        <div><span class="eyebrow">Le projet</span><h2 id="h-projet">Une sono à vélo, 100&nbsp;% autonome</h2></div>
         <p class="lead">Un vélo-cargo qui transporte le son, l'énergie et l'ambiance jusqu'à vous. Pas de camion, pas de groupe électrogène.</p>
       </div>
       <div class="tabs" role="tablist" aria-label="Le projet">
@@ -406,7 +502,7 @@
           </div>
           <div class="card">
             <div class="ic fill-s"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="6" width="22" height="36" rx="4"/><circle cx="24" cy="18" r="4"/><circle cx="24" cy="31" r="5"/></svg></div>
-            <h3>Un son autonome</h3><p>Une sonorisation mobile rechargeable au solaire, avec des enceintes <b>LD Maui</b> et <b>Bose S1 Pro</b>.</p>
+            <h3>Une sonorisation autonome</h3><p>Un système son mobile rechargeable au solaire, avec des enceintes <b>LD Maui</b> et <b>Bose S1 Pro</b>.</p>
           </div>
           <div class="card">
             <div class="ic fill-g"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="30" r="6"/><circle cx="33" cy="30" r="6"/><path d="M21 30V14l18-3v19"/></svg></div>
@@ -445,22 +541,22 @@
   </section>
 
   <!-- ================= PRESTATIONS ================= -->
-  <section id="prestations" class="sec" style="padding-top:0" data-tabs>
+  <section id="prestations" class="sec" style="padding-top:0" data-tabs aria-labelledby="h-presta">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">Prestations</span><h2>Là où ça bouge, elle vient</h2></div>
-        <p class="lead">Pour tout événement de 30 à 100 personnes. Choisissez votre format, on s'adapte.</p>
+        <div><span class="eyebrow">Prestations</span><h2 id="h-presta">Animation musicale pour tous vos événements</h2></div>
+        <p class="lead">Pour tout événement de 30 à 100 personnes à Strasbourg et alentours. Choisissez votre format, on s'adapte.</p>
       </div>
       <div class="tabs" role="tablist" aria-label="Prestations">
         <button class="tab" role="tab" id="t-openair" aria-controls="openair" data-tab="openair" aria-selected="true">Open air</button>
         <button class="tab" role="tab" id="t-evenements" aria-controls="evenements" data-tab="evenements" aria-selected="false" tabindex="-1">Événements</button>
         <button class="tab" role="tab" id="t-causes" aria-controls="causes" data-tab="causes" aria-selected="false" tabindex="-1">Causes &amp; collectifs</button>
-        <button class="tab" role="tab" id="t-surmesure" aria-controls="surmesure" data-tab="surmesure" aria-selected="false" tabindex="-1">Sur-mesure</button>
+        <button class="tab" role="tab" id="t-surmesure" aria-controls="surmesure" data-tab="surmesure" aria-selected="false" tabindex="-1">Mariages &amp; anniversaires</button>
       </div>
 
       <div role="tabpanel" id="openair" data-panel="openair" aria-labelledby="t-openair">
         <div class="split">
-          <div class="ph" data-zoom="presta"><img src="assets/g-medard.jpg" data-full="assets/g-medard-full.jpg" alt="La SonoCyclette en set tropical place Saint-Médard" data-caption="Set tropical à Saint-Médard"></div>
+          <div class="ph" data-zoom="presta"><img src="assets/g-medard.webp" width="1000" height="750" data-full="assets/g-medard-full.jpg" alt="DJ set en plein air avec la SonoCyclette décorée façon tropicale, place Saint-Médard à Strasbourg" data-caption="Set tropical à Saint-Médard"></div>
           <div>
             <h3>Open air &amp; guinguettes</h3>
             <p>Des DJ sets en extérieur, là où on ne les attend pas. Places, parcs, cours et berges deviennent une piste de danse le temps d'un après-midi.</p>
@@ -468,14 +564,14 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Free open air et guinguettes itinérantes</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Installation rapide, sans branchement</li>
             </ul>
-            <a class="btn btn-primary" href="#contact">Demander un devis</a>
+            <a class="btn btn-primary" href="#devis" data-prefill="Festival / événement public">Demander un devis</a>
           </div>
         </div>
       </div>
 
       <div role="tabpanel" id="evenements" data-panel="evenements" aria-labelledby="t-evenements" hidden>
         <div class="split">
-          <div class="ph" data-zoom="presta"><img src="assets/g-cathedrale.jpg" data-full="assets/g-cathedrale-full.jpg" alt="La SonoCyclette installée de nuit devant la cathédrale de Strasbourg" data-caption="Nuit à la cathédrale" loading="lazy"></div>
+          <div class="ph" data-zoom="presta"><img src="assets/g-cathedrale.webp" width="1000" height="750" data-full="assets/g-cathedrale-full.jpg" alt="La SonoCyclette installée de nuit devant la cathédrale de Strasbourg pour un événement" data-caption="Nuit à la cathédrale" loading="lazy"></div>
           <div>
             <h3>Événements &amp; festivals</h3>
             <p>Un système son autonome pour les petites formes artistiques dans des lieux atypiques&nbsp;: la scène vient à vous.</p>
@@ -483,48 +579,68 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Marchés, inaugurations, fêtes de quartier</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Fête de la Musique, concerts, théâtre, spectacle vivant</li>
             </ul>
-            <a class="btn btn-primary" href="#contact">Demander un devis</a>
+            <a class="btn btn-primary" href="#devis" data-prefill="Fête de quartier / association">Demander un devis</a>
           </div>
         </div>
       </div>
 
       <div role="tabpanel" id="causes" data-panel="causes" aria-labelledby="t-causes" hidden>
         <div class="split">
-          <div class="ph" data-zoom="presta"><img src="assets/g-ride.jpg" data-full="assets/g-ride-full.jpg" alt="Grande déambulation à vélo derrière la SonoCyclette" data-caption="La déambulation Bike N Sound" loading="lazy"></div>
+          <div class="ph" data-zoom="presta"><img src="assets/g-ride.webp" width="1000" height="1000" data-full="assets/g-ride-full.jpg" alt="Grande déambulation musicale à vélo derrière la SonoCyclette dans une rue de Strasbourg" data-caption="La déambulation Bike N Sound" loading="lazy"></div>
           <div>
             <h3>Causes &amp; collectifs</h3>
-            <p>La SonoCyclette suit le cortège&nbsp;: du son au service des mobilisations et des initiatives locales.</p>
+            <p>La SonoCyclette suit le cortège&nbsp;: une déambulation musicale au service des mobilisations et des initiatives locales.</p>
             <ul class="ticks">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Manifestations, marches, vélorutions</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Courses solidaires et événements associatifs</li>
             </ul>
-            <a class="btn btn-primary" href="#contact">Demander un devis</a>
+            <a class="btn btn-primary" href="#devis" data-prefill="Déambulation / manifestation">Demander un devis</a>
           </div>
         </div>
       </div>
 
       <div role="tabpanel" id="surmesure" data-panel="surmesure" aria-labelledby="t-surmesure" hidden>
         <div class="split">
-          <div class="ph" data-zoom="presta"><img src="assets/g-decks.jpg" data-full="assets/g-decks-full.jpg" alt="Un DJ aux platines devant une fresque colorée" data-caption="Aux platines" loading="lazy"></div>
+          <div class="ph" data-zoom="presta"><img src="assets/g-decks.webp" width="1000" height="750" data-full="assets/g-decks-full.jpg" alt="DJ aux platines devant une fresque colorée pour une fête privée" data-caption="Aux platines" loading="lazy"></div>
           <div>
-            <h3>Sur-mesure &amp; karaoké</h3>
+            <h3>Mariages, anniversaires &amp; karaoké</h3>
             <p>Anniversaire, mariage, fête de fin d'année&nbsp;: un DJ professionnel réalise votre prestation sur mesure et construit l'ambiance avec vous, de la playlist au micro.</p>
             <ul class="ticks">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>DJ ou groupe jusqu'à 4 musiciens</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Soirée karaoké ou discours, 4 micros fournis</li>
             </ul>
-            <a class="btn btn-primary" href="#contact">Demander un devis</a>
+            <a class="btn btn-primary" href="#devis" data-prefill="Mariage">Demander un devis</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= DÉCOUVRIR ================= -->
-  <section id="decouvrir" class="sec" style="padding-top:0" data-tabs>
+  <!-- ================= COMMENT ÇA MARCHE ================= -->
+  <section id="etapes" class="how sec" aria-labelledby="h-etapes">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">Découvrir</span><h2>La SonoCyclette en vrai</h2></div>
+        <div><span class="eyebrow">Comment ça marche</span><h2 id="h-etapes">De votre demande à la fête</h2></div>
+        <p class="lead">Une organisation simple, sans contrainte technique pour vous ni pour le lieu.</p>
+      </div>
+      <ol class="steps">
+        <li class="reveal"><span class="n">1</span><h3>Vous décrivez l'événement</h3><p>Date, lieu, nombre d'invités et format souhaité, via le formulaire, par téléphone ou par e-mail.</p></li>
+        <li class="reveal d1"><span class="n">2</span><h3>Vous recevez un devis</h3><p>Une proposition adaptée à votre événement, à votre lieu et à la durée de la prestation.</p></li>
+        <li class="reveal d2"><span class="n">3</span><h3>On arrive à vélo</h3><p>Installation rapide, sans prise électrique ni groupe électrogène&nbsp;: la sono est autonome.</p></li>
+        <li class="reveal d3"><span class="n">4</span><h3>La fête commence</h3><p>DJ, live ou karaoké, en point fixe ou en déambulation, avec 6 à 12&nbsp;h d'autonomie.</p></li>
+      </ol>
+      <div class="cta-row reveal">
+        <a class="btn btn-primary" href="#devis">Demander un devis</a>
+        <a class="btn btn-ghost" href="#faq">Questions fréquentes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DÉCOUVRIR ================= -->
+  <section id="decouvrir" class="sec" data-tabs aria-labelledby="h-decouvrir">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="eyebrow">Découvrir</span><h2 id="h-decouvrir">La SonoCyclette en vrai</h2></div>
         <p class="lead">Photos de la saison, actus Instagram, teaser vidéo et l'événement signature, la Green Guinguette.</p>
       </div>
       <div class="tabs" role="tablist" aria-label="Découvrir">
@@ -536,12 +652,12 @@
 
       <div role="tabpanel" id="photos" data-panel="photos" aria-labelledby="t-photos">
         <div class="gal">
-          <figure class="shot s-wide" data-zoom="galerie"><img src="assets/g-ride.jpg" data-full="assets/g-ride-full.jpg" alt="La SonoCyclette en tête d'une grande déambulation à vélo dans une rue à arcades" loading="lazy"><figcaption>La déambulation Bike N Sound</figcaption></figure>
-          <figure class="shot s-tall" data-zoom="galerie"><img src="assets/g-controls.jpg" data-full="assets/g-controls-full.jpg" alt="Le DJ aux commandes de la SonoCyclette, serre-tête et collier de fleurs" loading="lazy"><figcaption>Aux commandes</figcaption></figure>
-          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-decks.jpg" data-full="assets/g-decks-full.jpg" alt="Un DJ aux platines devant une fresque colorée" loading="lazy"><figcaption>Aux platines</figcaption></figure>
-          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-medard.jpg" data-full="assets/g-medard-full.jpg" alt="La SonoCyclette décorée façon tropicale, place Saint-Médard" loading="lazy"><figcaption>Set tropical à Saint-Médard</figcaption></figure>
-          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-cathedrale.jpg" data-full="assets/g-cathedrale-full.jpg" alt="La SonoCyclette installée de nuit devant la cathédrale de Strasbourg" loading="lazy"><figcaption>Nuit à la cathédrale</figcaption></figure>
-          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-oldtown.jpg" data-full="assets/g-oldtown-full.jpg" alt="La SonoCyclette roule dans la vieille ville de Strasbourg" loading="lazy"><figcaption>Dans la vieille ville</figcaption></figure>
+          <figure class="shot s-wide" data-zoom="galerie"><img src="assets/g-ride.webp" width="1000" height="1000" data-full="assets/g-ride-full.jpg" alt="La SonoCyclette en tête d'une grande déambulation à vélo dans une rue à arcades de Strasbourg" loading="lazy"><figcaption>La déambulation Bike N Sound</figcaption></figure>
+          <figure class="shot s-tall" data-zoom="galerie"><img src="assets/g-controls.webp" width="1000" height="1000" data-full="assets/g-controls-full.jpg" alt="Le DJ aux commandes de la SonoCyclette, serre-tête et collier de fleurs" loading="lazy"><figcaption>Aux commandes</figcaption></figure>
+          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-decks.webp" width="1000" height="750" data-full="assets/g-decks-full.jpg" alt="Un DJ aux platines devant une fresque colorée" loading="lazy"><figcaption>Aux platines</figcaption></figure>
+          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-medard.webp" width="1000" height="750" data-full="assets/g-medard-full.jpg" alt="La SonoCyclette décorée façon tropicale, place Saint-Médard" loading="lazy"><figcaption>Set tropical à Saint-Médard</figcaption></figure>
+          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-cathedrale.webp" width="1000" height="750" data-full="assets/g-cathedrale-full.jpg" alt="La SonoCyclette installée de nuit devant la cathédrale de Strasbourg" loading="lazy"><figcaption>Nuit à la cathédrale</figcaption></figure>
+          <figure class="shot s-sm" data-zoom="galerie"><img src="assets/g-oldtown.webp" width="1000" height="1000" data-full="assets/g-oldtown-full.jpg" alt="La SonoCyclette roule dans la vieille ville de Strasbourg" loading="lazy"><figcaption>Dans la vieille ville</figcaption></figure>
         </div>
       </div>
 
@@ -550,7 +666,7 @@
           <div class="ig-profile">
             <div class="ig-head">
               <img class="ig-avatar" src="assets/ig-avatar.png" width="80" height="80" alt="">
-              <div><b>lasonocyclette</b><span>La SonoCyclette · Ivan Vollet</span></div>
+              <div><b>lasonocyclette</b><span>La SonoCyclette · Strasbourg</span></div>
             </div>
             <p>Dispositif de diffusion culturelle mobile, autonome et festif.</p>
             <p class="ig-small">Dates, sets, coulisses et événements de la Green Guinguette&nbsp;: toute l'actu est sur Instagram.</p>
@@ -572,7 +688,7 @@
       <div role="tabpanel" id="teaser" data-panel="teaser" aria-labelledby="t-teaser" hidden>
         <div class="video-grid">
           <div class="phone">
-            <video controls playsinline muted loop preload="none" poster="assets/poster.jpg">
+            <video controls playsinline muted loop preload="none" poster="assets/poster.webp" aria-label="Teaser vidéo de la SonoCyclette, saison 2025-2026">
               <source src="assets/teaser.mp4" type="video/mp4">
               Votre navigateur ne lit pas la vidéo.
             </video>
@@ -582,7 +698,7 @@
             <p>Une minute d'ambiance&nbsp;: déambulations, DJ sets, foules qui dansent et guinguettes aux quatre coins de Strasbourg. Le meilleur moyen de comprendre la SonoCyclette, c'est de la voir rouler.</p>
             <div class="chips"><span class="chip">🎧 DJ sets</span><span class="chip">🚲 Déambulation</span><span class="chip">☀️ Solaire</span><span class="chip">🎤 Karaoké</span></div>
             <div class="cta-row">
-              <a class="btn btn-primary" href="#contact">Réserver une date</a>
+              <a class="btn btn-primary" href="#devis">Demander un devis</a>
               <a class="btn btn-ghost" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Suivre sur Instagram</a>
             </div>
           </div>
@@ -600,42 +716,143 @@
               <a href="https://www.instagram.com/we.r.solar/" target="_blank" rel="noopener">@we.r.solar</a>
             </div>
           </div>
-          <figure class="gg-art" data-zoom="gg"><img src="assets/gg-poster.jpg" alt="Affiche de la Green Guinguette : free open air, fresh drinks, DJ sets — événement à vélo alimenté en solaire, quasi zéro carbone" data-caption="Affiche de la Green Guinguette, saison 2026" loading="lazy"></figure>
+          <figure class="gg-art" data-zoom="gg"><img src="assets/gg-poster.webp" width="900" height="1125" data-full="assets/gg-poster.jpg" alt="Affiche de la Green Guinguette : free open air, fresh drinks, DJ sets — événement à vélo alimenté en solaire, quasi zéro carbone" data-caption="Affiche de la Green Guinguette, saison 2026" loading="lazy"></figure>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= CONTACT ================= -->
-  <section id="contact" class="sec" style="padding-top:0">
+  <!-- ================= FAQ ================= -->
+  <section id="faq" class="sec" style="padding-top:0" aria-labelledby="h-faq">
     <div class="wrap">
-      <div class="contact reveal">
-        <span class="eyebrow">Contact</span>
-        <h2>Réservez la SonoCyclette</h2>
-        <p class="lead">Une date, un lieu, une envie&nbsp;? Écrivez-moi pour un devis. Basée à Strasbourg, disponible dans l'agglo et au-delà.</p>
-        <div class="rows">
+      <div class="sec-head reveal">
+        <div><span class="eyebrow">FAQ</span><h2 id="h-faq">Questions fréquentes</h2></div>
+        <p class="lead">Tout ce qu'il faut savoir avant de réserver la SonoCyclette.</p>
+      </div>
+      <div class="faq-list">
+        <details><summary>Combien coûte une prestation&nbsp;?</summary><p class="ans">Chaque événement est différent&nbsp;: le tarif dépend de la durée, du format (DJ, groupe, karaoké…) et du lieu. Décrivez votre projet dans le formulaire pour recevoir un devis personnalisé.</p></details>
+        <details><summary>Faut-il prévoir une prise électrique&nbsp;?</summary><p class="ans">Non. Le système son est autonome et rechargeable au solaire, avec 6 à 12&nbsp;h d'autonomie selon l'utilisation. Pas de branchement, pas de groupe électrogène.</p></details>
+        <details><summary>Pour combien de personnes&nbsp;?</summary><p class="ans">La SonoCyclette est pensée pour des événements de 30 à 100 personnes.</p></details>
+        <details><summary>Où intervenez-vous&nbsp;?</summary><p class="ans">À Strasbourg et dans un rayon de 5 à 10&nbsp;km&nbsp;: Schiltigheim, Bischheim, Illkirch-Graffenstaden, Lingolsheim, Ostwald… Pour un événement plus loin, contactez-nous.</p></details>
+        <details><summary>Quels formats sont possibles&nbsp;?</summary><p class="ans">DJ set, groupe jusqu'à 4 musiciens, soirée karaoké ou prise de parole&nbsp;: la console 5 pistes et les micros sont fournis.</p></details>
+        <details><summary>La SonoCyclette peut-elle se déplacer pendant l'événement&nbsp;?</summary><p class="ans">Oui&nbsp;: elle fonctionne en déambulation dans la ville comme en point fixe.</p></details>
+        <details><summary>Quel matériel est fourni&nbsp;?</summary><p class="ans">Enceintes LD Systems Maui 5 GO et Bose S1 Pro, table de mixage Behringer Xenyx, micros Shure SM58 et t.bone, éclairage LED. Le vélo-cargo transporte jusqu'à 180&nbsp;kg de matériel.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DEVIS + CONTACT ================= -->
+  <section id="devis" class="sec" style="padding-top:0" aria-labelledby="h-devis">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="eyebrow">Devis &amp; contact</span><h2 id="h-devis">Réservez la SonoCyclette</h2></div>
+        <p class="lead">Une date, un lieu, une envie&nbsp;? Décrivez votre événement, on revient vers vous avec une proposition.</p>
+      </div>
+      <div class="devis-grid">
+        <div class="form-card">
+          <h3>Demande de devis</h3>
+          <p class="hint">Les champs marqués d'un astérisque (*) sont nécessaires pour vous répondre.</p>
+          <form id="quoteForm" novalidate>
+            <div class="frow">
+              <div class="field">
+                <label for="f-type">Type d'événement *</label>
+                <select class="inp" id="f-type" name="type" required aria-describedby="e-type">
+                  <option value="">Choisir…</option>
+                  <option>Mariage</option>
+                  <option>Anniversaire / fête privée</option>
+                  <option>Fête de quartier / association</option>
+                  <option>Festival / événement public</option>
+                  <option>Entreprise / inauguration</option>
+                  <option>Déambulation / manifestation</option>
+                  <option>Autre</option>
+                </select>
+                <span class="err" id="e-type"></span>
+              </div>
+              <div class="field">
+                <label for="f-date">Date *</label>
+                <input class="inp" type="date" id="f-date" name="date" required aria-describedby="e-date">
+                <span class="err" id="e-date"></span>
+              </div>
+            </div>
+            <div class="frow">
+              <div class="field">
+                <label for="f-lieu">Lieu ou ville *</label>
+                <input class="inp" type="text" id="f-lieu" name="lieu" autocomplete="address-level2" placeholder="Ex. Strasbourg, Neudorf" required aria-describedby="e-lieu">
+                <span class="err" id="e-lieu"></span>
+              </div>
+              <div class="field">
+                <label for="f-invites">Nombre de personnes <span class="opt">(facultatif)</span></label>
+                <select class="inp" id="f-invites" name="invites">
+                  <option value="">Choisir…</option>
+                  <option>Moins de 30</option><option>30 à 60</option><option>60 à 100</option><option>Plus de 100</option>
+                </select>
+              </div>
+            </div>
+            <fieldset>
+              <legend>Format souhaité <span class="opt">(facultatif)</span></legend>
+              <div class="checks">
+                <label class="check"><input type="checkbox" name="format" value="DJ set"><span>DJ set</span></label>
+                <label class="check"><input type="checkbox" name="format" value="Groupe live"><span>Groupe live</span></label>
+                <label class="check"><input type="checkbox" name="format" value="Karaoké"><span>Karaoké</span></label>
+                <label class="check"><input type="checkbox" name="format" value="Discours / micro"><span>Discours / micro</span></label>
+                <label class="check"><input type="checkbox" name="format" value="Déambulation"><span>Déambulation</span></label>
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="f-nom">Votre nom *</label>
+              <input class="inp" type="text" id="f-nom" name="nom" autocomplete="name" required aria-describedby="e-nom">
+              <span class="err" id="e-nom"></span>
+            </div>
+            <div class="frow">
+              <div class="field">
+                <label for="f-email">E-mail</label>
+                <input class="inp" type="email" id="f-email" name="email" autocomplete="email" aria-describedby="e-contact">
+              </div>
+              <div class="field">
+                <label for="f-tel">Téléphone</label>
+                <input class="inp" type="tel" id="f-tel" name="tel" autocomplete="tel" aria-describedby="e-contact">
+              </div>
+            </div>
+            <span class="err" id="e-contact" style="display:block;margin:-6px 0 12px"></span>
+            <div class="field">
+              <label for="f-msg">Votre message <span class="opt">(facultatif)</span></label>
+              <textarea class="inp" id="f-msg" name="message" placeholder="Horaires, ambiance musicale, contraintes du lieu…"></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Envoyer ma demande</button>
+              <small>E-mail ou téléphone : au moins l'un des deux.</small>
+            </div>
+          </form>
+          <div class="result" id="quoteResult" hidden tabindex="-1">
+            <b>Votre demande est prête</b>
+            <p>Votre messagerie s'ouvre avec la demande pré-remplie&nbsp;: il ne reste qu'à l'envoyer. Si elle ne s'ouvre pas, copiez la demande ci-dessous et envoyez-la à <b style="font-size:inherit">ivan.vollet@gmail.com</b>.</p>
+            <pre id="quoteText"></pre>
+            <button class="copy" type="button" id="quoteCopy">Copier la demande</button>
+          </div>
+        </div>
+
+        <aside class="side" aria-label="Coordonnées">
+          <div class="crow">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></div>
+            <div class="meta"><small>Téléphone</small><div class="val"><a href="tel:+33601151469">06 01 15 14 69</a></div></div>
+            <button class="copy" data-copy="0601151469">Copier</button>
+          </div>
           <div class="crow">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
             <div class="meta"><small>E-mail</small><div class="val">ivan.vollet@gmail.com</div></div>
             <button class="copy" data-copy="ivan.vollet@gmail.com">Copier</button>
           </div>
           <div class="crow">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></div>
-            <div class="meta"><small>Téléphone</small><div class="val">06 01 15 14 69</div></div>
-            <button class="copy" data-copy="0601151469">Copier</button>
-          </div>
-          <div class="crow">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></div>
             <div class="meta"><small>Instagram</small><div class="val"><a href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">@lasonocyclette</a></div></div>
-            <a class="copy" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Ouvrir</a>
           </div>
           <div class="crow">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
             <div class="meta"><small>Le projet</small><div class="val"><a href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Sur Artenréel</a></div></div>
-            <a class="copy" href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Ouvrir</a>
           </div>
-        </div>
-        <p class="support">Ce projet est soutenu par la DRAC Grand Est et Artenréel&nbsp;#1.</p>
+          <div class="zone"><b>Zone d'intervention</b>Strasbourg et 5 à 10&nbsp;km alentour (Eurométropole). Plus loin&nbsp;? Parlons-en.</div>
+          <p class="support">Projet soutenu par la DRAC Grand Est et Artenréel&nbsp;#1.</p>
+        </aside>
       </div>
     </div>
   </section>
@@ -643,11 +860,19 @@
 
 <footer>
   <div class="wrap foot">
-    <span>La SonoCyclette — Ivan Vollet · Strasbourg</span>
-    <a href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Instagram</a>
+    <div><b>La SonoCyclette</b><br>DJ &amp; sono à vélo · Strasbourg<br>06 01 15 14 69 · ivan.vollet@gmail.com</div>
+    <div><a href="#prestations">Prestations</a><br><a href="#faq">Questions fréquentes</a><br><a href="#devis">Demander un devis</a></div>
+    <div><a href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Instagram</a><br><a href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Artenréel</a></div>
     <span class="sp">Alimentée au solaire · quasi zéro carbone ♥</span>
   </div>
 </footer>
+
+<!-- barre d'action mobile -->
+<div class="mbar" aria-label="Actions rapides">
+  <a class="btn btn-ghost" href="tel:+33601151469">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>Appeler</a>
+  <a class="btn btn-primary" href="#devis">Demander un devis</a>
+</div>
 
 <!-- ================= LIGHTBOX ================= -->
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo agrandie" hidden>
@@ -659,12 +884,67 @@
   <button class="lb-btn lb-next" id="lbNext" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
 </div>
 
+<!-- Données structurées (Google) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EntertainmentBusiness",
+  "@id": "https://karlferdinand.github.io/la-sonocyclette/#entreprise",
+  "name": "La SonoCyclette",
+  "alternateName": "Sono Cyclette",
+  "slogan": "Livraison de fête à vélo, sur place ou à emporter",
+  "description": "DJ et sonorisation mobile à vélo à Strasbourg : animation musicale écoresponsable, autonome et rechargeable au solaire, pour mariages, anniversaires, fêtes de quartier, festivals et déambulations.",
+  "url": "https://karlferdinand.github.io/la-sonocyclette/",
+  "image": "https://karlferdinand.github.io/la-sonocyclette/assets/img-hero.jpg",
+  "logo": "https://karlferdinand.github.io/la-sonocyclette/assets/avatar.png",
+  "telephone": "+33601151469",
+  "email": "ivan.vollet@gmail.com",
+  "foundingDate": "2021",
+  "address": {"@type": "PostalAddress", "addressLocality": "Strasbourg", "addressRegion": "Grand Est", "addressCountry": "FR"},
+  "areaServed": [
+    {"@type": "City", "name": "Strasbourg"},
+    {"@type": "AdministrativeArea", "name": "Eurométropole de Strasbourg"}
+  ],
+  "sameAs": [
+    "https://www.instagram.com/lasonocyclette/",
+    "https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet"
+  ],
+  "knowsAbout": ["DJ", "sonorisation mobile", "animation musicale", "événement écoresponsable", "déambulation musicale", "karaoké"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Prestations de la SonoCyclette",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ open air et guinguettes", "areaServed": "Strasbourg"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sonorisation d'événements et festivals", "areaServed": "Strasbourg"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Déambulation musicale à vélo", "areaServed": "Strasbourg"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ pour mariages, anniversaires et karaoké", "areaServed": "Strasbourg"}}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Combien coûte une prestation ?", "acceptedAnswer": {"@type": "Answer", "text": "Chaque événement est différent : le tarif dépend de la durée, du format (DJ, groupe, karaoké…) et du lieu. Décrivez votre projet dans le formulaire pour recevoir un devis personnalisé."}},
+    {"@type": "Question", "name": "Faut-il prévoir une prise électrique ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Le système son est autonome et rechargeable au solaire, avec 6 à 12 h d'autonomie selon l'utilisation. Pas de branchement, pas de groupe électrogène."}},
+    {"@type": "Question", "name": "Pour combien de personnes ?", "acceptedAnswer": {"@type": "Answer", "text": "La SonoCyclette est pensée pour des événements de 30 à 100 personnes."}},
+    {"@type": "Question", "name": "Où intervenez-vous ?", "acceptedAnswer": {"@type": "Answer", "text": "À Strasbourg et dans un rayon de 5 à 10 km : Schiltigheim, Bischheim, Illkirch-Graffenstaden, Lingolsheim, Ostwald… Pour un événement plus loin, contactez-nous."}},
+    {"@type": "Question", "name": "Quels formats sont possibles ?", "acceptedAnswer": {"@type": "Answer", "text": "DJ set, groupe jusqu'à 4 musiciens, soirée karaoké ou prise de parole : la console 5 pistes et les micros sont fournis."}},
+    {"@type": "Question", "name": "La SonoCyclette peut-elle se déplacer pendant l'événement ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui : elle fonctionne en déambulation dans la ville comme en point fixe."}},
+    {"@type": "Question", "name": "Quel matériel est fourni ?", "acceptedAnswer": {"@type": "Answer", "text": "Enceintes LD Systems Maui 5 GO et Bose S1 Pro, table de mixage Behringer Xenyx, micros Shure SM58 et t.bone, éclairage LED. Le vélo-cargo transporte jusqu'à 180 kg de matériel."}}
+  ]
+}
+</script>
+
 <script>
 /* === FIL INSTAGRAM ===
    Pour afficher les dernières publications en direct : créer un fil gratuit sur behold.so
    (connecter @lasonocyclette, créer un « Feed » de type « Widget »), puis coller son identifiant
    entre les guillemets ci-dessous. Exemple : var INSTAGRAM_FEED_ID = "AbCdEf123456"; */
 var INSTAGRAM_FEED_ID = "";
+var CONTACT_EMAIL = "ivan.vollet@gmail.com";
 
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -683,6 +963,7 @@ var INSTAGRAM_FEED_ID = "";
     b.addEventListener('click',function(e){e.stopPropagation();var o=!d.classList.contains('open');closeDDs(d);d.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');});
   });
   document.addEventListener('click',function(e){if(!e.target.closest('.dd'))closeDDs();});
+  $$('.sub a').forEach(function(a){a.addEventListener('click',function(){closeDDs();});});
 
   /* mobile menu */
   var burger=$('#burger'),mm=$('#mobileMenu');
@@ -694,7 +975,7 @@ var INSTAGRAM_FEED_ID = "";
   function activate(token,focus){
     var panel=$('[data-panel="'+token+'"]'); if(!panel) return null;
     var set=panel.closest('[data-tabs]');
-    $$('[role="tab"]',set).forEach(function(t){var on=t.getAttribute('data-tab')===token;t.setAttribute('aria-selected',on?'true':'false');t.tabIndex=on?0:-1;if(on&&focus)t.focus();if(on&&t.scrollIntoView&&t.parentNode.scrollWidth>t.parentNode.clientWidth){t.parentNode.scrollLeft=t.offsetLeft-20;}});
+    $$('[role="tab"]',set).forEach(function(t){var on=t.getAttribute('data-tab')===token;t.setAttribute('aria-selected',on?'true':'false');t.tabIndex=on?0:-1;if(on&&focus)t.focus();if(on&&t.parentNode.scrollWidth>t.parentNode.clientWidth){t.parentNode.scrollLeft=t.offsetLeft-20;}});
     $$('[role="tabpanel"]',set).forEach(function(p){p.hidden=p.getAttribute('data-panel')!==token;});
     $$('video',set).forEach(function(v){if(v.closest('[role="tabpanel"]').hidden)v.pause();});
     if(token==='instagram')loadIG();
@@ -721,14 +1002,57 @@ var INSTAGRAM_FEED_ID = "";
   if(h0&&$('[data-panel="'+h0+'"]')){activate(h0);setTimeout(function(){go(h0);},80);}
 
   /* copy buttons */
+  function copyText(btn,txt,fallbackEl){
+    var done=function(){var o=btn.textContent;btn.textContent='Copié ✓';setTimeout(function(){btn.textContent=o;},1600);};
+    var sel=function(){if(fallbackEl){var r=document.createRange();r.selectNodeContents(fallbackEl);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(sel);}else{sel();}
+  }
   $$('.copy[data-copy]').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var txt=btn.getAttribute('data-copy');
-      var done=function(){var o=btn.textContent;btn.textContent='Copié ✓';setTimeout(function(){btn.textContent=o;},1600);};
-      var sel=function(){var v=$('.val',btn.closest('.crow'));if(v){var r=document.createRange();r.selectNodeContents(v);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}};
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(sel);}else{sel();}
-    });
+    btn.addEventListener('click',function(){copyText(btn,btn.getAttribute('data-copy'),$('.val',btn.closest('.crow')));});
   });
+
+  /* quote form */
+  var form=$('#quoteForm'),res=$('#quoteResult'),qText=$('#quoteText');
+  var fDate=$('#f-date');
+  try{var t=new Date();t.setMinutes(t.getMinutes()-t.getTimezoneOffset());fDate.min=t.toISOString().slice(0,10);}catch(e){}
+  $$('[data-prefill]').forEach(function(a){a.addEventListener('click',function(){var v=a.getAttribute('data-prefill');var s=$('#f-type');$$('option',s).forEach(function(o){if(o.textContent===v)s.value=v;});});});
+  function setErr(input,errId,msg){var e=$('#'+errId);e.textContent=msg||'';if(input){if(msg)input.setAttribute('aria-invalid','true');else input.removeAttribute('aria-invalid');}return !msg;}
+  function fmtDate(v){if(!v)return'';var p=v.split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:v;}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var type=$('#f-type'),date=$('#f-date'),lieu=$('#f-lieu'),nom=$('#f-nom'),email=$('#f-email'),tel=$('#f-tel');
+    var ok=true,first=null;
+    function chk(cond,input,id,msg){var good=setErr(input,id,cond?'':msg);if(!good){ok=false;if(!first)first=input;}}
+    chk(!!type.value,type,'e-type','Choisissez un type d’événement.');
+    chk(!!date.value,date,'e-date','Indiquez la date de l’événement.');
+    chk(!!lieu.value.trim(),lieu,'e-lieu','Indiquez le lieu ou la ville.');
+    chk(!!nom.value.trim(),nom,'e-nom','Indiquez votre nom.');
+    var emailOk=!email.value.trim()||/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    var hasContact=!!(email.value.trim()||tel.value.trim());
+    var cMsg=!hasContact?'Laissez un e-mail ou un numéro de téléphone pour qu’on puisse vous répondre.':(!emailOk?'Cet e-mail ne semble pas valide (ex. nom@exemple.fr).':'');
+    setErr(null,'e-contact',cMsg);
+    if(cMsg){ok=false;email.setAttribute('aria-invalid','true');if(!first)first=email;}else{email.removeAttribute('aria-invalid');}
+    if(!ok){first.focus();return;}
+    var formats=$$('input[name="format"]:checked').map(function(c){return c.value;}).join(', ');
+    var lines=[
+      'Bonjour,','','Je souhaite un devis pour la SonoCyclette.','',
+      'Type d’événement : '+type.value,
+      'Date : '+fmtDate(date.value),
+      'Lieu : '+lieu.value.trim(),
+      'Nombre de personnes : '+($('#f-invites').value||'non précisé'),
+      'Format souhaité : '+(formats||'non précisé'),
+      '','Message : '+($('#f-msg').value.trim()||'—'),'',
+      nom.value.trim(),
+      email.value.trim()?('E-mail : '+email.value.trim()):'',
+      tel.value.trim()?('Téléphone : '+tel.value.trim()):''
+    ].filter(function(l,i,a){return !(l===''&&a[i-1]==='');});
+    var body=lines.join('\n').trim();
+    var subject='Demande de devis SonoCyclette – '+type.value+' le '+fmtDate(date.value);
+    qText.textContent='Objet : '+subject+'\n\n'+body;
+    res.hidden=false;res.focus();
+    try{window.location.href='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);}catch(err){}
+  });
+  $('#quoteCopy').addEventListener('click',function(){copyText(this,qText.textContent,qText);});
 
   /* instagram feed (Behold) — loaded only when the tab is opened, to save the monthly view quota */
   var igLoaded=false;
@@ -796,7 +1120,7 @@ var INSTAGRAM_FEED_ID = "";
   /* reveal */
   if(!reduce&&'IntersectionObserver'in window){
     document.documentElement.classList.add('anim');
-    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.15,rootMargin:'0px 0px -6% 0px'});
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:0.12,rootMargin:'0px 0px -6% 0px'});
     $$('.reveal').forEach(function(el){io.observe(el);});
     requestAnimationFrame(function(){$$('.hero .reveal').forEach(function(el){el.classList.add('in');});});
   }
