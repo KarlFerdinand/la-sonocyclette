@@ -49,7 +49,13 @@ Par défaut, le formulaire ouvre la messagerie du visiteur. Pour recevoir les de
 
 ## Mentions légales
 
-La page `mentions-legales.html` contient deux champs à compléter : adresse et numéro SIRET (chercher « à compléter »).
+La page `mentions-legales.html` indique Artenréel Spectacle comme structure éditrice (siège, RCS, SIRET, TVA) et Ivan Vollet comme directeur de la publication.
+
+## Statistiques de visite (GoatCounter)
+
+1. Créer un compte gratuit sur [goatcounter.com](https://www.goatcounter.com/signup) avec le code `lasonocyclette`.
+2. Dans `index.html`, chercher `GOATCOUNTER_CODE` et écrire `lasonocyclette` entre les guillemets.
+Sont comptés : pages vues, demandes de devis, clics sur le téléphone, l'e-mail et Instagram. Aucun cookie.
 
 ## Contact
 

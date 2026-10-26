@@ -484,6 +484,7 @@
           <li><b>100&nbsp;%</b><span>solaire</span></li>
           <li><b>6–12&nbsp;h</b><span>d'autonomie</span></li>
           <li><b>30–100</b><span>convives</span></li>
+          <li><b>350&nbsp;€&nbsp;HT</b><span>tarif de départ</span></li>
         </ul>
       </div>
       <div class="hero-photo reveal d1">
@@ -798,7 +799,7 @@
         <p class="lead">Tout ce qu'il faut savoir avant de réserver la SonoCyclette.</p>
       </div>
       <div class="faq-list">
-        <details><summary>Combien coûte une prestation&nbsp;?</summary><p class="ans">Chaque événement est différent&nbsp;: le tarif dépend de la durée, du format (DJ, groupe, karaoké…) et du lieu. Décrivez votre projet dans le formulaire pour recevoir un devis personnalisé.</p></details>
+        <details><summary>Combien coûte une prestation&nbsp;?</summary><p class="ans">Les prestations démarrent à <b>350&nbsp;€&nbsp;HT</b>. Le tarif final dépend de la durée, du format (DJ, atelier, blind test, karaoké…) et du lieu. Décrivez votre projet dans le formulaire pour recevoir un devis personnalisé et gratuit.</p></details>
         <details><summary>Faut-il prévoir une prise électrique&nbsp;?</summary><p class="ans">Non. Le système son est autonome et rechargeable au solaire, avec 6 à 12&nbsp;h d'autonomie selon l'utilisation. Pas de branchement, pas de groupe électrogène.</p></details>
         <details><summary>Pour combien de personnes&nbsp;?</summary><p class="ans">La SonoCyclette est pensée pour des événements de 30 à 100 personnes.</p></details>
         <details><summary>Où intervenez-vous&nbsp;?</summary><p class="ans">À Strasbourg et dans un rayon de 0 à 15&nbsp;km&nbsp;: Schiltigheim, Bischheim, Illkirch-Graffenstaden, Lingolsheim, Ostwald, Geispolsheim, Vendenheim… En espace public, en intérieur ou en déambulation. Pour un événement plus loin, contactez-nous.</p></details>
@@ -815,7 +816,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div><span class="eyebrow">Devis &amp; contact</span><h2 id="h-devis">Réservez la SonoCyclette</h2></div>
-        <p class="lead">Une date, un lieu, une envie&nbsp;? Décrivez votre événement, on revient vers vous avec une proposition.</p>
+        <p class="lead">Une date, un lieu, une envie&nbsp;? Décrivez votre événement, on revient vers vous avec une proposition. Prestations à partir de <b>350&nbsp;€&nbsp;HT</b>.</p>
       </div>
       <div class="devis-grid">
         <div class="form-card">
@@ -980,6 +981,8 @@
   "telephone": "+33601151469",
   "email": "ivan.vollet@gmail.com",
   "foundingDate": "2021",
+  "priceRange": "À partir de 350 € HT",
+  "currenciesAccepted": "EUR",
   "address": {"@type": "PostalAddress", "addressLocality": "Strasbourg", "addressRegion": "Grand Est", "addressCountry": "FR"},
   "areaServed": [
     {"@type": "City", "name": "Strasbourg"},
@@ -993,6 +996,7 @@
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Prestations de la SonoCyclette",
+    "offers": {"@type": "AggregateOffer", "lowPrice": "350", "priceCurrency": "EUR", "priceSpecification": {"@type": "PriceSpecification", "minPrice": "350", "priceCurrency": "EUR", "valueAddedTaxIncluded": false}},
     "itemListElement": [
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DJ open air et guinguettes", "areaServed": "Strasbourg"}},
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sonorisation d'événements et festivals", "areaServed": "Strasbourg"}},
@@ -1010,7 +1014,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Combien coûte une prestation ?", "acceptedAnswer": {"@type": "Answer", "text": "Chaque événement est différent : le tarif dépend de la durée, du format (DJ, groupe, karaoké…) et du lieu. Décrivez votre projet dans le formulaire pour recevoir un devis personnalisé."}},
+    {"@type": "Question", "name": "Combien coûte une prestation ?", "acceptedAnswer": {"@type": "Answer", "text": "Les prestations démarrent à 350 € HT. Le tarif final dépend de la durée, du format (DJ, atelier, blind test, karaoké…) et du lieu. Décrivez votre projet dans le formulaire pour recevoir un devis personnalisé et gratuit."}},
     {"@type": "Question", "name": "Faut-il prévoir une prise électrique ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Le système son est autonome et rechargeable au solaire, avec 6 à 12 h d'autonomie selon l'utilisation. Pas de branchement, pas de groupe électrogène."}},
     {"@type": "Question", "name": "Pour combien de personnes ?", "acceptedAnswer": {"@type": "Answer", "text": "La SonoCyclette est pensée pour des événements de 30 à 100 personnes."}},
     {"@type": "Question", "name": "Où intervenez-vous ?", "acceptedAnswer": {"@type": "Answer", "text": "À Strasbourg et dans un rayon de 0 à 15 km : Schiltigheim, Bischheim, Illkirch-Graffenstaden, Lingolsheim, Ostwald, Geispolsheim, Vendenheim… En espace public, en intérieur ou en déambulation. Pour un événement plus loin, contactez-nous."}},
@@ -1033,6 +1037,22 @@ var CONTACT_EMAIL = "ivan.vollet@gmail.com";
    Clé gratuite Web3Forms (web3forms.com, saisir ivan.vollet@gmail.com) : les demandes arrivent
    directement par e-mail. Sans clé, le formulaire ouvre la messagerie du visiteur. */
 var FORM_ACCESS_KEY = "";
+/* === STATISTIQUES DE VISITE ===
+   GoatCounter (goatcounter.com) : gratuit, sans cookie, sans bandeau de consentement.
+   Créer un compte avec le code « lasonocyclette » puis écrire ce code ci-dessous. */
+var GOATCOUNTER_CODE = "";
+
+function track(name){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:name,title:name,event:true});}catch(e){}}
+(function(){
+  if(!GOATCOUNTER_CODE||!/\.github\.io$|^(www\.)?lasonocyclette\./.test(location.hostname))return;
+  var s=document.createElement('script');s.async=true;s.src='https://gc.zgo.at/count.js';
+  s.setAttribute('data-goatcounter','https://'+GOATCOUNTER_CODE+'.goatcounter.com/count');
+  document.head.appendChild(s);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="tel:"],a[href^="mailto:"],a[href*="instagram.com"]');
+    if(a)track(a.href.indexOf('tel:')===0?'clic-telephone':a.href.indexOf('mailto:')===0?'clic-email':'clic-instagram');
+  });
+})();
 
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1140,6 +1160,7 @@ var FORM_ACCESS_KEY = "";
     qText.textContent='Objet : '+subject+'\n\n'+body;
     if($('#f-hp').value)return;
     var okBox=$('#quoteOk'),btn=$('button[type="submit"]',form);
+    track('demande-devis');
     function fallback(){okBox.hidden=true;res.hidden=false;res.focus();try{window.location.href='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);}catch(err){}}
     if(!FORM_ACCESS_KEY||!window.fetch){fallback();return;}
     btn.disabled=true;var lbl=btn.textContent;btn.textContent='Envoi en cours…';
