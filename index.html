@@ -257,7 +257,8 @@
   .card .more:hover{color:var(--green-text)}
 
   /* ---------- HOW (dark band) ---------- */
-  .how{background:var(--night);color:var(--night-txt)}
+  .how{background:var(--night);color:var(--night-txt);position:relative;overflow:hidden;isolation:isolate}
+  .how::after{content:"";position:absolute;z-index:-1;left:0;right:0;bottom:0;height:min(520px,64%);background:linear-gradient(to bottom,rgba(20,17,28,.68) 0%,rgba(20,17,28,.5) 45%,rgba(20,17,28,0) 92%),url(assets/ph-sunset.webp) 50% 100%/cover no-repeat;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 62%);mask-image:linear-gradient(to bottom,transparent 0,#000 62%)}
   .how .eyebrow{color:var(--sun)}
   .how .sec-head .lead{color:var(--night-muted)}
   .steps{list-style:none;margin:clamp(40px,6vw,64px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--night-line)}
@@ -270,10 +271,19 @@
   .how .btn-ghost{color:var(--night-txt);border-color:rgba(246,240,228,.35)}
   .how .btn-ghost:hover{border-color:var(--night-txt)}
 
+
+  /* ---------- PANORAMIC BANDS ---------- */
+  .band{position:relative;margin:0;overflow:hidden;background:var(--night);aspect-ratio:7/3;max-height:680px}
+  .band picture,.band img{display:block;width:100%;height:100%}
+  .band img{object-fit:cover;object-position:50% 100%;transform:scale(1.001)}
+  .band figcaption{position:absolute;z-index:2;bottom:clamp(14px,2.4vw,28px);left:max(20px,calc((100vw - var(--maxw)) / 2 + 20px));max-width:calc(100% - 40px);background:rgba(20,17,28,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-weight:700;font-size:.8rem;line-height:1.3;padding:8px 13px;border-radius:999px}
+  .band::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(to top,rgba(20,17,28,.28),transparent);pointer-events:none}
+  @media (max-width:640px){.band{aspect-ratio:4/3}}
+
   /* ---------- GALLERY ---------- */
-  .gal{display:grid;gap:14px;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,210px)}
+  .gal{display:grid;grid-auto-flow:dense;gap:14px;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,210px)}
   .shot{position:relative;margin:0;border-radius:var(--r-md);overflow:hidden;min-width:0;background:var(--surface-2)}
-  .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
   .shot figcaption{opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
   .shot:hover figcaption,.shot:focus-visible figcaption{opacity:1;transform:none}
   @media (hover:none){.shot figcaption{opacity:1;transform:none}}
@@ -454,7 +464,8 @@
     .faq-grid .sticky{position:static}
     .facts{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:18px}
     .gal{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .s-wide{grid-column:span 4}.s-tall,.s-sm{grid-column:span 2}
+    .s-wide{grid-column:span 4}.s-tall,.s-sm{grid-column:span 2}.s-tall{grid-row:span 3}
+    .gal .shot.s-tall:last-child{grid-column:span 4}
     .cards{grid-template-columns:minmax(0,1fr)}
     body{padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
     .mbar{display:grid;grid-template-columns:auto 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:90;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:10px max(14px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px))}
@@ -486,6 +497,7 @@
     .steps .n{font-size:2.4rem;margin-bottom:12px}
     .gal{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px;gap:10px}
     .s-wide{grid-column:span 2;grid-row:span 2}.s-tall{grid-column:span 1;grid-row:span 2}.s-sm{grid-column:span 1;grid-row:span 1}
+    .gal .shot.s-tall:last-child{grid-column:span 2}
     .media{border-radius:var(--r-md)}
     .faq-list .ans{padding-right:0}
     .foot-top{grid-template-columns:minmax(0,1fr)}
@@ -704,7 +716,12 @@
   </section>
 
   <!-- ================= PRESTATIONS ================= -->
-  <section id="prestations" class="sec" style="padding-top:0" data-tabs aria-labelledby="h-presta">
+  <figure class="band reveal" aria-label="Photo panoramique">
+    <picture><source media="(max-width:640px)" srcset="assets/ph-band1-m.webp"><img src="assets/ph-band1.webp" width="2048" height="878" alt="Le vélo-cargo SonoCyclette, cabine blanche et roues à rayons, devant une grande fresque street art en noir et blanc" loading="lazy" decoding="async"></picture>
+    <figcaption>Le vélo-cargo, prêt à installer la fête</figcaption>
+  </figure>
+
+  <section id="prestations" class="sec" data-tabs aria-labelledby="h-presta">
     <div class="wrap">
       <div class="sec-head reveal">
         <div><span class="eyebrow">Prestations</span><h2 id="h-presta">Animation musicale pour tous vos événements</h2></div>
@@ -832,16 +849,18 @@
 
       <div role="tabpanel" id="photos" data-panel="photos" aria-labelledby="t-photos">
         <div class="gal">
-          <figure class="shot s-wide" data-zoom data-sect="Galerie"><img src="assets/ph-g-cine.webp" width="1400" height="875" data-full="assets/ph-g-cine-full.jpg" alt="Séance de cinéma en plein air au coucher du soleil, sonorisée par la SonoCyclette" loading="lazy"><figcaption>Ciné en plein air au coucher du soleil</figcaption></figure>
-          <figure class="shot s-tall" data-zoom data-sect="Galerie"><img src="assets/ph-g-pilote.webp" width="900" height="1200" style="object-position:50% 18%" data-full="assets/ph-g-pilote-full.jpg" alt="Le pilote, pouce levé, aux commandes de la SonoCyclette" loading="lazy"><figcaption>Le pilote aux commandes</figcaption></figure>
-          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-hotelville.webp" width="900" height="562" data-full="assets/ph-g-hotelville-full.jpg" alt="La SonoCyclette garée devant une façade historique en grès rose pavoisée de drapeaux" loading="lazy"><figcaption>Escale au centre-ville</figcaption></figure>
-          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-dj.webp" width="900" height="562" data-full="assets/ph-g-dj-full.jpg" alt="DJ set tropical devant une fresque colorée, place Saint-Médard" loading="lazy"><figcaption>Set tropical à Saint-Médard</figcaption></figure>
-          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-battle.webp" width="900" height="562" data-full="assets/ph-g-battle-full.jpg" alt="Battle de danse en plein air, un danseur en plein saut, la SonoCyclette en fond" loading="lazy"><figcaption>Battle de danse en plein air</figcaption></figure>
-          <figure class="shot s-tall" data-zoom data-sect="Galerie"><img src="assets/ph-g-expo.webp" width="900" height="1200" data-full="assets/ph-g-expo-full.jpg" alt="La SonoCyclette exposée sur un tapis rouge au salon Expo du vélo" loading="lazy"><figcaption>En intérieur : Expo du vélo</figcaption></figure>
-          <figure class="shot s-wide" data-zoom data-sect="Galerie"><img src="assets/ph-g-velorution.webp" width="1400" height="875" data-full="assets/ph-g-velorution-full.jpg" alt="Grand rassemblement à vélo autour de la SonoCyclette sur une place bordée de maisons à colombages" loading="lazy"><figcaption>Rassemblement à vélo, mai 2025</figcaption></figure>
-          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-logo.webp" width="900" height="563" data-full="assets/ph-g-logo-full.jpg" alt="Gros plan sur le logo de la SonoCyclette collé sur la cabine, au milieu d'un rassemblement" loading="lazy"><figcaption>Sur place ou à emporter</figcaption></figure>
-          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-fleurs.webp" width="768" height="480" data-full="assets/ph-g-fleurs-full.jpg" alt="La SonoCyclette décorée d'une guirlande de fleurs colorées" loading="lazy"><figcaption>Habillage fleuri, saison 2026</figcaption></figure>
-          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-cathedrale.webp" width="900" height="562" data-full="assets/ph-g-cathedrale-full.jpg" alt="La SonoCyclette décorée de ballons orange sur le parvis de la cathédrale de Strasbourg" loading="lazy"><figcaption>Au pied de la cathédrale</figcaption></figure>
+          <figure class="shot s-wide" data-zoom data-sect="Galerie"><img src="assets/ph-g-cine.webp" width="1400" height="791" data-full="assets/ph-g-cine-full.jpg" alt="Séance de cinéma en plein air au coucher du soleil, sonorisée par la SonoCyclette" loading="lazy"><figcaption>Ciné en plein air au coucher du soleil</figcaption></figure>
+          <figure class="shot s-tall" data-zoom data-sect="Galerie"><img src="assets/ph-g-pilote.webp" width="900" height="1035" data-full="assets/ph-g-pilote-full.jpg" alt="Le pilote, pouce levé, aux commandes de la SonoCyclette" loading="lazy"><figcaption>Le pilote aux commandes</figcaption></figure>
+          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-hotelville.webp" width="900" height="500" data-full="assets/ph-g-hotelville-full.jpg" alt="La SonoCyclette garée devant une façade historique en grès rose pavoisée de drapeaux" loading="lazy"><figcaption>Escale au centre-ville</figcaption></figure>
+          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-dj.webp" width="900" height="500" data-full="assets/ph-g-dj-full.jpg" alt="DJ set tropical devant une fresque colorée, place Saint-Médard" loading="lazy"><figcaption>Set tropical à Saint-Médard</figcaption></figure>
+          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-battle.webp" width="900" height="500" data-full="assets/ph-g-battle-full.jpg" alt="Battle de danse en plein air, un danseur en plein saut, la SonoCyclette en fond" loading="lazy"><figcaption>Battle de danse en plein air</figcaption></figure>
+          <figure class="shot s-tall" data-zoom data-sect="Galerie"><img src="assets/ph-g-expo.webp" width="900" height="1035" data-full="assets/ph-g-expo-full.jpg" alt="La SonoCyclette exposée sur un tapis rouge au salon Expo du vélo" loading="lazy"><figcaption>En intérieur : Expo du vélo</figcaption></figure>
+          <figure class="shot s-wide" data-zoom data-sect="Galerie"><img src="assets/ph-g-velorution.webp" width="1400" height="791" data-full="assets/ph-g-velorution-full.jpg" alt="Grand rassemblement à vélo autour de la SonoCyclette sur une place bordée de maisons à colombages" loading="lazy"><figcaption>Rassemblement à vélo, mai 2025</figcaption></figure>
+          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-logo.webp" width="900" height="500" data-full="assets/ph-g-logo-full.jpg" alt="Gros plan sur le logo de la SonoCyclette collé sur la cabine, au milieu d'un rassemblement" loading="lazy"><figcaption>Sur place ou à emporter</figcaption></figure>
+          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-fleurs.webp" width="900" height="500" data-full="assets/ph-g-fleurs-full.jpg" alt="La SonoCyclette habillée de fleurs, de fanions et d'un flamant rose en origami" loading="lazy"><figcaption>Habillage fleuri et coloré</figcaption></figure>
+          <figure class="shot s-sm" data-zoom data-sect="Galerie"><img src="assets/ph-g-cathedrale.webp" width="900" height="500" data-full="assets/ph-g-cathedrale-full.jpg" alt="La SonoCyclette décorée de ballons orange sur le parvis de la cathédrale de Strasbourg" loading="lazy"><figcaption>Au pied de la cathédrale</figcaption></figure>
+          <figure class="shot s-wide" data-zoom data-sect="Galerie"><img src="assets/ph-g-setup.webp" width="1400" height="791" data-full="assets/ph-g-setup-full.jpg" alt="Cabine DJ et enceintes colonnes blanches installées sur l'herbe, à côté de la SonoCyclette" loading="lazy"><figcaption>Cabine DJ et enceintes sur l'herbe</figcaption></figure>
+          <figure class="shot s-tall" data-zoom data-sect="Galerie"><img src="assets/ph-g-pov.webp" width="900" height="1035" data-full="assets/ph-g-pov-full.jpg" alt="Vue depuis la cabine de la SonoCyclette sur un peloton de cyclistes en route" loading="lazy"><figcaption>Vu depuis la cabine</figcaption></figure>
         </div>
         <div class="gal-more"><a class="btn btn-ghost" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Plus de photos sur Instagram →</a></div>
       </div>
@@ -904,7 +923,7 @@
             </div>
           </div>
           <div class="gg-visuals">
-            <figure class="media" data-zoom data-sect="Green Guinguette"><img src="assets/ph-gg.webp" width="1024" height="768" data-full="assets/ph-gg-full.jpg" alt="La Green Guinguette au Kaleidoscoop : la SonoCyclette, la cabine DJ et un vélo-cargo installés sur la place" data-caption="Green Guinguette au Kaleidoscoop, 25 septembre 2026" loading="lazy"><figcaption>Kaleidoscoop, 25 sept. 2026</figcaption></figure>
+            <figure class="media" data-zoom data-sect="Green Guinguette"><img src="assets/ph-gg.webp" width="1400" height="1050" data-full="assets/ph-gg-full.jpg" alt="La Green Guinguette au Kaleidoscoop : la SonoCyclette, la cabine DJ et un vélo-cargo installés sur la place" data-caption="Green Guinguette au Kaleidoscoop, 25 septembre 2026" loading="lazy"><figcaption>Kaleidoscoop, 25 sept. 2026</figcaption></figure>
             <figure class="media gg-art" data-zoom data-sect="Green Guinguette"><img src="assets/gg-poster.webp" width="900" height="1125" data-full="assets/gg-poster.jpg" alt="Affiche de la Green Guinguette : free open air, fresh drinks, DJ sets, événement à vélo alimenté en solaire, quasi zéro carbone" data-caption="Affiche de la Green Guinguette, saison 2026" loading="lazy"></figure>
           </div>
         </div>
@@ -935,6 +954,11 @@
   </section>
 
   <!-- ================= DEVIS + CONTACT ================= -->
+  <figure class="band reveal" aria-label="Photo panoramique">
+    <picture><source media="(max-width:640px)" srcset="assets/ph-band2-m.webp"><img src="assets/ph-band2.webp" width="2400" height="1029" alt="Green Guinguette au Kaleidoscoop : la SonoCyclette, la cabine DJ, un vélo-cargo sonorisé et une remorque à panneau solaire installés sur la place" loading="lazy" decoding="async"></picture>
+    <figcaption>Green Guinguette · Kaleidoscoop · 25 sept. 2026</figcaption>
+  </figure>
+
   <section id="devis" class="sec devis" aria-labelledby="h-devis">
     <div class="wrap">
       <div class="sec-head reveal">
@@ -1089,7 +1113,7 @@
         <li><a href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Artenréel Spectacle</a></li></ul></div>
     </div>
     <div class="foot-bottom">
-      <span>© La SonoCyclette · Production Artenréel Spectacle · Partenaire We R Solar</span>
+      <span>© La SonoCyclette · Production Artenréel Spectacle · Partenaire We R Solar · Photo d'ambiance : <a href="https://commons.wikimedia.org/wiki/File:Solar_panel_in_the_sunset.jpg" target="_blank" rel="noopener">Annatsach</a> (CC BY 4.0)</span>
       <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a>
     </div>
   </div>
