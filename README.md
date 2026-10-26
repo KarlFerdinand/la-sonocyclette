@@ -41,6 +41,16 @@ Le site contient déjà : titre et description ciblés (« DJ & sono à vélo à
 
 Si le site passe un jour sur un nom de domaine propre (ex. lasonocyclette.fr), remplacer l'adresse `karlferdinand.github.io/la-sonocyclette` dans `index.html`, `sitemap.xml` et `robots.txt`.
 
+## Recevoir les demandes de devis directement par e-mail
+
+Par défaut, le formulaire ouvre la messagerie du visiteur. Pour recevoir les demandes directement :
+1. Sur [web3forms.com](https://web3forms.com), saisir ivan.vollet@gmail.com pour obtenir une clé gratuite.
+2. Dans `index.html`, chercher `FORM_ACCESS_KEY` et coller la clé entre les guillemets.
+
+## Mentions légales
+
+La page `mentions-legales.html` contient deux champs à compléter : adresse et numéro SIRET (chercher « à compléter »).
+
 ## Contact
 
 Ivan Vollet — ivan.vollet@gmail.com — Instagram [@lasonocyclette](https://www.instagram.com/lasonocyclette/)
