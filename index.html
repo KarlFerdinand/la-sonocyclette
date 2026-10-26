@@ -157,9 +157,25 @@
 
   /* ---------- HERO ---------- */
   .hero{position:relative;min-height:min(100svh,940px);display:flex;align-items:flex-end;color:#fff;background:var(--night);isolation:isolate;overflow:hidden}
-  .hero picture,.hero .hero-img{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
-  .hero .hero-img{object-fit:cover;object-position:62% 55%;transform:scale(1.04);animation:heroIn 1.8s cubic-bezier(.2,.7,.2,1) forwards}
-  @keyframes heroIn{to{transform:scale(1)}}
+  .hero-slides{position:absolute;inset:0;z-index:-2;margin:0}
+  .slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.2s ease;overflow:hidden}
+  .slide.is-active{opacity:1}
+  .slide picture,.slide img{display:block;width:100%;height:100%}
+  .slide img{object-fit:cover;object-position:62% 55%;transform:scale(1.07);transition:transform 4.6s cubic-bezier(.25,.6,.3,1)}
+  .slide.is-active img{transform:scale(1)}
+  .hero-ctrl{position:absolute;z-index:2;top:calc(96px + env(safe-area-inset-top,0px));right:max(20px,calc((100vw - var(--maxw)) / 2 + 20px));display:flex;align-items:center;gap:14px;color:#fff}
+  .hero-cap{font-size:.78rem;font-weight:700;letter-spacing:.02em;color:rgba(255,255,255,.85);text-align:right;max-width:36ch;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+  .dots{display:flex;gap:6px}
+  .dots button{position:relative;width:28px;height:4px;border:0;padding:0;border-radius:4px;background:rgba(255,255,255,.35);cursor:pointer;overflow:hidden}
+  .dots button::before{content:"";position:absolute;inset:-10px 0}
+  .dots button::after{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+  .dots button[aria-current="true"]::after{transform:scaleX(1)}
+  .hero.playing .dots button[aria-current="true"]::after{animation:dotfill var(--slide-ms,3000ms) linear forwards}
+  @keyframes dotfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .hero-pause{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(20,17,28,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;display:grid;place-items:center;cursor:pointer;padding:0}
+  .hero-pause:hover{background:#fff;color:#17141F}
+  .hero-pause svg{width:14px;height:14px}
+  .hero-pause .i-play{display:none}.hero:not(.playing) .hero-pause .i-play{display:block}.hero:not(.playing) .hero-pause .i-pause{display:none}
   .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
       linear-gradient(90deg,rgba(14,11,20,.86) 0%,rgba(14,11,20,.62) 34%,rgba(14,11,20,.12) 62%,rgba(14,11,20,0) 78%),
       linear-gradient(0deg,rgba(14,11,20,.78) 0%,rgba(14,11,20,0) 42%),
@@ -177,8 +193,6 @@
   .facts b{font-family:var(--font-display);font-weight:700;font-size:clamp(1.3rem,2.6vw,1.9rem);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
   .facts span{font-size:.8rem;color:rgba(255,255,255,.72);font-weight:700;letter-spacing:.02em}
   .facts li:last-child b{color:var(--sun)}
-  .scroll-cue{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:clamp(28px,5vw,56px);writing-mode:vertical-rl;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:rgba(255,255,255,.7);text-decoration:none;display:flex;align-items:center;gap:12px}
-  .scroll-cue::after{content:"";width:1px;height:54px;background:linear-gradient(rgba(255,255,255,.8),transparent)}
 
   /* ---------- PARTNERS ---------- */
   .partners{border-bottom:1px solid var(--line);background:var(--bg);display:flex;align-items:center;overflow:hidden}
@@ -445,13 +459,15 @@
     body{padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
     .mbar{display:grid;grid-template-columns:auto 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:90;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:10px max(14px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px))}
     .mbar .btn{padding:13px 18px}
-    .scroll-cue{display:none}
   }
   @media (max-width:640px){
     body{font-size:1rem}
     .hero{min-height:0;display:block}
-    .hero picture,.hero .hero-img{bottom:auto;height:66svh}
-    .hero .hero-img{object-position:62% 40%}
+    .hero-slides{bottom:auto;height:66svh}
+    .slide img{object-position:50% 45%}
+    .hero-ctrl{top:calc(80px + env(safe-area-inset-top,0px));right:20px;left:20px;justify-content:space-between;gap:10px}
+    .hero-cap{font-size:.72rem;max-width:20ch}
+    .hero-cap{text-align:left}
     .hero::before{bottom:auto;height:66svh;background:linear-gradient(180deg,rgba(14,11,20,.6) 0%,rgba(14,11,20,0) 22%,rgba(14,11,20,0) 42%,rgba(14,11,20,.8) 74%,#14111C 94%)}
     .hero .wrap{padding-top:calc(44svh);padding-bottom:36px}
     .hero h1{font-size:clamp(2.6rem,13.4vw,3.8rem)}
@@ -478,7 +494,7 @@
     .lb-nav{top:6px;margin-top:0}
     .lb-thumbs button{width:56px;height:42px}
   }
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.partners .track,.hero .hero-img{animation:none!important;transform:none}[role="tabpanel"],.lb{animation:none}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.partners .track{animation:none!important}.slide img{transform:none!important;transition:none}.slide{transition-duration:.01s}[role="tabpanel"],.lb{animation:none}}
 </style>
 </head>
 <body>
@@ -553,10 +569,13 @@
 
   <!-- ================= HERO ================= -->
   <section class="hero" aria-labelledby="h1">
-    <picture>
-      <source media="(max-width:640px)" srcset="assets/ph-hero-m.webp" type="image/webp">
-      <img class="hero-img" src="assets/ph-hero.webp" width="2000" height="1125" fetchpriority="high" alt="La SonoCyclette, tricycle sono à vélo, mène une déambulation de cyclistes sous les arcades du centre de Strasbourg">
-    </picture>
+    <div class="hero-slides" id="heroSlides" aria-roledescription="carrousel" aria-label="La SonoCyclette au Bike N Sound 2022">
+      <figure class="slide is-active" data-cap="Bike N Sound 2022 : la déambulation" aria-roledescription="diapositive" aria-label="1 sur 5"><picture><source media="(max-width:640px)" srcset="assets/ph-hero-m.webp" type="image/webp"><img class="hero-img" src="assets/ph-hero.webp" width="2000" height="1125" fetchpriority="high" alt="La SonoCyclette mène une déambulation de cyclistes sous les arcades du centre de Strasbourg" style="object-position:62% 55%"></picture></figure>
+      <figure class="slide" data-cap="Bike N Sound 2022 : escale à Saint-Médard" aria-roledescription="diapositive" aria-label="2 sur 5" aria-hidden="true"><picture><source media="(max-width:640px)" data-srcset="assets/hs2-m.webp" type="image/webp"><img data-src="assets/hs2.webp" width="2000" height="1250" alt="La SonoCyclette à l'arrêt devant une fresque colorée, parasol jaune ouvert" style="object-position:70% 50%"></picture></figure>
+      <figure class="slide" data-cap="Bike N Sound 2022 : DJ set tropical" aria-roledescription="diapositive" aria-label="3 sur 5" aria-hidden="true"><picture><source media="(max-width:640px)" data-srcset="assets/hs3-m.webp" type="image/webp"><img data-src="assets/hs3.webp" width="2000" height="1250" alt="DJ set derrière une nappe à feuilles de palmier, devant une fresque street art" style="object-position:60% 45%"></picture></figure>
+      <figure class="slide" data-cap="Bike N Sound 2022 : set en centre-ville" aria-roledescription="diapositive" aria-label="4 sur 5" aria-hidden="true"><picture><source media="(max-width:640px)" data-srcset="assets/hs4-m.webp" type="image/webp"><img data-src="assets/hs4.webp" width="1536" height="960" alt="DJ set en terrasse devant une devanture bleue, la SonoCyclette garée à côté" style="object-position:62% 55%"></picture></figure>
+      <figure class="slide" data-cap="Bike N Sound 2022 : aux commandes" aria-roledescription="diapositive" aria-label="5 sur 5" aria-hidden="true"><picture><source media="(max-width:640px)" data-srcset="assets/hs5-m.webp" type="image/webp"><img data-src="assets/hs5.webp" width="2000" height="1250" alt="Le DJ pilote le son depuis la tablette fixée dans la cabine de la SonoCyclette" style="object-position:62% 45%"></picture></figure>
+    </div>
     <div class="wrap" id="contenu">
       <span class="hero-kicker reveal">Strasbourg · depuis 2021</span>
       <h1 id="h1" class="reveal d1">La SonoCyclette<span>DJ &amp; sono à vélo, 100&nbsp;% solaire</span></h1>
@@ -574,7 +593,11 @@
         <li><b>350&nbsp;€&nbsp;HT</b><span>tarif de départ</span></li>
       </ul>
     </div>
-    <a class="scroll-cue" href="#projet" aria-hidden="true" tabindex="-1">Découvrir</a>
+    <div class="hero-ctrl">
+      <span class="hero-cap" id="heroCap" aria-live="off">Bike N Sound 2022 : la déambulation</span>
+      <div class="dots" id="heroDots" role="group" aria-label="Choisir une photo"></div>
+      <button class="hero-pause" id="heroPause" type="button" aria-label="Mettre le diaporama en pause"><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+    </div>
   </section>
 
   <!-- ================= PARTENAIRES ================= -->
@@ -1382,6 +1405,34 @@ function track(name){try{if(window.goatcounter&&window.goatcounter.count)window.
     var dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;tx=null;
     if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)){show(idx+(dx<0?1:-1),dx<0?1:-1);}
   });
+
+  /* diaporama d'accueil : défilement automatique toutes les 3 secondes */
+  (function(){
+    var hero=$('.hero'),slides=$$('.slide',hero),dotsBox=$('#heroDots'),capEl=$('#heroCap'),pauseBtn=$('#heroPause');
+    if(slides.length<2)return;
+    var DELAY=3000,cur=0,timer=null,playing=!reduce,loaded=false;
+    hero.style.setProperty('--slide-ms',DELAY+'ms');
+    function loadAll(){if(loaded)return;loaded=true;slides.forEach(function(sl){var so=$('source[data-srcset]',sl),im=$('img[data-src]',sl);if(so){so.srcset=so.getAttribute('data-srcset');}if(im){im.src=im.getAttribute('data-src');im.decoding='async';}});}
+    var dots=slides.map(function(sl,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Photo '+(i+1)+' : '+sl.getAttribute('data-cap'));b.addEventListener('click',function(){loadAll();show(i);restart();});dotsBox.appendChild(b);return b;});
+    function show(i){
+      cur=(i+slides.length)%slides.length;
+      slides.forEach(function(sl,k){var on=k===cur;sl.classList.toggle('is-active',on);if(on)sl.removeAttribute('aria-hidden');else sl.setAttribute('aria-hidden','true');});
+      dots.forEach(function(d,k){d.setAttribute('aria-current',k===cur?'true':'false');});
+      capEl.textContent=slides[cur].getAttribute('data-cap');
+      // relance l'animation de la barre de progression
+      var d=dots[cur];d.style.animation='none';void d.offsetWidth;d.style.animation='';
+    }
+    function tick(){show(cur+1);}
+    function start(){stop();if(playing&&!document.hidden){timer=setInterval(tick,DELAY);}hero.classList.toggle('playing',playing);}
+    function stop(){if(timer){clearInterval(timer);timer=null;}}
+    function restart(){start();}
+    pauseBtn.addEventListener('click',function(){playing=!playing;pauseBtn.setAttribute('aria-label',playing?'Mettre le diaporama en pause':'Relancer le diaporama');if(playing)loadAll();start();});
+    document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else start();});
+    if(reduce)pauseBtn.setAttribute('aria-label','Relancer le diaporama');
+    show(0);
+    var boot=function(){loadAll();start();};
+    if(document.readyState==='complete')setTimeout(boot,300);else window.addEventListener('load',function(){setTimeout(boot,300);});
+  })();
 
   /* reveal */
   if(!reduce&&'IntersectionObserver'in window){
