@@ -18,7 +18,7 @@ En ligne : https://karlferdinand.github.io/la-sonocyclette/
 Pour changer une photo : déposer la nouvelle image dans `assets/` avec **le même nom de fichier** que l'ancienne (« Add file » → « Upload files »).
 
 **Photos : étalonnage et filigrane.** Les photos du site sont étalonnées de la même façon (balance des blancs, exposition, contraste, chaleur), recadrées au format exact de leur emplacement et portent un filigrane discret « LA SONOCYCLETTE » en bas de l'image (versions affichées et versions agrandies de la visionneuse ; pas sur le diaporama d'accueil). Une photo déposée telle quelle n'aura donc ni le même rendu ni le filigrane : le plus simple est de la transmettre pour qu'elle soit traitée avec la même chaîne.
-Le fond de l'encart « De votre demande à la fête » est une photo d'ambiance libre de droits (« Solar panel in the sunset », Annatsach, Wikimedia Commons, CC BY 4.0), créditée dans le pied de page et dans les mentions légales : ne pas retirer ce crédit.
+Toutes les photos du site viennent de la photothèque de La SonoCyclette (aucune image tierce, aucun crédit à maintenir).
 
 ## Afficher le fil Instagram en direct (onglet « Actus Instagram »)
 

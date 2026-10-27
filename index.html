@@ -257,8 +257,7 @@
   .card .more:hover{color:var(--green-text)}
 
   /* ---------- HOW (dark band) ---------- */
-  .how{background:var(--night);color:var(--night-txt);position:relative;overflow:hidden;isolation:isolate}
-  .how::after{content:"";position:absolute;z-index:-1;left:0;right:0;bottom:0;height:min(520px,64%);background:linear-gradient(to bottom,rgba(20,17,28,.68) 0%,rgba(20,17,28,.5) 45%,rgba(20,17,28,0) 92%),url(assets/ph-sunset.webp) 50% 100%/cover no-repeat;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 62%);mask-image:linear-gradient(to bottom,transparent 0,#000 62%)}
+  .how{background:var(--night);color:var(--night-txt)}
   .how .eyebrow{color:var(--sun)}
   .how .sec-head .lead{color:var(--night-muted)}
   .steps{list-style:none;margin:clamp(40px,6vw,64px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--night-line)}
@@ -267,6 +266,11 @@
   .steps .n{display:block;font-family:var(--font-display);font-weight:700;font-size:3.2rem;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.2px var(--sun);margin-bottom:22px}
   .steps h3{font-size:1.3rem;margin-bottom:8px;color:var(--night-txt);letter-spacing:-.015em}
   .steps p{color:var(--night-muted);font-size:.98rem}
+  .how-photo{position:relative;margin:clamp(40px,5vw,56px) 0 0;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:2/1;background:#0e0c14;box-shadow:0 24px 60px -28px rgba(0,0,0,.7)}
+  .how-photo picture,.how-photo img{display:block;width:100%;height:100%}
+  .how-photo img{object-fit:cover;object-position:50% 60%}
+  .how-photo figcaption{position:absolute;z-index:2;left:clamp(14px,2vw,24px);bottom:clamp(14px,2vw,24px);max-width:calc(100% - 28px);background:rgba(20,17,28,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-weight:700;font-size:.8rem;line-height:1.3;padding:8px 13px;border-radius:999px}
+  @media (max-width:640px){.how-photo{aspect-ratio:4/3;border-radius:var(--r-md)}}
   .how .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:48px}
   .how .btn-ghost{color:var(--night-txt);border-color:rgba(246,240,228,.35)}
   .how .btn-ghost:hover{border-color:var(--night-txt)}
@@ -737,7 +741,7 @@
 
       <div role="tabpanel" id="openair" data-panel="openair" aria-labelledby="t-openair">
         <div class="split">
-          <figure class="media" data-zoom data-sect="Prestations"><img src="assets/ph-openair.webp" width="1200" height="960" data-full="assets/ph-openair-full.jpg" alt="DJ set en plein air dans un parc de Strasbourg avec la SonoCyclette, en fin de journée" data-caption="DJ set en fin de journée, dans un parc de Strasbourg" loading="lazy"><figcaption>Golden hour au parc</figcaption></figure>
+          <figure class="media" data-zoom data-sect="Prestations"><img src="assets/ph-openair.webp" width="1200" height="960" data-full="assets/ph-openair-full.jpg" alt="Sono installée en plein air dans un parc de Strasbourg : enceintes colonnes blanches, table de mixage et cabine blanche sous un grand arbre" data-caption="Installation en plein air, dans un parc de Strasbourg" loading="lazy"><figcaption>Installée sous les arbres</figcaption></figure>
           <div class="txt">
             <h3>Open air &amp; guinguettes</h3>
             <p>Des DJ sets en extérieur, là où on ne les attend pas. Places, parcs, cours et berges deviennent une piste de danse le temps d'un après-midi.</p>
@@ -826,6 +830,10 @@
         <li class="reveal d2"><span class="n">03</span><h3>On arrive à vélo</h3><p>Installation rapide, sans prise électrique ni groupe électrogène&nbsp;: la sono est autonome.</p></li>
         <li class="reveal d3"><span class="n">04</span><h3>La fête commence</h3><p>DJ, live ou karaoké, en espace public, en intérieur ou en déambulation, avec 6 à 12&nbsp;h d'autonomie.</p></li>
       </ol>
+      <figure class="how-photo reveal">
+        <picture><source media="(max-width:640px)" srcset="assets/ph-how-m.webp"><img src="assets/ph-how.webp" width="1740" height="870" alt="La SonoCyclette, cabine blanche et vélo-cargo, garée dans une rue du centre de Strasbourg" loading="lazy" decoding="async"></picture>
+        <figcaption>Elle arrive à vélo, jusqu'au cœur de la ville</figcaption>
+      </figure>
       <div class="cta-row reveal">
         <a class="btn btn-primary" href="#devis">Demander un devis <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-ghost" href="#faq">Questions fréquentes</a>
@@ -1113,7 +1121,7 @@
         <li><a href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Artenréel Spectacle</a></li></ul></div>
     </div>
     <div class="foot-bottom">
-      <span>© La SonoCyclette · Production Artenréel Spectacle · Partenaire We R Solar · Photo d'ambiance : <a href="https://commons.wikimedia.org/wiki/File:Solar_panel_in_the_sunset.jpg" target="_blank" rel="noopener">Annatsach</a> (CC BY 4.0)</span>
+      <span>© La SonoCyclette · Production Artenréel Spectacle · Partenaire We R Solar</span>
       <a href="mentions-legales.html">Mentions légales &amp; confidentialité</a>
     </div>
   </div>
