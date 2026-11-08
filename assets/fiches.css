@@ -192,13 +192,41 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   .spec:nth-last-child(2){border-bottom:1px solid var(--line)}
 }
 @media print{
-  @page{size:A4;margin:12mm}
-  body{background:#fff;font-size:10.5pt}
-  .top{display:none}
-  .hero .wrap{padding-top:70px}
-  section{padding:22px 0;break-inside:avoid-page}
-  .opt,.fmt,.note,.check li,.steps li,.combo{break-inside:avoid}
-  .ptable,.opt,.val,.contact,.combo{box-shadow:none}
+  @page{size:A4;margin:10mm 10mm 12mm}
+  body{background:#fff}
+  .top,.hero .cta,.contact .cta,.dl,.no-print{display:none!important}
+  .hero .wrap{padding-top:44px;padding-bottom:24px}
+  .hero .pills{margin-top:14px}
+  .hero h1{font-size:3.4rem}
+  .pb{break-before:page}
+  .print-hide,.shot{display:none!important}
+  .opt .ph{aspect-ratio:16/7}
+  #complements .opt .ph{aspect-ratio:16/6}
+  .offer figure{min-height:0}
+  .ptable td{padding:9px 18px}
+  .ptable tr.grp td{padding:7px 18px}
+  .combos{margin-top:12px}
+  .combo{padding:14px 18px}
+  .contact{padding:24px 28px}
+  .note{padding:14px 16px}
+  .fmt .ph{min-height:96px}
+  .fmt .bd{padding:10px 18px}
+  .fmt p{margin-top:6px}
+  .facts{margin-top:6px}
+  .offer .bd{padding:24px 28px}
+  .incl{margin-top:14px;gap:7px}
+  .head h2{font-size:2.2rem}
+  .check li{padding:12px 16px}
+  .steps li{padding:14px}
+  .vals .val{padding:18px}
+  section{padding:18px 0}
+  section+section{padding-top:0}
+  .head{margin-bottom:16px}
+  .opt,.fmt,.note,.check li,.steps li,.combo,.val,.offer,.ptable tr,.contact,.spec,.bike,.shot{break-inside:avoid}
+  .head{break-after:avoid}
+  .ptable,.opt,.val,.contact,.combo,.offer{box-shadow:none}
+  a{text-decoration:none}
+  footer{padding:14px 0}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 .ptable tbody tr.base td{background:var(--tint)!important}
@@ -250,3 +278,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 @media (max-width:560px){.ptable tr.grp{display:block}.ptable tr.grp td{display:block;padding:10px 14px}}
 .opt .ph{aspect-ratio:16/10;overflow:hidden}
 .opt .ph img{position:absolute;inset:0}
+
+.dl{display:inline-flex;align-items:center;gap:8px}
+.dl svg{width:18px;height:18px}
