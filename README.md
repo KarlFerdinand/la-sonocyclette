@@ -10,7 +10,7 @@ En ligne : https://karlferdinand.github.io/la-sonocyclette/
 - `tarifs.html` — la fiche tarifs (forfait, compléments, options, récapitulatif, conditions)
 - `infos-pratiques.html` — la fiche pratique (dimensions du vélo, repérage du parcours, formats, à la charge de l'organisation)
 - `assets/fiches.css` — les styles communs aux deux fiches
-- `assets/la-sonocyclette-tarifs.pdf` et `assets/la-sonocyclette-infos-pratiques.pdf` — les fiches en PDF (A4, 3 pages chacune) à envoyer aux clients, téléchargeables depuis les pages. Elles ne se mettent pas à jour toutes seules : après un changement de tarif ou de texte, il faut les regénérer.
+- `fiche-client.html` — la fiche client imprimable (A4, 2 pages : page 1 organisation, page 2 tarifs), non référencée. Elle sert à produire `assets/la-sonocyclette-fiche-client.pdf` (les 2 pages), `assets/la-sonocyclette-fiche-organisation.pdf` et `assets/la-sonocyclette-fiche-tarifs.pdf` (une page chacune), téléchargeables depuis les fiches du site. Après un changement de tarif ou de texte, modifier aussi `fiche-client.html` et regénérer les PDF.
 
 **Tarifs : à changer partout en même temps.** Le forfait (450 € HT) apparaît aussi sur l'accueil (bandeau, onglets Prestations, FAQ, bloc Devis et données Google en bas de `index.html`). En cas de changement de prix, chercher « 450 » dans les trois fichiers.
 - `assets/` — photos, teaser vidéo, logo et icônes
