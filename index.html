@@ -134,7 +134,7 @@
   .nav .btn{padding:11px 18px;font-size:.92rem}
   .burger{display:none;background:none;border:0;cursor:pointer;color:inherit;padding:8px;margin-left:auto}
   .burger svg{width:28px;height:28px}
-  .mobile-menu{display:none;padding:6px 0 20px;max-height:calc(100svh - 80px);overflow-y:auto;color:var(--ink)}
+  .mobile-menu{display:none;padding-top:6px;padding-bottom:20px;max-height:calc(100svh - 80px);overflow-y:auto;color:var(--ink)}
   .mobile-menu.open{display:block}
   header.menu-open{background:var(--bg);color:var(--ink);border-bottom-color:var(--line)}
   header.menu-open .mark .b{fill:var(--surface)} header.menu-open .brand b{color:var(--green-text)}
@@ -409,7 +409,7 @@
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--night);color:var(--night-muted);padding-block:clamp(48px,7vw,80px) 28px}
-  .foot-top{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,.7fr));gap:32px}
+  .foot-top{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(2,minmax(0,.7fr));gap:32px}
   .foot-brand img{width:150px;height:auto;margin-bottom:18px;background:#F6F1E7;border-radius:20px;padding:14px 16px}
   .foot-brand p{max-width:34ch;font-size:.95rem}
   footer h4{font-family:var(--font-body);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--night-txt);margin:0 0 14px;font-weight:800}
@@ -528,10 +528,23 @@
     .steps p{font-size:.88rem;line-height:1.45}
     .foot-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
     .foot-brand{grid-column:1/-1}
-    .foot-top>div:nth-child(3){display:none}
     .foot-bottom{margin-top:28px}
   }
 
+
+  /* navigation mobile à plat */
+  .mm-flat{display:flex;flex-direction:column;padding:6px 4px 14px}
+  .mm-flat a{text-decoration:none;font-family:var(--font-display);font-weight:700;font-size:1.35rem;letter-spacing:-.015em;padding:13px 2px;border-bottom:1px solid var(--line)}
+  .mm-flat a:last-child{border-bottom:0}
+  /* galerie : commandes */
+  .gal-more{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .gal-nav{display:flex;gap:8px}
+  .gal-btn{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line-2);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+  .gal-btn:hover{border-color:var(--ink)}
+  .gal-btn:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+  .gal-btn svg{width:20px;height:20px}
+  @media (max-width:640px){.side .side-card{display:none}}
+  @media (max-width:640px){.gal .shot,.gal .shot.s-wide,.gal .shot.s-tall,.gal .shot.s-sm{height:auto;width:80vw;aspect-ratio:4/3}}
 </style>
 </head>
 <body>
@@ -554,38 +567,11 @@
       <span>La <b>Sono</b>Cyclette</span>
     </a>
     <nav class="menu" aria-label="Navigation principale">
-      <div class="dd">
-        <button class="dd-btn" aria-expanded="false" aria-haspopup="true">Le projet <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></button>
-        <div class="sub">
-          <a href="#concept" data-go="concept">Le concept<small>Vélo-cargo, son, DJ</small></a>
-          <a href="#durable" data-go="durable">Événement durable<small>Solaire, local, décarboné</small></a>
-          <a href="#materiel" data-go="materiel">Le matériel<small>Fiche technique</small></a>
-          <a href="#partenaires" data-go="partenaires">Partenaires<small>Artenréel Spectacle, We R Solar</small></a>
-        </div>
-      </div>
-      <div class="dd">
-        <button class="dd-btn" aria-expanded="false" aria-haspopup="true">Prestations <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></button>
-        <div class="sub">
-          <a href="#openair" data-go="openair">Open air &amp; guinguettes</a>
-          <a href="#evenements" data-go="evenements">Événements &amp; festivals</a>
-          <a href="#causes" data-go="causes">Causes &amp; collectifs</a>
-          <a href="#surmesure" data-go="surmesure">Mariages, anniversaires &amp; karaoké</a>
-          <a href="#ateliers" data-go="ateliers">Ateliers &amp; animations<small>Initiation DJ, podcast, radio, karaoké</small></a>
-          <a href="#etapes">Comment ça marche<small>De la demande à l'événement</small></a>
-          <a href="tarifs.html">Tarifs<small>Forfait, options, conditions</small></a>
-          <a href="infos-pratiques.html">Infos pratiques<small>Dimensions, repérage, formats</small></a>
-        </div>
-      </div>
-      <div class="dd">
-        <button class="dd-btn" aria-expanded="false" aria-haspopup="true">Découvrir <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></button>
-        <div class="sub">
-          <a href="#photos" data-go="photos">Photos<small>La saison en images</small></a>
-          <a href="#instagram" data-go="instagram">Actus Instagram<small>Les dernières publications</small></a>
-          <a href="#teaser" data-go="teaser">Le teaser<small>Saison 2025 / 2026</small></a>
-          <a href="#guinguette" data-go="guinguette">Green Guinguette<small>Événement signature</small></a>
-        </div>
-      </div>
+      <a class="nav-link" href="#projet">Le projet</a>
+      <a class="nav-link" href="#prestations">Prestations</a>
+      <a class="nav-link" href="#decouvrir">En images</a>
       <a class="nav-link" href="tarifs.html">Tarifs</a>
+      <a class="nav-link" href="infos-pratiques.html">Infos pratiques</a>
       <a class="nav-link" href="#faq">FAQ</a>
     </nav>
     <a class="btn btn-primary" href="#devis">Demander un devis</a>
@@ -594,13 +580,14 @@
     </button>
   </div>
   <div class="wrap mobile-menu" id="mobileMenu">
-    <div class="mm-group"><div class="mm-title">Le projet</div><div class="mm-links">
-      <a href="#concept" data-go="concept">Le concept</a><a href="#durable" data-go="durable">Événement durable</a><a href="#materiel" data-go="materiel">Matériel</a><a href="#partenaires" data-go="partenaires">Partenaires</a></div></div>
-    <div class="mm-group"><div class="mm-title">Prestations</div><div class="mm-links">
-      <a href="#openair" data-go="openair">Open air</a><a href="#evenements" data-go="evenements">Événements</a><a href="#causes" data-go="causes">Causes</a><a href="#surmesure" data-go="surmesure">Mariages &amp; anniversaires</a><a href="#ateliers" data-go="ateliers">Ateliers &amp; animations</a><a href="#etapes">Comment ça marche</a></div></div>
-    <div class="mm-group"><div class="mm-title">Découvrir</div><div class="mm-links">
-      <a href="#photos" data-go="photos">Photos</a><a href="#instagram" data-go="instagram">Actus Instagram</a><a href="#teaser" data-go="teaser">Teaser</a><a href="#guinguette" data-go="guinguette">Green Guinguette</a></div></div>
-    <div class="mm-group"><div class="mm-links"><a href="tarifs.html">Tarifs</a><a href="infos-pratiques.html">Infos pratiques</a><a href="#faq">Questions fréquentes</a></div></div>
+    <nav class="mm-flat" aria-label="Navigation mobile">
+      <a href="#projet">Le projet</a>
+      <a href="#prestations">Prestations</a>
+      <a href="#decouvrir">En images</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="infos-pratiques.html">Infos pratiques</a>
+      <a href="#faq">Questions fréquentes</a>
+    </nav>
     <a class="btn btn-primary" href="#devis">Demander un devis</a>
   </div>
 </header>
@@ -620,7 +607,7 @@
       <span class="hero-kicker reveal">Strasbourg · depuis 2021</span>
       <h1 id="h1" class="reveal d1">La SonoCyclette<span>DJ &amp; sono à vélo, 100&nbsp;% solaire</span></h1>
       <p class="slogan reveal d2">Votre événement livré à vélo, sur place ou à emporter.</p>
-      <p class="sub-txt reveal d2">Animation musicale écoresponsable pour mariages, anniversaires, événements de quartier et festivals, ateliers DJ, blind tests et karaoké&nbsp;: un DJ professionnel et un système son autonome, rechargé au soleil.</p>
+      <p class="sub-txt reveal d2">Un DJ professionnel et une sono autonome, rechargée au soleil, pour vos mariages, festivals, événements de quartier, ateliers et déambulations.</p>
       <div class="cta-row reveal d3">
         <a class="btn btn-primary" href="#devis">Demander un devis <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-light" href="#teaser" data-go="teaser"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>Voir le teaser</a>
@@ -651,17 +638,13 @@
   <!-- ================= LE PROJET ================= -->
   <section id="projet" class="sec" data-tabs aria-labelledby="h-projet">
     <div class="wrap">
-      <div class="manifesto reveal">
-        <img src="assets/logo-sonocyclette.svg" width="754" height="522" alt="Logo de la SonoCyclette : le tricycle à habitacle avec « La Sono Cyclette » écrit sur la cabine">
-        <p>Une scène mobile qui roule <em>à la force du mollet</em>, se recharge <span class="hl">au soleil</span> et installe la musique là où on ne l'attend pas.</p>
-      </div>
-      <div class="sec-head reveal" style="margin-top:clamp(64px,9vw,112px)">
+      
+      <div class="sec-head reveal">
         <div><span class="eyebrow">Le projet</span><h2 id="h-projet">Une sono à vélo, 100&nbsp;% autonome</h2></div>
-        <p class="lead">Un vélo-cargo qui transporte le son, l'énergie et l'ambiance jusqu'à vous.</p>
+        <p class="lead">Une scène mobile qui roule à la force du mollet, se recharge au soleil et installe la musique là où on ne l'attend pas.</p>
       </div>
       <div class="tabs" role="tablist" aria-label="Le projet">
         <button class="tab" role="tab" id="t-concept" aria-controls="concept" data-tab="concept" aria-selected="true">Le concept</button>
-        <button class="tab" role="tab" id="t-durable" aria-controls="durable" data-tab="durable" aria-selected="false" tabindex="-1">Événement durable</button>
         <button class="tab" role="tab" id="t-materiel" aria-controls="materiel" data-tab="materiel" aria-selected="false" tabindex="-1">Le matériel</button>
         <button class="tab" role="tab" id="t-partenaires" aria-controls="partenaires" data-tab="partenaires" aria-selected="false" tabindex="-1">Partenaires</button>
       </div>
@@ -673,27 +656,11 @@
             <h3>Trois métiers, un seul vélo</h3>
             <p>La SonoCyclette réunit le transport, le son et l'animation&nbsp;: elle arrive à vélo, s'installe rapidement et anime votre événement.</p>
             <ul class="list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3.5"/><circle cx="18" cy="17" r="3.5"/><path d="M6 17l4-9h4m-2 9l2-9m0 0 4 9"/></svg><span>Un vélo-cargo costaud<small>Jusqu'à 180&nbsp;kg de matériel son et lumière, en espace public, en intérieur ou en déambulation.</small></span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="3"/><circle cx="12" cy="9" r="2"/><circle cx="12" cy="15.5" r="2.6"/></svg><span>Une sonorisation autonome<small>Enceintes LD Maui et Bose S1 Pro sur batterie, rechargées au solaire.</small></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3.5"/><circle cx="18" cy="17" r="3.5"/><path d="M6 17l4-9h4m-2 9l2-9m0 0 4 9"/></svg><span>Un vélo-cargo costaud<small>Jusqu'à 180&nbsp;kg de matériel, en espace public, en intérieur ou en déambulation, dans un rayon de 15&nbsp;km autour de Strasbourg.</small></span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="3"/><circle cx="12" cy="9" r="2"/><circle cx="12" cy="15.5" r="2.6"/></svg><span>Une sonorisation autonome<small>Enceintes sur batterie rechargées au solaire, 6 à 12&nbsp;h d'autonomie. Ni groupe électrogène, ni camion.</small></span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="16" r="3"/><circle cx="17" cy="15" r="3"/><path d="M10.5 16V6l9.5-2v11"/></svg><span>Un DJ &amp; régisseur<small>Un DJ professionnel, technicien expérimenté et diplômé en animation, assure l'accueil technique et l'ambiance musicale.</small></span></li>
             </ul>
-            <p class="price" style="margin-top:22px">À partir de <b>450&nbsp;€&nbsp;HT</b> · <a href="tarifs.html">Voir les tarifs</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div role="tabpanel" id="durable" data-panel="durable" aria-labelledby="t-durable" hidden>
-        <div class="split rev">
-          <figure class="media" data-zoom data-sect="Le projet"><img src="assets/ph-durable.webp" width="1200" height="960" data-full="assets/ph-durable-full.jpg" alt="Contrôleur DJ installé dans un pré au coucher du soleil" data-caption="Les platines au coucher du soleil" loading="lazy"><figcaption>Au soleil couchant, sans un câble</figcaption></figure>
-          <div class="txt">
-            <h3>Décarbonée, locale, indépendante</h3>
-            <p>Un circuit court, sans moteur thermique, pour une plus grande liberté.</p>
-            <ul class="list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Intervention dans un rayon de 0 à 15&nbsp;km autour de Strasbourg</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>6 à 12&nbsp;h d'autonomie selon l'utilisation</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Aucun groupe électrogène, aucun camion</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Local et indépendant, au plus près des habitant·es</span></li>
-            </ul>
+            
           </div>
         </div>
       </div>
@@ -711,9 +678,9 @@
               <div class="spec"><small>Capacité</small><b>Jusqu'à 180&nbsp;kg de matériel</b></div>
               <div class="spec"><small>Autonomie</small><b>6 à 12&nbsp;h, recharge solaire</b></div>
               <div class="spec"><small>Formats</small><b>DJ, groupe jusqu'à 4 musiciens, karaoké, discours</b></div>
-              <div class="spec"><small>Zone &amp; lieux</small><b>0 à 15&nbsp;km&nbsp;: espace public, intérieur, déambulation</b></div>
+              <div class="spec"><small>Dimensions</small><b>2,70 × 1,00 × 1,90&nbsp;m, env. 150&nbsp;kg</b></div>
             </div>
-            <p class="note">Fiche technique complète sur demande.</p>
+            <p class="note">Accès et contraintes de parcours&nbsp;: voir les <a href="infos-pratiques.html">infos pratiques</a>.</p>
           </div>
         </div>
       </div>
@@ -724,13 +691,13 @@
             <small class="role">Production &amp; administration</small>
             <h3>Artenréel Spectacle</h3>
             <p>La SonoCyclette travaille en collaboration avec Artenréel Spectacle, qui en assure la production et l'administration.</p>
-            <a class="more" href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Voir le projet sur Artenréel →</a>
+            <a class="more" href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Voir le projet sur Artenréel</a>
           </div>
           <div class="card">
             <small class="role">Partenaire événementiel</small>
             <h3>We R Solar</h3>
             <p>En partenariat avec We R Solar pour tous types d'événements, pour réinventer l'événementiel.</p>
-            <a class="more" href="https://www.instagram.com/we.r.solar/" target="_blank" rel="noopener">@we.r.solar →</a>
+            <a class="more" href="https://www.instagram.com/we.r.solar/" target="_blank" rel="noopener">@we.r.solar</a>
           </div>
           <div class="card">
             <small class="role">Soutien</small>
@@ -749,7 +716,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div><span class="eyebrow">Prestations</span><h2 id="h-presta">Animation musicale pour tous vos événements</h2></div>
-        <p class="lead">Pour tout événement à Strasbourg et alentours. Choisissez votre format, on s'adapte. <b>Forfait à 450&nbsp;€&nbsp;HT</b> pour 1 à 3&nbsp;h d'animation, vélo et DJ compris. <a href="tarifs.html">Voir la fiche tarifs</a>.</p>
+        <p class="lead">Cinq formats, un même forfait&nbsp;: <b>450&nbsp;€&nbsp;HT</b> pour 1 à 3&nbsp;h d'animation, vélo et DJ compris. <a href="tarifs.html">Voir les tarifs</a></p>
       </div>
       <div class="tabs" role="tablist" aria-label="Prestations">
         <button class="tab" role="tab" id="t-openair" aria-controls="openair" data-tab="openair" aria-selected="true">Open air</button>
@@ -764,7 +731,7 @@
           <figure class="media" data-zoom data-sect="Prestations"><img src="assets/ph-openair.webp" width="1200" height="960" data-full="assets/ph-openair-full.jpg" alt="Sono installée en plein air dans un parc de Strasbourg : enceintes colonnes blanches, table de mixage et cabine blanche sous un grand arbre" data-caption="Installation en plein air, dans un parc de Strasbourg" loading="lazy"><figcaption>Installée sous les arbres</figcaption></figure>
           <div class="txt">
             <h3>Open air &amp; guinguettes</h3>
-            <p>Des DJ sets en extérieur, là où on ne les attend pas. Places, parcs, cours et berges deviennent une piste de danse le temps d'un après-midi.</p>
+            <p>Places, parcs, cours et berges deviennent une piste de danse le temps d'un après-midi.</p>
             <ul class="list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Free open air et guinguettes itinérantes</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Installation rapide, sans branchement</span></li>
@@ -779,7 +746,7 @@
           <figure class="media" data-zoom data-sect="Prestations"><img src="assets/ph-evenements.webp" width="1200" height="960" data-full="assets/ph-evenements-full.jpg" alt="La SonoCyclette habillée de parasols et de ballons orange et blancs sur une place de Strasbourg" data-caption="Habillage événementiel : parasols et ballons" loading="lazy"><figcaption>Habillage aux couleurs de l'événement</figcaption></figure>
           <div class="txt">
             <h3>Événements &amp; festivals</h3>
-            <p>Un système son autonome pour les petites formes artistiques dans des lieux atypiques&nbsp;: la scène vient à vous, habillée aux couleurs de votre événement.</p>
+            <p>Pour les petites formes artistiques et les lieux atypiques&nbsp;: la scène vient à vous, habillée aux couleurs de votre événement.</p>
             <ul class="list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Marchés, inaugurations, événements de quartier</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Fête de la Musique, concerts, théâtre, spectacle vivant</span></li>
@@ -809,7 +776,7 @@
           <figure class="media" data-zoom data-sect="Prestations"><img src="assets/ph-mariages.webp" width="1200" height="960" data-full="assets/ph-mariages-full.jpg" alt="DJ set en terrasse dans une cour pavée, avec la cabine DJ et la SonoCyclette" data-caption="DJ set en terrasse, cabine DJ SonoCyclette" loading="lazy"><figcaption>DJ set en terrasse</figcaption></figure>
           <div class="txt">
             <h3>Mariages, anniversaires &amp; karaoké</h3>
-            <p>Anniversaire, mariage, soirée de fin d'année&nbsp;: un DJ professionnel réalise votre prestation sur mesure et construit l'ambiance avec vous, de la playlist au micro.</p>
+            <p>Mariage, anniversaire, soirée de fin d'année&nbsp;: l'ambiance se construit avec vous, de la playlist au micro.</p>
             <ul class="list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>DJ ou groupe jusqu'à 4 musiciens</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Soirée karaoké ou discours, 4 micros fournis</span></li>
@@ -824,7 +791,7 @@
           <figure class="media" data-zoom data-sect="Prestations"><img src="assets/ph-ateliers.webp" width="1200" height="960" data-full="assets/ph-ateliers-full.jpg" alt="Atelier en plein air : deux participants aux platines et au micro, vus de dos" data-caption="Atelier DJ &amp; micro en plein air" loading="lazy"><figcaption>Atelier DJ &amp; micro</figcaption></figure>
           <div class="txt">
             <h3>Ateliers &amp; animations</h3>
-            <p>Au-delà du DJ set, la SonoCyclette propose des formats participatifs, en complément du forfait, pour tous types d'événements.</p>
+            <p>Des formats participatifs à ajouter au forfait, pour tous les âges.</p>
             <ul class="list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Atelier d'initiation DJ, dès 8 ans</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Création de podcast et émission de radio</span></li>
@@ -858,11 +825,11 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div><span class="eyebrow">Découvrir</span><h2 id="h-decouvrir">La SonoCyclette en vrai</h2></div>
-        <p class="lead">Photos de la saison, actus Instagram, teaser vidéo et l'événement signature, la Green Guinguette.</p>
+        <p class="lead">La saison en photos, le teaser vidéo et la Green Guinguette, notre événement signature.</p>
       </div>
       <div class="tabs" role="tablist" aria-label="Découvrir">
         <button class="tab" role="tab" id="t-photos" aria-controls="photos" data-tab="photos" aria-selected="true">Photos</button>
-        <button class="tab" role="tab" id="t-instagram" aria-controls="instagram" data-tab="instagram" aria-selected="false" tabindex="-1">Actus Instagram</button>
+        <button class="tab" role="tab" hidden id="t-instagram" aria-controls="instagram" data-tab="instagram" aria-selected="false" tabindex="-1">Actus Instagram</button>
         <button class="tab" role="tab" id="t-teaser" aria-controls="teaser" data-tab="teaser" aria-selected="false" tabindex="-1">Le teaser</button>
         <button class="tab" role="tab" id="t-guinguette" aria-controls="guinguette" data-tab="guinguette" aria-selected="false" tabindex="-1">Green Guinguette</button>
       </div>
@@ -882,7 +849,13 @@
           <figure class="shot s-wide" data-zoom data-sect="Galerie"><img src="assets/ph-g-setup.webp" width="1400" height="791" data-full="assets/ph-g-setup-full.jpg" alt="Cabine DJ et enceintes colonnes blanches installées sur l'herbe, à côté de la SonoCyclette" loading="lazy"><figcaption>Cabine DJ et enceintes sur l'herbe</figcaption></figure>
           <figure class="shot s-tall" data-zoom data-sect="Galerie"><img src="assets/ph-g-pov.webp" width="900" height="1035" data-full="assets/ph-g-pov-full.jpg" alt="Vue depuis la cabine de la SonoCyclette sur un peloton de cyclistes en route" loading="lazy"><figcaption>Vu depuis la cabine</figcaption></figure>
         </div>
-        <div class="gal-more" style="justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><span style="color:var(--muted);font-weight:700;font-size:.9rem">Faites défiler pour voir toutes les photos →</span><a class="btn btn-ghost" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Plus de photos sur Instagram →</a></div>
+        <div class="gal-more">
+          <div class="gal-nav">
+            <button type="button" class="gal-btn" data-gal="-1" aria-label="Photos précédentes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button type="button" class="gal-btn" data-gal="1" aria-label="Photos suivantes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+          <a class="btn btn-ghost" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Plus de photos sur Instagram</a>
+        </div>
       </div>
 
       <div role="tabpanel" id="instagram" data-panel="instagram" aria-labelledby="t-instagram" hidden>
@@ -920,10 +893,8 @@
           <div>
             <span class="eyebrow">Teaser officiel</span>
             <h3 style="margin-top:14px">Saison 2025&nbsp;/&nbsp;2026</h3>
-            <p>Une minute d'ambiance&nbsp;: déambulations, DJ sets, foules qui dansent et guinguettes aux quatre coins de Strasbourg. Le meilleur moyen de comprendre la SonoCyclette, c'est de la voir rouler.</p>
-            <div class="chips"><span class="chip">🎧 DJ sets</span><span class="chip">🚲 Déambulation</span><span class="chip">☀️ Solaire</span><span class="chip">🎤 Karaoké</span></div>
+            <p>Une minute d'ambiance&nbsp;: déambulations, DJ sets et guinguettes aux quatre coins de Strasbourg.</p>
             <div class="cta-row">
-              <a class="btn btn-primary" href="#devis">Demander un devis</a>
               <a class="btn btn-ghost" href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Suivre sur Instagram</a>
             </div>
           </div>
@@ -962,7 +933,7 @@
       <div class="faq-list">
         <details><summary>Combien coûte une prestation&nbsp;?</summary><p class="ans">Le forfait de base est à <b>450&nbsp;€&nbsp;HT</b>&nbsp;: la SonoCyclette et son DJ pour 1 à 3&nbsp;h d'animation, en déambulation ou en DJ set fixe, avec 1&nbsp;h de déplacement et d'installation. Au-delà de 3&nbsp;h, chaque heure est facturée 100&nbsp;€&nbsp;HT. Annonces micro, karaoké, ateliers, podcast ou radio s'ajoutent en option. Tout le détail est dans la <a href="tarifs.html">fiche tarifs</a>.</p></details>
         <details><summary>Faut-il prévoir une prise électrique&nbsp;?</summary><p class="ans">Non. Le système son est autonome et rechargeable au solaire, avec 6 à 12&nbsp;h d'autonomie selon l'utilisation. Pas de branchement, pas de groupe électrogène.</p></details>
-        <details><summary>Où intervenez-vous&nbsp;?</summary><p class="ans">À Strasbourg et dans un rayon de 0 à 15&nbsp;km&nbsp;: Schiltigheim, Bischheim, Illkirch-Graffenstaden, Lingolsheim, Ostwald, Geispolsheim, Vendenheim… En espace public, en intérieur ou en déambulation. Pour un événement plus loin, contactez-nous.</p></details>
+        <details><summary>Où intervenez-vous&nbsp;?</summary><p class="ans">À Strasbourg et dans un rayon de 15&nbsp;km&nbsp;: Schiltigheim, Bischheim, Illkirch-Graffenstaden, Lingolsheim, Ostwald, Geispolsheim, Vendenheim… En espace public, en intérieur ou en déambulation. Au-delà, sur devis.</p></details>
         
         
         <details><summary>Le vélo passe-t-il partout&nbsp;?</summary><p class="ans">La SonoCyclette mesure 2,70&nbsp;m de long, 1&nbsp;m de large et 1,90&nbsp;m de haut, pour environ 150&nbsp;kg. Avant chaque événement, on fait un repérage du parcours avec l'organisation pour vérifier les passages, les marches et les pentes. Voir les <a href="infos-pratiques.html">infos pratiques</a>.</p></details>
@@ -979,7 +950,7 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div><span class="eyebrow">Devis &amp; contact</span><h2 id="h-devis">Réservez la SonoCyclette</h2></div>
-        <p class="lead">Une date, un lieu, une envie&nbsp;? Décrivez votre événement, on revient vers vous avec une proposition. Forfait de base à <b>450&nbsp;€&nbsp;HT</b> (<a href="tarifs.html">voir les tarifs</a>), devis gratuit.</p>
+        <p class="lead">Décrivez votre événement&nbsp;: vous recevez une proposition sur mesure, gratuite et sans engagement.</p>
       </div>
       <div class="devis-grid">
         <div class="form-card">
@@ -1089,17 +1060,8 @@
               <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></div>
               <div class="meta"><small>Instagram</small><div class="val"><a href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">@lasonocyclette</a></div></div>
             </div>
-            <div class="crow">
-              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></div>
-              <div class="meta"><small>Production &amp; administration</small><div class="val"><a href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Artenréel Spectacle</a></div></div>
-            </div>
-            <div class="crow">
-              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
-              <div class="meta"><small>Partenaire événementiel</small><div class="val"><a href="https://www.instagram.com/we.r.solar/" target="_blank" rel="noopener">We R Solar</a></div></div>
-            </div>
           </div>
-          <div class="zone"><b>Zone d'intervention</b>Strasbourg et jusqu'à 15&nbsp;km alentour, en espace public, en intérieur ou en déambulation. Plus loin&nbsp;? Parlons-en.</div>
-          <p class="support">Production et administration&nbsp;: Artenréel Spectacle. Projet soutenu par la DRAC Grand Est (Artenréel&nbsp;#1).</p>
+          <div class="zone"><b>Zone d'intervention</b>Strasbourg et jusqu'à 15&nbsp;km alentour, en espace public, en intérieur ou en déambulation. Au-delà, sur devis.</div>
         </aside>
       </div>
     </div>
@@ -1111,23 +1073,17 @@
     <div class="foot-top">
       <div class="foot-brand">
         <img src="assets/logo-sonocyclette.svg" width="754" height="522" alt="La SonoCyclette" loading="lazy">
-        <p>DJ &amp; sono à vélo à Strasbourg. Votre événement livré à vélo, sur place ou à emporter. Alimentée au solaire, quasi zéro carbone.</p>
+        <p>DJ et sono à vélo, alimentés au solaire. Strasbourg et 15&nbsp;km alentour.</p>
       </div>
-      <div><h4>Prestations</h4><ul>
-        <li><a href="#openair" data-go="openair">Open air &amp; guinguettes</a></li>
-        <li><a href="#evenements" data-go="evenements">Événements &amp; festivals</a></li>
-        <li><a href="#surmesure" data-go="surmesure">Mariages &amp; anniversaires</a></li>
-        <li><a href="#ateliers" data-go="ateliers">Ateliers &amp; animations</a></li>
+      <div><h4>Le site</h4><ul>
+        <li><a href="#projet">Le projet</a></li>
+        <li><a href="#prestations">Prestations</a></li>
         <li><a href="tarifs.html">Tarifs</a></li>
-        <li><a href="infos-pratiques.html">Infos pratiques</a></li></ul></div>
-      <div><h4>Découvrir</h4><ul>
-        <li><a href="#photos" data-go="photos">Photos</a></li>
-        <li><a href="#teaser" data-go="teaser">Le teaser</a></li>
-        <li><a href="#guinguette" data-go="guinguette">Green Guinguette</a></li>
+        <li><a href="infos-pratiques.html">Infos pratiques</a></li>
         <li><a href="#faq">Questions fréquentes</a></li></ul></div>
       <div><h4>Contact</h4><ul>
-        <li><a href="tel:+33601151469">06 01 15 14 69</a></li>
-        <li><a href="#devis">ivan.vollet@gmail.com</a></li>
+        <li><a href="tel:+33601151469">06&nbsp;01&nbsp;15&nbsp;14&nbsp;69</a></li>
+        <li><a href="mailto:ivan.vollet@gmail.com">ivan.vollet@gmail.com</a></li>
         <li><a href="https://www.instagram.com/lasonocyclette/" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://www.artenreel-spectacle.fr/project/la-sonocyclette-ivan-vollet" target="_blank" rel="noopener">Artenréel Spectacle</a></li></ul></div>
     </div>
@@ -1215,7 +1171,7 @@
     {"@type": "Question", "name": "Combien coûte une prestation ?", "acceptedAnswer": {"@type": "Answer", "text": "Le forfait de base est à 450 € HT : la SonoCyclette et son DJ pour 1 à 3 h d'animation, en déambulation ou en DJ set fixe, avec 1 h de déplacement et d'installation. Au-delà de 3 h, chaque heure est facturée 100 € HT. Annonces micro, karaoké, ateliers, podcast ou radio s'ajoutent en option."}},
     {"@type": "Question", "name": "Faut-il prévoir une prise électrique ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Le système son est autonome et rechargeable au solaire, avec 6 à 12 h d'autonomie selon l'utilisation. Pas de branchement, pas de groupe électrogène."}},
     
-    {"@type": "Question", "name": "Où intervenez-vous ?", "acceptedAnswer": {"@type": "Answer", "text": "À Strasbourg et dans un rayon de 0 à 15 km : Schiltigheim, Bischheim, Illkirch-Graffenstaden, Lingolsheim, Ostwald, Geispolsheim, Vendenheim… En espace public, en intérieur ou en déambulation. Pour un événement plus loin, contactez-nous."}},
+    {"@type": "Question", "name": "Où intervenez-vous ?", "acceptedAnswer": {"@type": "Answer", "text": "À Strasbourg et dans un rayon de 15 km : Schiltigheim, Bischheim, Illkirch-Graffenstaden, Lingolsheim, Ostwald, Geispolsheim, Vendenheim… En espace public, en intérieur ou en déambulation. Au-delà, sur devis."}},
     
     
     
@@ -1489,6 +1445,14 @@ function track(name){try{if(window.goatcounter&&window.goatcounter.count)window.
     requestAnimationFrame(function(){$$('.hero .reveal').forEach(function(el){el.classList.add('in');});});
   }
 })();
+
+  /* onglet Instagram visible seulement quand le fil est configuré */
+  if(INSTAGRAM_FEED_ID){var tIG=document.getElementById('t-instagram');if(tIG)tIG.hidden=false;}
+  /* galerie : boutons précédent / suivant */
+  (function(){var g=document.querySelector('.gal');if(!g)return;
+    document.querySelectorAll('[data-gal]').forEach(function(b){b.addEventListener('click',function(){
+      g.scrollBy({left:(+b.getAttribute('data-gal'))*g.clientWidth*.8,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});});
+  })();
 </script>
 </body>
 </html>

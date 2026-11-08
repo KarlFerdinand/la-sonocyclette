@@ -36,7 +36,7 @@ Le site peut afficher automatiquement les 6 dernières publications de @lasonocy
    `var INSTAGRAM_FEED_ID = "votre-identifiant";`
 4. « Commit changes » : le fil apparaît sur le site en 1 à 2 minutes.
 
-Tant que l'identifiant est vide, l'onglet affiche la carte du profil et un lien vers Instagram.
+Tant que l'identifiant est vide, l'onglet « Actus Instagram » reste masqué (le lien « Plus de photos sur Instagram » sous la galerie suffit). Il apparaît automatiquement dès que l'identifiant est renseigné.
 
 ## Référencement Google (à faire une fois le site en ligne)
 
