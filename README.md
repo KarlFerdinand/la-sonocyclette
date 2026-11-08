@@ -1,6 +1,6 @@
 # La SonoCyclette — site vitrine
 
-Site one-page de **La SonoCyclette** : votre événement livré à vélo, sur place ou à emporter (Strasbourg).
+Site one-page de **La SonoCyclette** : la scène qui roule au soleil (Strasbourg).
 
 En ligne : https://karlferdinand.github.io/la-sonocyclette/
 
