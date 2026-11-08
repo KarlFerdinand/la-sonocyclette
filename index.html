@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DJ &amp; sono à vélo à Strasbourg | La SonoCyclette</title>
-<meta name="description" content="DJ et sono à vélo à Strasbourg, 100 % solaire : mariages, anniversaires, événements de quartier, festivals, ateliers DJ, blind test et karaoké. Demandez votre devis.">
+<meta name="description" content="DJ et sono à vélo à Strasbourg, 100 % solaire : mariages, anniversaires, événements privés, festivals, ateliers DJ, karaoké, sono et lumière, machine à bulles. Demandez votre devis.">
 <link rel="canonical" href="https://karlferdinand.github.io/la-sonocyclette/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#14111C">
@@ -14,7 +14,7 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="La SonoCyclette">
 <meta property="og:title" content="DJ &amp; sono à vélo à Strasbourg | La SonoCyclette">
-<meta property="og:description" content="DJ et sono à vélo à Strasbourg, 100 % solaire : mariages, anniversaires, événements de quartier, festivals, ateliers DJ, blind test et karaoké. Demandez votre devis.">
+<meta property="og:description" content="DJ et sono à vélo à Strasbourg, 100 % solaire : mariages, anniversaires, événements privés, festivals, ateliers DJ, karaoké, sono et lumière, machine à bulles. Demandez votre devis.">
 <meta property="og:url" content="https://karlferdinand.github.io/la-sonocyclette/">
 <meta property="og:image" content="https://karlferdinand.github.io/la-sonocyclette/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -545,6 +545,21 @@
   .gal-btn svg{width:20px;height:20px}
   @media (max-width:640px){.side .side-card{display:none}}
   @media (max-width:640px){.gal .shot,.gal .shot.s-wide,.gal .shot.s-tall,.gal .shot.s-sm{height:auto;width:80vw;aspect-ratio:4/3}}
+
+  /* fiche technique : icônes */
+  .spec small{display:flex;align-items:center;gap:8px}
+  .spec small svg{width:18px;height:18px;flex:0 0 18px;color:var(--green-text)}
+  .spec b{padding-left:26px}
+  /* teaser : couverture et bouton lecture */
+  .phone{position:relative}
+  .phone .play{position:absolute;inset:9px;z-index:2;border:0;border-radius:30px;cursor:pointer;color:#fff;font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(180deg,rgba(20,17,28,.05),rgba(20,17,28,.55))}
+  .phone .play span{width:84px;height:84px;border-radius:50%;background:var(--sun);color:#2A2200;display:grid;place-items:center;box-shadow:0 18px 40px -12px rgba(0,0,0,.6);transition:transform .2s}
+  .phone .play span svg{width:34px;height:34px;margin-left:5px}
+  .phone .play:hover span{transform:scale(1.06)}
+  .phone .play b{font-family:var(--font-display);font-size:1.25rem}
+  .phone .play small{font-weight:700;opacity:.85}
+  .phone .play:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+  .phone.playing .play{display:none}
 </style>
 </head>
 <body>
@@ -651,7 +666,7 @@
 
       <div role="tabpanel" id="concept" data-panel="concept" aria-labelledby="t-concept">
         <div class="split">
-          <figure class="media" data-zoom data-sect="Le projet"><img src="assets/ph-concept.webp" width="1200" height="960" data-full="assets/ph-concept-full.jpg" alt="Le vélo-cargo SonoCyclette, cabine blanche et enceintes embarquées, devant une fresque street art" data-caption="Le vélo-cargo SonoCyclette, devant une fresque street art"><figcaption>Le vélo-cargo, prêt à rouler</figcaption></figure>
+          <figure class="media" data-zoom data-sect="Le projet"><img src="assets/ph-concept.webp" loading="lazy" width="1200" height="960" data-full="assets/ph-concept-full.jpg" alt="Le vélo-cargo SonoCyclette, cabine blanche et enceintes embarquées, devant une fresque street art" data-caption="Le vélo-cargo SonoCyclette, devant une fresque street art"><figcaption>Le vélo-cargo, prêt à rouler</figcaption></figure>
           <div class="txt">
             <h3>Trois métiers, un seul vélo</h3>
             <p>La SonoCyclette réunit le transport, le son et l'animation&nbsp;: elle arrive à vélo, s'installe rapidement et anime votre événement.</p>
@@ -671,14 +686,14 @@
           <div class="txt">
             <h3>Fiche technique</h3>
             <div class="specs">
-              <div class="spec"><small>Enceintes</small><b>2× LD Systems Maui 5 GO (100&nbsp;W) + 2× Bose S1 Pro sur batterie</b></div>
-              <div class="spec"><small>Mixage</small><b>Behringer Xenyx 1002, 5 pistes, EQ 3 bandes</b></div>
-              <div class="spec"><small>Micros</small><b>2× Shure SM58 + 3× t.bone MB 60, pieds de micro</b></div>
-              <div class="spec"><small>Lumière</small><b>Éclairage LED</b></div>
-              <div class="spec"><small>Capacité</small><b>Jusqu'à 180&nbsp;kg de matériel</b></div>
-              <div class="spec"><small>Autonomie</small><b>6 à 12&nbsp;h, recharge solaire</b></div>
-              <div class="spec"><small>Formats</small><b>DJ, groupe jusqu'à 4 musiciens, karaoké, discours</b></div>
-              <div class="spec"><small>Dimensions</small><b>2,70 × 1,00 × 1,90&nbsp;m, env. 150&nbsp;kg</b></div>
+              <div class="spec"><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="3"/><circle cx="12" cy="9" r="2"/><circle cx="12" cy="15.5" r="2.6"/></svg>Enceintes</small><b>2× LD Systems Maui 5 GO (100&nbsp;W) + 2× Bose S1 Pro sur batterie</b></div>
+              <div class="spec"><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4v16M12 4v16M18 4v16"/><rect x="4" y="13" width="4" height="3" rx="1"/><rect x="10" y="7" width="4" height="3" rx="1"/><rect x="16" y="11" width="4" height="3" rx="1"/></svg>Mixage</small><b>Behringer Xenyx 1002, 5 pistes, EQ 3 bandes</b></div>
+              <div class="spec"><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0013 0M12 17.5V21"/></svg>Micros</small><b>2× Shure SM58 + 3× t.bone MB 60, pieds de micro</b></div>
+              <div class="spec"><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></svg>Lumière &amp; effets</small><b>Éclairage LED, kit lumière, machine à bulles</b></div>
+              <div class="spec"><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></svg>Capacité</small><b>Jusqu'à 180&nbsp;kg de matériel</b></div>
+              <div class="spec"><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 11v2M7 10v4M11 10v4"/></svg>Autonomie</small><b>6 à 12&nbsp;h, recharge solaire</b></div>
+              <div class="spec"><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="17" r="3"/><circle cx="17" cy="15" r="3"/><path d="M10 17V6l10-2v11"/></svg>Formats</small><b>DJ, groupe jusqu'à 4 musiciens, karaoké, discours</b></div>
+              <div class="spec"><small><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l4-4 13 13-4 4L3 8z"/><path d="M7.5 8.5l2 2M10.5 5.5l2 2M10.5 11.5l2 2M13.5 8.5l2 2"/></svg>Dimensions</small><b>2,70 × 1,00 × 1,90&nbsp;m, env. 150&nbsp;kg</b></div>
             </div>
             <p class="note">Accès et contraintes de parcours&nbsp;: voir les <a href="infos-pratiques.html">infos pratiques</a>.</p>
           </div>
@@ -715,14 +730,14 @@
   <section id="prestations" class="sec" data-tabs aria-labelledby="h-presta">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div><span class="eyebrow">Prestations</span><h2 id="h-presta">Animation musicale pour tous vos événements</h2></div>
+        <div><span class="eyebrow">Prestations</span><h2 id="h-presta">Animation DJ à Strasbourg pour tous vos événements</h2></div>
         <p class="lead">Cinq formats, un même forfait&nbsp;: <b>450&nbsp;€&nbsp;HT</b> pour 1 à 3&nbsp;h d'animation, vélo et DJ compris. <a href="tarifs.html">Voir les tarifs</a></p>
       </div>
       <div class="tabs" role="tablist" aria-label="Prestations">
         <button class="tab" role="tab" id="t-openair" aria-controls="openair" data-tab="openair" aria-selected="true">Open air</button>
         <button class="tab" role="tab" id="t-evenements" aria-controls="evenements" data-tab="evenements" aria-selected="false" tabindex="-1">Événements</button>
         <button class="tab" role="tab" id="t-causes" aria-controls="causes" data-tab="causes" aria-selected="false" tabindex="-1">Causes &amp; collectifs</button>
-        <button class="tab" role="tab" id="t-surmesure" aria-controls="surmesure" data-tab="surmesure" aria-selected="false" tabindex="-1">Mariages &amp; anniversaires</button>
+        <button class="tab" role="tab" id="t-surmesure" aria-controls="surmesure" data-tab="surmesure" aria-selected="false" tabindex="-1">Mariages &amp; événements privés</button>
         <button class="tab" role="tab" id="t-ateliers" aria-controls="ateliers" data-tab="ateliers" aria-selected="false" tabindex="-1">Ateliers &amp; transmission</button>
       </div>
 
@@ -750,6 +765,7 @@
             <ul class="list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Marchés, inaugurations, événements de quartier</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Fête de la Musique, concerts, théâtre, spectacle vivant</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Machine à bulles pour les événements culturels, festifs et le jeune public</span></li>
             </ul>
             <div class="actions"><a class="btn btn-primary" href="#devis" data-prefill="Événement de quartier / association">Demander un devis <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="price">À partir de <b>450&nbsp;€&nbsp;HT</b> · <a href="tarifs.html">Voir les tarifs</a></span></div>
           </div>
@@ -775,11 +791,12 @@
         <div class="split">
           <figure class="media" data-zoom data-sect="Prestations"><img src="assets/ph-mariages.webp" width="1200" height="960" data-full="assets/ph-mariages-full.jpg" alt="DJ set en terrasse dans une cour pavée, avec la cabine DJ et la SonoCyclette" data-caption="DJ set en terrasse, cabine DJ SonoCyclette" loading="lazy"><figcaption>DJ set en terrasse</figcaption></figure>
           <div class="txt">
-            <h3>Mariages, anniversaires &amp; karaoké</h3>
-            <p>Mariage, anniversaire, soirée de fin d'année&nbsp;: l'ambiance se construit avec vous, de la playlist au micro.</p>
+            <h3>Mariages, anniversaires &amp; événements privés</h3>
+            <p>En SonoCyclette ou en formule classique, avec sono et kit lumière&nbsp;: l'ambiance se construit avec vous, de la playlist au micro.</p>
             <ul class="list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Formule classique&nbsp;: sono et kit lumière, en intérieur comme en extérieur</span></li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>DJ ou groupe jusqu'à 4 musiciens</span></li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Soirée karaoké ou discours, 4 micros fournis</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg><span>Karaoké ou discours, 4 micros fournis</span></li>
             </ul>
             <div class="actions"><a class="btn btn-primary" href="#devis" data-prefill="Mariage">Demander un devis <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="price">À partir de <b>450&nbsp;€&nbsp;HT</b> · <a href="tarifs.html">Voir les tarifs</a></span></div>
           </div>
@@ -862,7 +879,7 @@
         <div class="ig">
           <div class="ig-profile">
             <div class="ig-head">
-              <img class="ig-avatar" src="assets/ig-avatar.png" width="80" height="80" alt="">
+              <img class="ig-avatar" src="assets/ig-avatar.png" width="80" height="80" alt="" loading="lazy">
               <div><b>lasonocyclette</b><span>La SonoCyclette · Strasbourg</span></div>
             </div>
             <p>Dispositif de diffusion culturelle mobile, autonome et festif.</p>
@@ -884,8 +901,9 @@
 
       <div role="tabpanel" id="teaser" data-panel="teaser" aria-labelledby="t-teaser" hidden>
         <div class="video-grid">
-          <div class="phone">
-            <video controls playsinline muted loop preload="none" poster="assets/poster.webp" aria-label="Teaser vidéo de la SonoCyclette, saison 2025-2026">
+          <div class="phone" id="teaserBox">
+            <button type="button" class="play" id="teaserPlay" aria-label="Lire le teaser vidéo"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span><b>Voir le teaser</b><small>1 min</small></button>
+            <video playsinline loop preload="none" poster="assets/poster.webp" aria-label="Teaser vidéo de la SonoCyclette, saison 2025-2026">
               <source src="assets/teaser.mp4" type="video/mp4">
               Votre navigateur ne lit pas la vidéo.
             </video>
@@ -1005,6 +1023,8 @@
                 <label class="check"><input type="checkbox" name="format" value="Atelier initiation DJ"><span>Atelier initiation DJ</span></label>
                 <label class="check"><input type="checkbox" name="format" value="Création de podcast"><span>Création de podcast</span></label>
                 <label class="check"><input type="checkbox" name="format" value="Émission de radio"><span>Émission de radio</span></label>
+                <label class="check"><input type="checkbox" name="format" value="Sono et lumière (formule classique)"><span>Sono et lumière</span></label>
+                <label class="check"><input type="checkbox" name="format" value="Machine à bulles"><span>Machine à bulles</span></label>
               </div>
             </fieldset>
             <div class="field">
@@ -1158,7 +1178,9 @@
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Création de podcast", "areaServed": "Strasbourg"}},
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Émission de radio mobile", "areaServed": "Strasbourg"}},
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Animation micro et street marketing", "areaServed": "Strasbourg"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Street karaoké et blind test", "areaServed": "Strasbourg"}}
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Street karaoké et blind test", "areaServed": "Strasbourg"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sono et kit lumière pour mariages, anniversaires et événements privés", "areaServed": "Strasbourg"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Machine à bulles pour événements culturels et jeune public", "areaServed": "Strasbourg"}}
     ]
   }
 }
@@ -1190,8 +1212,10 @@
 var INSTAGRAM_FEED_ID = "";
 var CONTACT_EMAIL = "ivan.vollet@gmail.com";
 /* === ENVOI DU FORMULAIRE ===
-   Clé gratuite Web3Forms (web3forms.com, saisir ivan.vollet@gmail.com) : les demandes arrivent
-   directement par e-mail. Sans clé, le formulaire ouvre la messagerie du visiteur. */
+   Sans clé : les demandes passent par FormSubmit (formsubmit.co) et arrivent sur CONTACT_EMAIL.
+   À la toute première demande, FormSubmit envoie un e-mail d'activation : cliquer sur le lien une fois.
+   Optionnel : clé gratuite Web3Forms (web3forms.com) à coller ci-dessous pour utiliser ce service à la place.
+   Si l'envoi échoue, le formulaire ouvre la messagerie du visiteur et propose de copier la demande. */
 var FORM_ACCESS_KEY = "";
 /* === STATISTIQUES DE VISITE ===
    GoatCounter (goatcounter.com) : gratuit, sans cookie, sans bandeau de consentement.
@@ -1319,12 +1343,16 @@ function track(name){try{if(window.goatcounter&&window.goatcounter.count)window.
     var okBox=$('#quoteOk'),btn=$('button[type="submit"]',form);
     track('demande-devis');
     function fallback(){okBox.hidden=true;res.hidden=false;res.focus();try{window.location.href='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);}catch(err){}}
-    if(!FORM_ACCESS_KEY||!window.fetch){fallback();return;}
+    if(!window.fetch){fallback();return;}
     btn.disabled=true;var lbl=btn.textContent;btn.textContent='Envoi en cours…';
-    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({access_key:FORM_ACCESS_KEY,subject:subject,from_name:'Site La SonoCyclette',name:nom.value.trim(),email:email.value.trim(),phone:tel.value.trim(),message:body,botcheck:''})})
+    var req=FORM_ACCESS_KEY
+      ?fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({access_key:FORM_ACCESS_KEY,subject:subject,from_name:'Site La SonoCyclette',name:nom.value.trim(),email:email.value.trim(),phone:tel.value.trim(),message:body,botcheck:''})})
+      :fetch('https://formsubmit.co/ajax/'+CONTACT_EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({_subject:subject,_template:'box',_captcha:'false',Nom:nom.value.trim(),'E-mail':email.value.trim(),'Téléphone':tel.value.trim(),Demande:body})});
+    req
       .then(function(r){return r.json();})
-      .then(function(j){if(j&&j.success){res.hidden=true;form.reset();okBox.hidden=false;okBox.focus();}else{fallback();}})
+      .then(function(j){if(j&&(j.success===true||j.success==='true')){res.hidden=true;form.reset();okBox.hidden=false;okBox.focus();}else{fallback();}})
       .catch(fallback)
       .then(function(){btn.disabled=false;btn.textContent=lbl;});
   });
@@ -1452,6 +1480,11 @@ function track(name){try{if(window.goatcounter&&window.goatcounter.count)window.
   (function(){var g=document.querySelector('.gal');if(!g)return;
     document.querySelectorAll('[data-gal]').forEach(function(b){b.addEventListener('click',function(){
       g.scrollBy({left:(+b.getAttribute('data-gal'))*g.clientWidth*.8,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});});
+  })();
+
+  /* teaser : lecture au clic sur la couverture */
+  (function(){var box=document.getElementById('teaserBox'),b=document.getElementById('teaserPlay');if(!box||!b)return;var v=box.querySelector('video');
+    b.addEventListener('click',function(){box.classList.add('playing');v.controls=true;v.muted=false;var pr=v.play();if(pr&&pr.catch)pr.catch(function(){v.muted=true;v.play();});v.focus();if(typeof track==='function')track('lecture-teaser');});
   })();
 </script>
 </body>
