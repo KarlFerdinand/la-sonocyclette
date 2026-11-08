@@ -6,7 +6,12 @@ En ligne : https://karlferdinand.github.io/la-sonocyclette/
 
 ## Contenu
 
-- `index.html` — toute la page (textes, styles et animations sont dans ce seul fichier)
+- `index.html` — la page d'accueil (textes, styles et animations sont dans ce seul fichier)
+- `tarifs.html` — la fiche tarifs (forfait, compléments, options, récapitulatif, conditions)
+- `infos-pratiques.html` — la fiche pratique (dimensions du vélo, repérage du parcours, formats, à la charge de l'organisation)
+- `assets/fiches.css` — les styles communs aux deux fiches
+
+**Tarifs : à changer partout en même temps.** Le forfait (450 € HT) apparaît aussi sur l'accueil (bandeau, onglets Prestations, FAQ, bloc Devis et données Google en bas de `index.html`). En cas de changement de prix, chercher « 450 » dans les trois fichiers.
 - `assets/` — photos, teaser vidéo, logo et icônes
 
 ## Modifier le site

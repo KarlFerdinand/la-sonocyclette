@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://karlferdinand.github.io/la-sonocyclette/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <image:image><image:loc>https://karlferdinand.github.io/la-sonocyclette/assets/og-image.jpg</image:loc></image:image>
     <image:image><image:loc>https://karlferdinand.github.io/la-sonocyclette/assets/ph-concept-full.jpg</image:loc></image:image>
     <image:image><image:loc>https://karlferdinand.github.io/la-sonocyclette/assets/ph-openair-full.jpg</image:loc></image:image>
@@ -15,5 +15,13 @@
     <image:image><image:loc>https://karlferdinand.github.io/la-sonocyclette/assets/ph-g-setup-full.jpg</image:loc></image:image>
     <image:image><image:loc>https://karlferdinand.github.io/la-sonocyclette/assets/ph-g-pov-full.jpg</image:loc></image:image>
     <image:image><image:loc>https://karlferdinand.github.io/la-sonocyclette/assets/ph-g-fleurs-full.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://karlferdinand.github.io/la-sonocyclette/tarifs.html</loc>
+    <lastmod>2026-11-08</lastmod>
+  </url>
+  <url>
+    <loc>https://karlferdinand.github.io/la-sonocyclette/infos-pratiques.html</loc>
+    <lastmod>2026-11-08</lastmod>
   </url>
 </urlset>
