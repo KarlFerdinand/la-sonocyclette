@@ -8,6 +8,7 @@ En ligne : https://karlferdinand.github.io/la-sonocyclette/
 
 - `index.html` — la page d'accueil (textes, styles et animations sont dans ce seul fichier)
 - `tarifs.html` — la fiche tarifs (forfait, compléments, options, récapitulatif, conditions)
+- `dj-super.html` — la page DJ Super : DJ sets tous publics, ateliers jeune public (initiation DJ, radio & podcast, street karaoké), parcours, références. Ne pas y mentionner l'ancien pseudo.
 - `infos-pratiques.html` — la fiche pratique (dimensions du vélo, repérage du parcours, formats, à la charge de l'organisation)
 - `assets/fiches.css` — les styles communs aux deux fiches
 - `fiche-client.html` — la fiche client imprimable (A4, 2 pages : page 1 organisation, page 2 tarifs), non référencée. Elle sert à produire `assets/la-sonocyclette-fiche-client.pdf` (les 2 pages), `assets/la-sonocyclette-fiche-organisation.pdf` et `assets/la-sonocyclette-fiche-tarifs.pdf` (une page chacune), téléchargeables depuis les fiches du site. Après un changement de tarif ou de texte, modifier aussi `fiche-client.html` et regénérer les PDF.
