@@ -281,3 +281,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 .dl{display:inline-flex;align-items:center;gap:8px}
 .dl svg{width:18px;height:18px}
+/* navigation des fiches : défile horizontalement sur petit écran (4 onglets) */
+.tabs{min-width:0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+@media (max-width:560px){.tabs a{padding:8px 9px;font-size:.78rem}}
